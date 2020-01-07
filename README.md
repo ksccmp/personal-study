@@ -1,2 +1,5 @@
 # personal-study
-## goal: Algorithm(Programmers, Baekjoon), Computer Science(OS, Network etc)
+## goal
+### 1. Algorithm(Programmers, Baekjoon)
+### 2. Computer Science(OS, Network etc)
+### 3. FrontEnd(React)
