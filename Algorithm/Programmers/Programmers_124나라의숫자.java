@@ -1,5 +1,5 @@
 
-public class Programmers_124³ª¶óÀÇ¼ıÀÚ {
+public class Programmers_124ë‚˜ë¼ì˜ìˆ«ì {
 	public static void main(String[] args) {
 		int n = 4;
 		System.out.println(solution(n));

@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Programmers_ÇÁ¸°ÅÍ {
+public class Programmers_í”„ë¦°í„° {
 	public static void main(String[] args) {
 		int priorities[] = { 2, 1, 3, 2 };
 		int location = 2;
