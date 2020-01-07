@@ -1,0 +1,9 @@
+ESLint 설치방법
+ 1. Extension에서 ESLint를 전역으로 설치
+ 2. yarn을 이용하여 터미널에서 yarn add --dev eslint (권장)
+ 3. npm --save-dev eslint
+
+.eslintrc 자동생성 방법
+ 1. Ctrl + Shift + p로 명령팔레트 오픈
+ 2. create ESLINT Configuration
+ 3. 개발 설정 입력
