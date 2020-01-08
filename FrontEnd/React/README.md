@@ -9,8 +9,8 @@
  3. 개발 설정 입력
 
 # react프로젝트 생성 방법
- * create-react-app my-app
- * yarn create react-app react-redux-hooks-tutorial
+ * create-react-app (앱이름)
+ * yarn create react-app (앱이름)
 
 # redux, react-redux설치 방법
  * yarn add redux react-redux@next redux-devtools-extension
