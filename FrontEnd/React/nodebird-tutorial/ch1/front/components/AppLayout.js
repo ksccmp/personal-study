@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import {Menu, Input, Button} from 'antd';
+import PropTypes from 'prop-types';
+import {Menu, Input, Button, Row, Col} from 'antd';
 
 const AppLayout = ({children}) => {
     return (
@@ -13,9 +14,19 @@ const AppLayout = ({children}) => {
                 </Menu.Item>
             </Menu>
             <Link href="/signup"><a><Button>회원가입</Button></a></Link>
+            <Row>
+                <Col xs={24} md={6}>첫번째</Col>
+                <Col xs={24} md={12}>두번째</Col>
+                <Col xs={24} md={6}>세번째</Col>
+            </Row>
             {children}
         </div>
     );
+};
+// xs: 모바일, sm: 작은화면, md: 중간화면, lg: 큰화면, 가로 전체는 24
+
+AppLayout.propTypes = {
+    children: PropTypes.node,
 };
 
 export default AppLayout;

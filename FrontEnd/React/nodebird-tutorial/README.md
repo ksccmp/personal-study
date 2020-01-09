@@ -6,3 +6,12 @@
 6. .eslintrc 작성 다하면 npm i eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks
 7. npm install -g next
 8. npm install antd
+
+# proptypes설치
+ * npm install prop-types
+
+# 기본구성
+ ## _document.js => html, head, body
+ ## _app.js => root
+ ## pages => 실제 컴포넌트
+ ## _error.js => 에러가 발생할 때 (배포하기 전에는 굳이 커스터마이징 할 필요가 없음)

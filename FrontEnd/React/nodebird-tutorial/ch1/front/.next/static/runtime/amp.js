@@ -55,7 +55,7 @@ module.exports = __webpack_require__(/*! core-js/library/fn/promise */ "./node_m
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js?fa84":
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js ***!
   \*************************************************************************/
@@ -2336,9 +2336,9 @@ for (var i = 0; i < DOMIterables.length; i++) {
 /***/ }),
 
 /***/ "./node_modules/next/dist/build/polyfills/fetch/index.js":
-/*!*********************************************************************************************************************************************!*\
-  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/build/polyfills/fetch/index.js ***!
-  \*********************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************************!*\
+  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/build/polyfills/fetch/index.js ***!
+  \*********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2363,7 +2363,7 @@ var _interopRequireDefault = __webpack_require__(/*! @babel/runtime-corejs2/help
 
 var _keys = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js?a4bb"));
 
-var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js?fa84"));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime-corejs2/helpers/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/asyncToGenerator.js"));
 
 var _unfetch = _interopRequireDefault(__webpack_require__(/*! unfetch */ "./node_modules/next/dist/build/polyfills/fetch/index.js"));
 
