@@ -108,14 +108,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "prop-types");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "antd");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_3__);
-var _jsxFileName = "C:\\Users\\multicampus\\Desktop\\SC_2\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\components\\AppLayout.js";
+/* harmony import */ var _LoginForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LoginForm */ "./components/LoginForm.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_4__);
+var _jsxFileName = "C:\\Users\\User\\desktop\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\components\\AppLayout.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
+
+const dummy = {
+  nickname: '제로초',
+  Post: [],
+  Followings: [],
+  Followers: [],
+  isLoggedIn: true
+};
 
 const AppLayout = ({
   children
@@ -123,123 +132,171 @@ const AppLayout = ({
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 17
     },
     __self: undefined
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"], {
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"], {
     mode: "horizontal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 18
     },
     __self: undefined
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
     key: "home",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 19
     },
     __self: undefined
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 19
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 19
     },
     __self: undefined
-  }, "\uB178\uB4DC\uBC84\uB4DC"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
+  }, "\uB178\uB4DC\uBC84\uB4DC"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
     key: "profile",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 20
     },
     __self: undefined
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/profile",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 20
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 20
     },
     __self: undefined
-  }, "\uD504\uB85C\uD544"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
+  }, "\uD504\uB85C\uD544"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Menu"].Item, {
     key: "mail",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 21
     },
     __self: undefined
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Input"].Search, {
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Input"].Search, {
     enterButton: true,
     style: {
       verticalAlign: 'middle'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 22
     },
     __self: undefined
-  }))), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/signup",
+  }))), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Row"], {
+    gutter: 8,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 25
     },
     __self: undefined
-  }, __jsx("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    },
-    __self: undefined
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Button"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    },
-    __self: undefined
-  }, "\uD68C\uC6D0\uAC00\uC785"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Row"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 17
-    },
-    __self: undefined
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Col"], {
     xs: 24,
     md: 6,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 26
     },
     __self: undefined
-  }, "\uCCAB\uBC88\uC9F8"), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+  }, dummy.isLoggedIn ? __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Card"], {
+    actions: [__jsx("div", {
+      key: "twit",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30
+      },
+      __self: undefined
+    }, "\uC9F9\uC9F9", __jsx("br", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30
+      },
+      __self: undefined
+    }), dummy.Post.length), __jsx("div", {
+      key: "following",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31
+      },
+      __self: undefined
+    }, "\uD314\uB85C\uC789", __jsx("br", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31
+      },
+      __self: undefined
+    }), dummy.Followings.length), __jsx("div", {
+      key: "follower",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32
+      },
+      __self: undefined
+    }, "\uD314\uB85C\uC6CC", __jsx("br", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32
+      },
+      __self: undefined
+    }), dummy.Followers.length)],
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Card"].Meta, {
+    avatar: __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Avatar"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 35
+      },
+      __self: undefined
+    }, dummy.nickname[0]),
+    title: dummy.nickname,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    },
+    __self: undefined
+  })) : __jsx(_LoginForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 38
+    },
+    __self: undefined
+  })), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Col"], {
     xs: 24,
     md: 12,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 41
     },
     __self: undefined
-  }, "\uB450\uBC88\uC9F8"), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+  }, children), __jsx(antd__WEBPACK_IMPORTED_MODULE_4__["Col"], {
     xs: 24,
     md: 6,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 44
     },
     __self: undefined
-  }, "\uC138\uBC88\uC9F8")), children);
+  }, "\uC138\uBC88\uC9F8")));
 }; // xs: 모바일, sm: 작은화면, md: 중간화면, lg: 큰화면, 가로 전체는 24
 
 
@@ -250,10 +307,153 @@ AppLayout.propTypes = {
 
 /***/ }),
 
+/***/ "./components/LoginForm.js":
+/*!*********************************!*\
+  !*** ./components/LoginForm.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _pages_signup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/signup */ "./pages/signup.js");
+var _jsxFileName = "C:\\Users\\User\\desktop\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\components\\LoginForm.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+const LoginForm = () => {
+  const [id, onChangeId] = Object(_pages_signup__WEBPACK_IMPORTED_MODULE_3__["useInput"])('');
+  const [password, onChangePassword] = Object(_pages_signup__WEBPACK_IMPORTED_MODULE_3__["useInput"])('');
+  const onSubmitForm = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(e => {
+    e.preventDefault();
+    console.log({
+      id,
+      password
+    });
+  }, [id, password]);
+  return __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+    onSubmit: onSubmitForm,
+    style: {
+      padding: 10
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: undefined
+  }, __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: undefined
+  }, __jsx("label", {
+    htmlFor: "user-id",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: undefined
+  }, "\uC544\uC774\uB514"), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
+    },
+    __self: undefined
+  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    name: "user-id",
+    value: id,
+    onChange: onChangeId,
+    required: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: undefined
+  })), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: undefined
+  }, __jsx("label", {
+    htmlFor: "user-password",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: undefined
+  }, "\uBE44\uBC00\uBC88\uD638"), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: undefined
+  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    name: "user-password",
+    type: "password",
+    value: password,
+    onChange: onChangePassword,
+    required: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
+    },
+    __self: undefined
+  })), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    type: "primary",
+    htmlType: "submit",
+    loading: false,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: undefined
+  }, "\uB85C\uADF8\uC778"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    href: "/signup",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: undefined
+  }, __jsx("a", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: undefined
+  }, "\uD68C\uC6D0\uAC00\uC785")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (LoginForm);
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/map.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/map.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/map.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -262,9 +462,9 @@ module.exports = __webpack_require__(/*! core-js/library/fn/map */ "./node_modul
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js":
-/*!****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/object/assign.js ***!
-  \****************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/object/assign.js ***!
+  \****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -273,9 +473,9 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/assign */ "./
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/create.js":
-/*!****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/object/create.js ***!
-  \****************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/object/create.js ***!
+  \****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -284,9 +484,9 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/create */ "./
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/object/define-property.js ***!
-  \*************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/object/define-property.js ***!
+  \*************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -295,9 +495,9 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/define-proper
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js ***!
-  \*************************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js ***!
+  \*************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -306,9 +506,9 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-prope
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js":
-/*!**************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/object/keys.js ***!
-  \**************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/object/keys.js ***!
+  \**************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -317,9 +517,9 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/keys */ "./no
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/promise.js":
-/*!**********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/promise.js ***!
-  \**********************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/promise.js ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -328,9 +528,9 @@ module.exports = __webpack_require__(/*! core-js/library/fn/promise */ "./node_m
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/symbol.js":
-/*!*********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/symbol.js ***!
-  \*********************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/symbol.js ***!
+  \*********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -339,9 +539,9 @@ module.exports = __webpack_require__(/*! core-js/library/fn/symbol */ "./node_mo
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/symbol/iterator.js":
-/*!******************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/symbol/iterator.js ***!
-  \******************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/symbol/iterator.js ***!
+  \******************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -350,9 +550,9 @@ module.exports = __webpack_require__(/*! core-js/library/fn/symbol/iterator */ "
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/weak-map.js":
-/*!***********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/weak-map.js ***!
-  \***********************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/weak-map.js ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -361,9 +561,9 @@ module.exports = __webpack_require__(/*! core-js/library/fn/weak-map */ "./node_
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/helpers/extends.js":
-/*!**********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/helpers/extends.js ***!
-  \**********************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/helpers/extends.js ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -392,9 +592,9 @@ module.exports = _extends;
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js":
-/*!************************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js ***!
-  \************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/helpers/interopRequireDefault.js ***!
+  \************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -409,9 +609,9 @@ module.exports = _interopRequireDefault;
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/helpers/interopRequireWildcard.js":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/helpers/interopRequireWildcard.js ***!
-  \*************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/helpers/interopRequireWildcard.js ***!
+  \*************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -480,9 +680,9 @@ module.exports = _interopRequireWildcard;
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/helpers/typeof.js":
-/*!*********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/helpers/typeof.js ***!
-  \*********************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/helpers/typeof.js ***!
+  \*********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -511,9 +711,9 @@ module.exports = _typeof;
 /***/ }),
 
 /***/ "./node_modules/core-js/library/fn/map.js":
-/*!******************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/map.js ***!
-  \******************************************************************************************************************************************/
+/*!******************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/map.js ***!
+  \******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -530,9 +730,9 @@ module.exports = __webpack_require__(/*! ../modules/_core */ "./node_modules/cor
 /***/ }),
 
 /***/ "./node_modules/core-js/library/fn/object/assign.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/object/assign.js ***!
-  \****************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/object/assign.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -543,9 +743,9 @@ module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/
 /***/ }),
 
 /***/ "./node_modules/core-js/library/fn/object/create.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/object/create.js ***!
-  \****************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/object/create.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -559,9 +759,9 @@ module.exports = function create(P, D) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/fn/object/define-property.js":
-/*!*************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/object/define-property.js ***!
-  \*************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/object/define-property.js ***!
+  \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -575,9 +775,9 @@ module.exports = function defineProperty(it, key, desc) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/fn/object/get-own-property-descriptor.js":
-/*!*************************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/object/get-own-property-descriptor.js ***!
-  \*************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/object/get-own-property-descriptor.js ***!
+  \*************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -591,9 +791,9 @@ module.exports = function getOwnPropertyDescriptor(it, key) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/fn/object/keys.js":
-/*!**************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/object/keys.js ***!
-  \**************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/object/keys.js ***!
+  \**************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -604,9 +804,9 @@ module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/
 /***/ }),
 
 /***/ "./node_modules/core-js/library/fn/promise.js":
-/*!**********************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/promise.js ***!
-  \**********************************************************************************************************************************************/
+/*!**********************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/promise.js ***!
+  \**********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -622,9 +822,9 @@ module.exports = __webpack_require__(/*! ../modules/_core */ "./node_modules/cor
 /***/ }),
 
 /***/ "./node_modules/core-js/library/fn/symbol/index.js":
-/*!***************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/symbol/index.js ***!
-  \***************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/symbol/index.js ***!
+  \***************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -638,9 +838,9 @@ module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/
 /***/ }),
 
 /***/ "./node_modules/core-js/library/fn/symbol/iterator.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/symbol/iterator.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/symbol/iterator.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -652,9 +852,9 @@ module.exports = __webpack_require__(/*! ../../modules/_wks-ext */ "./node_modul
 /***/ }),
 
 /***/ "./node_modules/core-js/library/fn/weak-map.js":
-/*!***********************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/weak-map.js ***!
-  \***********************************************************************************************************************************************/
+/*!***********************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/fn/weak-map.js ***!
+  \***********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -669,9 +869,9 @@ module.exports = __webpack_require__(/*! ../modules/_core */ "./node_modules/cor
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_a-function.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_a-function.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_a-function.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -684,9 +884,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_add-to-unscopables.js":
-/*!***************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_add-to-unscopables.js ***!
-  \***************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_add-to-unscopables.js ***!
+  \***************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -696,9 +896,9 @@ module.exports = function () { /* empty */ };
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_an-instance.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_an-instance.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_an-instance.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -712,9 +912,9 @@ module.exports = function (it, Constructor, name, forbiddenField) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_an-object.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_an-object.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_an-object.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -728,9 +928,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_array-from-iterable.js":
-/*!****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_array-from-iterable.js ***!
-  \****************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_array-from-iterable.js ***!
+  \****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -746,9 +946,9 @@ module.exports = function (iter, ITERATOR) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_array-includes.js":
-/*!***********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_array-includes.js ***!
-  \***********************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_array-includes.js ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -780,9 +980,9 @@ module.exports = function (IS_INCLUDES) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_array-methods.js":
-/*!**********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_array-methods.js ***!
-  \**********************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_array-methods.js ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -835,9 +1035,9 @@ module.exports = function (TYPE, $create) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_array-species-constructor.js":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_array-species-constructor.js ***!
-  \**********************************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_array-species-constructor.js ***!
+  \**********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -862,9 +1062,9 @@ module.exports = function (original) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_array-species-create.js":
-/*!*****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_array-species-create.js ***!
-  \*****************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_array-species-create.js ***!
+  \*****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -879,9 +1079,9 @@ module.exports = function (original, length) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_classof.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_classof.js ***!
-  \****************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_classof.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -913,9 +1113,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_cof.js":
-/*!************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_cof.js ***!
-  \************************************************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_cof.js ***!
+  \************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -929,9 +1129,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_collection-strong.js":
-/*!**************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_collection-strong.js ***!
-  \**************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_collection-strong.js ***!
+  \**************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1085,9 +1285,9 @@ module.exports = {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_collection-to-json.js":
-/*!***************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_collection-to-json.js ***!
-  \***************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_collection-to-json.js ***!
+  \***************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1105,9 +1305,9 @@ module.exports = function (NAME) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_collection-weak.js":
-/*!************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_collection-weak.js ***!
-  \************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_collection-weak.js ***!
+  \************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1202,9 +1402,9 @@ module.exports = {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_collection.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_collection.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_collection.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1273,9 +1473,9 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_core.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_core.js ***!
-  \*************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_core.js ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1286,9 +1486,9 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_ctx.js":
-/*!************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_ctx.js ***!
-  \************************************************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_ctx.js ***!
+  \************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1317,9 +1517,9 @@ module.exports = function (fn, that, length) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_defined.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_defined.js ***!
-  \****************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_defined.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1333,9 +1533,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_descriptors.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_descriptors.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_descriptors.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1348,9 +1548,9 @@ module.exports = !__webpack_require__(/*! ./_fails */ "./node_modules/core-js/li
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_dom-create.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_dom-create.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_dom-create.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1366,9 +1566,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_enum-bug-keys.js":
-/*!**********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_enum-bug-keys.js ***!
-  \**********************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_enum-bug-keys.js ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1381,9 +1581,9 @@ module.exports = (
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_enum-keys.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_enum-keys.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_enum-keys.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1407,9 +1607,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_export.js":
-/*!***************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_export.js ***!
-  \***************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_export.js ***!
+  \***************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1480,9 +1680,9 @@ module.exports = $export;
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_fails.js":
-/*!**************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_fails.js ***!
-  \**************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_fails.js ***!
+  \**************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1498,9 +1698,9 @@ module.exports = function (exec) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_for-of.js":
-/*!***************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_for-of.js ***!
-  \***************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_for-of.js ***!
+  \***************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1534,9 +1734,9 @@ exports.RETURN = RETURN;
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_global.js":
-/*!***************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_global.js ***!
-  \***************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_global.js ***!
+  \***************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1551,9 +1751,9 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_has.js":
-/*!************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_has.js ***!
-  \************************************************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_has.js ***!
+  \************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1566,9 +1766,9 @@ module.exports = function (it, key) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_hide.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_hide.js ***!
-  \*************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_hide.js ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1585,9 +1785,9 @@ module.exports = __webpack_require__(/*! ./_descriptors */ "./node_modules/core-
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_html.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_html.js ***!
-  \*************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_html.js ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1598,9 +1798,9 @@ module.exports = document && document.documentElement;
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_ie8-dom-define.js":
-/*!***********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_ie8-dom-define.js ***!
-  \***********************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_ie8-dom-define.js ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1612,9 +1812,9 @@ module.exports = !__webpack_require__(/*! ./_descriptors */ "./node_modules/core
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_invoke.js":
-/*!***************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_invoke.js ***!
-  \***************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_invoke.js ***!
+  \***************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1639,9 +1839,9 @@ module.exports = function (fn, args, that) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_iobject.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iobject.js ***!
-  \****************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iobject.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1656,9 +1856,9 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_is-array-iter.js":
-/*!**********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_is-array-iter.js ***!
-  \**********************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_is-array-iter.js ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1675,9 +1875,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_is-array.js":
-/*!*****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_is-array.js ***!
-  \*****************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_is-array.js ***!
+  \*****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1691,9 +1891,9 @@ module.exports = Array.isArray || function isArray(arg) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_is-object.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_is-object.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_is-object.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1705,9 +1905,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_iter-call.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iter-call.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iter-call.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1728,9 +1928,9 @@ module.exports = function (iterator, fn, value, entries) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_iter-create.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iter-create.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iter-create.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1753,9 +1953,9 @@ module.exports = function (Constructor, NAME, next) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_iter-define.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iter-define.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iter-define.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1834,9 +2034,9 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_iter-detect.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iter-detect.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iter-detect.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1867,9 +2067,9 @@ module.exports = function (exec, skipClosing) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_iter-step.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iter-step.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iter-step.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1881,9 +2081,9 @@ module.exports = function (done, value) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_iterators.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iterators.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_iterators.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1893,9 +2093,9 @@ module.exports = {};
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_library.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_library.js ***!
-  \****************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_library.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1905,9 +2105,9 @@ module.exports = true;
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_meta.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_meta.js ***!
-  \*************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_meta.js ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1969,9 +2169,9 @@ var meta = module.exports = {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_microtask.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_microtask.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_microtask.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2049,9 +2249,9 @@ module.exports = function () {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_new-promise-capability.js":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_new-promise-capability.js ***!
-  \*******************************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_new-promise-capability.js ***!
+  \*******************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2079,9 +2279,9 @@ module.exports.f = function (C) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-assign.js":
-/*!**********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-assign.js ***!
-  \**********************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-assign.js ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2129,9 +2329,9 @@ module.exports = !$assign || __webpack_require__(/*! ./_fails */ "./node_modules
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-create.js":
-/*!**********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-create.js ***!
-  \**********************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-create.js ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2181,9 +2381,9 @@ module.exports = Object.create || function create(O, Properties) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-dp.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-dp.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-dp.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2208,9 +2408,9 @@ exports.f = __webpack_require__(/*! ./_descriptors */ "./node_modules/core-js/li
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-dps.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-dps.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-dps.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2232,9 +2432,9 @@ module.exports = __webpack_require__(/*! ./_descriptors */ "./node_modules/core-
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-gopd.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-gopd.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-gopd.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2259,9 +2459,9 @@ exports.f = __webpack_require__(/*! ./_descriptors */ "./node_modules/core-js/li
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-gopn-ext.js":
-/*!************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-gopn-ext.js ***!
-  \************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-gopn-ext.js ***!
+  \************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2289,9 +2489,9 @@ module.exports.f = function getOwnPropertyNames(it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-gopn.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-gopn.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-gopn.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2307,9 +2507,9 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-gops.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-gops.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-gops.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2319,9 +2519,9 @@ exports.f = Object.getOwnPropertySymbols;
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-gpo.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-gpo.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-gpo.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2343,9 +2543,9 @@ module.exports = Object.getPrototypeOf || function (O) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-keys-internal.js":
-/*!*****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-keys-internal.js ***!
-  \*****************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-keys-internal.js ***!
+  \*****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2371,9 +2571,9 @@ module.exports = function (object, names) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-keys.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-keys.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-keys.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2389,9 +2589,9 @@ module.exports = Object.keys || function keys(O) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-pie.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-pie.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-pie.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2401,9 +2601,9 @@ exports.f = {}.propertyIsEnumerable;
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_object-sap.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-sap.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_object-sap.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2422,9 +2622,9 @@ module.exports = function (KEY, exec) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_perform.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_perform.js ***!
-  \****************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_perform.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2440,9 +2640,9 @@ module.exports = function (exec) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_promise-resolve.js":
-/*!************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_promise-resolve.js ***!
-  \************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_promise-resolve.js ***!
+  \************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2463,9 +2663,9 @@ module.exports = function (C, x) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_property-desc.js":
-/*!**********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_property-desc.js ***!
-  \**********************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_property-desc.js ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2482,9 +2682,9 @@ module.exports = function (bitmap, value) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_redefine-all.js":
-/*!*********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_redefine-all.js ***!
-  \*********************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_redefine-all.js ***!
+  \*********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2500,9 +2700,9 @@ module.exports = function (target, src, safe) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_redefine.js":
-/*!*****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_redefine.js ***!
-  \*****************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_redefine.js ***!
+  \*****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2512,9 +2712,9 @@ module.exports = __webpack_require__(/*! ./_hide */ "./node_modules/core-js/libr
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_set-collection-from.js":
-/*!****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_set-collection-from.js ***!
-  \****************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_set-collection-from.js ***!
+  \****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2552,9 +2752,9 @@ module.exports = function (COLLECTION) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_set-collection-of.js":
-/*!**************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_set-collection-of.js ***!
-  \**************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_set-collection-of.js ***!
+  \**************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2576,9 +2776,9 @@ module.exports = function (COLLECTION) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_set-species.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_set-species.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_set-species.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2602,9 +2802,9 @@ module.exports = function (KEY) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_set-to-string-tag.js":
-/*!**************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_set-to-string-tag.js ***!
-  \**************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_set-to-string-tag.js ***!
+  \**************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2620,9 +2820,9 @@ module.exports = function (it, tag, stat) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_shared-key.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_shared-key.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_shared-key.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2636,9 +2836,9 @@ module.exports = function (key) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_shared.js":
-/*!***************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_shared.js ***!
-  \***************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_shared.js ***!
+  \***************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2659,9 +2859,9 @@ var store = global[SHARED] || (global[SHARED] = {});
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_species-constructor.js":
-/*!****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_species-constructor.js ***!
-  \****************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_species-constructor.js ***!
+  \****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2679,9 +2879,9 @@ module.exports = function (O, D) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_string-at.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_string-at.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_string-at.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2707,9 +2907,9 @@ module.exports = function (TO_STRING) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_task.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_task.js ***!
-  \*************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_task.js ***!
+  \*************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2802,9 +3002,9 @@ module.exports = {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_to-absolute-index.js":
-/*!**************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-absolute-index.js ***!
-  \**************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-absolute-index.js ***!
+  \**************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2820,9 +3020,9 @@ module.exports = function (index, length) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_to-integer.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-integer.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-integer.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2837,9 +3037,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_to-iobject.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-iobject.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-iobject.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2854,9 +3054,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_to-length.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-length.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-length.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2871,9 +3071,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_to-object.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-object.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-object.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2887,9 +3087,9 @@ module.exports = function (it) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_to-primitive.js":
-/*!*********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-primitive.js ***!
-  \*********************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_to-primitive.js ***!
+  \*********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2910,9 +3110,9 @@ module.exports = function (it, S) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_uid.js":
-/*!************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_uid.js ***!
-  \************************************************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_uid.js ***!
+  \************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2926,9 +3126,9 @@ module.exports = function (key) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_user-agent.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_user-agent.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_user-agent.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2941,9 +3141,9 @@ module.exports = navigator && navigator.userAgent || '';
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_validate-collection.js":
-/*!****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_validate-collection.js ***!
-  \****************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_validate-collection.js ***!
+  \****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2957,9 +3157,9 @@ module.exports = function (it, TYPE) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_wks-define.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_wks-define.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_wks-define.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2977,9 +3177,9 @@ module.exports = function (name) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_wks-ext.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_wks-ext.js ***!
-  \****************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_wks-ext.js ***!
+  \****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2989,9 +3189,9 @@ exports.f = __webpack_require__(/*! ./_wks */ "./node_modules/core-js/library/mo
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/_wks.js":
-/*!************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_wks.js ***!
-  \************************************************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/_wks.js ***!
+  \************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3011,9 +3211,9 @@ $exports.store = store;
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/core.get-iterator-method.js":
-/*!********************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/core.get-iterator-method.js ***!
-  \********************************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/core.get-iterator-method.js ***!
+  \********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3030,9 +3230,9 @@ module.exports = __webpack_require__(/*! ./_core */ "./node_modules/core-js/libr
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.array.iterator.js":
-/*!**************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.array.iterator.js ***!
-  \**************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.array.iterator.js ***!
+  \**************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3076,9 +3276,9 @@ addToUnscopables('entries');
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.map.js":
-/*!***************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.map.js ***!
-  \***************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.map.js ***!
+  \***************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3107,9 +3307,9 @@ module.exports = __webpack_require__(/*! ./_collection */ "./node_modules/core-j
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.object.assign.js":
-/*!*************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.assign.js ***!
-  \*************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.assign.js ***!
+  \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3122,9 +3322,9 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(/*! ./_ob
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.object.create.js":
-/*!*************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.create.js ***!
-  \*************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.create.js ***!
+  \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3136,9 +3336,9 @@ $export($export.S, 'Object', { create: __webpack_require__(/*! ./_object-create 
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.object.define-property.js":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.define-property.js ***!
-  \**********************************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.define-property.js ***!
+  \**********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3150,9 +3350,9 @@ $export($export.S + $export.F * !__webpack_require__(/*! ./_descriptors */ "./no
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.object.get-own-property-descriptor.js":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.get-own-property-descriptor.js ***!
-  \**********************************************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.get-own-property-descriptor.js ***!
+  \**********************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3170,9 +3370,9 @@ __webpack_require__(/*! ./_object-sap */ "./node_modules/core-js/library/modules
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.object.keys.js":
-/*!***********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.keys.js ***!
-  \***********************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.keys.js ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3190,9 +3390,9 @@ __webpack_require__(/*! ./_object-sap */ "./node_modules/core-js/library/modules
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.object.to-string.js":
-/*!****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.to-string.js ***!
-  \****************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.object.to-string.js ***!
+  \****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -3201,9 +3401,9 @@ __webpack_require__(/*! ./_object-sap */ "./node_modules/core-js/library/modules
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.promise.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.promise.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.promise.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3499,9 +3699,9 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(/*! ./_iter-
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.string.iterator.js":
-/*!***************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.string.iterator.js ***!
-  \***************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.string.iterator.js ***!
+  \***************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3528,9 +3728,9 @@ __webpack_require__(/*! ./_iter-define */ "./node_modules/core-js/library/module
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.symbol.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.symbol.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.symbol.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3786,9 +3986,9 @@ setToStringTag(global.JSON, 'JSON', true);
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es6.weak-map.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.weak-map.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es6.weak-map.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3858,9 +4058,9 @@ if (NATIVE_WEAK_MAP && IS_IE11) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es7.map.from.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.map.from.js ***!
-  \********************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.map.from.js ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3871,9 +4071,9 @@ __webpack_require__(/*! ./_set-collection-from */ "./node_modules/core-js/librar
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es7.map.of.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.map.of.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.map.of.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3884,9 +4084,9 @@ __webpack_require__(/*! ./_set-collection-of */ "./node_modules/core-js/library/
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es7.map.to-json.js":
-/*!***********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.map.to-json.js ***!
-  \***********************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.map.to-json.js ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3899,9 +4099,9 @@ $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(/*! ./_colle
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es7.promise.finally.js":
-/*!***************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.promise.finally.js ***!
-  \***************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.promise.finally.js ***!
+  \***************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3931,9 +4131,9 @@ $export($export.P + $export.R, 'Promise', { 'finally': function (onFinally) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es7.promise.try.js":
-/*!***********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.promise.try.js ***!
-  \***********************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.promise.try.js ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3955,9 +4155,9 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es7.symbol.async-iterator.js":
-/*!*********************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.symbol.async-iterator.js ***!
-  \*********************************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.symbol.async-iterator.js ***!
+  \*********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3967,9 +4167,9 @@ __webpack_require__(/*! ./_wks-define */ "./node_modules/core-js/library/modules
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es7.symbol.observable.js":
-/*!*****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.symbol.observable.js ***!
-  \*****************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.symbol.observable.js ***!
+  \*****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3979,9 +4179,9 @@ __webpack_require__(/*! ./_wks-define */ "./node_modules/core-js/library/modules
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es7.weak-map.from.js":
-/*!*************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.weak-map.from.js ***!
-  \*************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.weak-map.from.js ***!
+  \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3992,9 +4192,9 @@ __webpack_require__(/*! ./_set-collection-from */ "./node_modules/core-js/librar
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/es7.weak-map.of.js":
-/*!***********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.weak-map.of.js ***!
-  \***********************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/es7.weak-map.of.js ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4005,9 +4205,9 @@ __webpack_require__(/*! ./_set-collection-of */ "./node_modules/core-js/library/
 /***/ }),
 
 /***/ "./node_modules/core-js/library/modules/web.dom.iterable.js":
-/*!************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/web.dom.iterable.js ***!
-  \************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/core-js/library/modules/web.dom.iterable.js ***!
+  \************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4035,9 +4235,9 @@ for (var i = 0; i < DOMIterables.length; i++) {
 /***/ }),
 
 /***/ "./node_modules/define-properties/index.js":
-/*!*******************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/define-properties/index.js ***!
-  \*******************************************************************************************************************************************/
+/*!*******************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/define-properties/index.js ***!
+  \*******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4105,9 +4305,9 @@ module.exports = defineProperties;
 /***/ }),
 
 /***/ "./node_modules/function-bind/implementation.js":
-/*!************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/function-bind/implementation.js ***!
-  \************************************************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/function-bind/implementation.js ***!
+  \************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4169,9 +4369,9 @@ module.exports = function bind(that) {
 /***/ }),
 
 /***/ "./node_modules/function-bind/index.js":
-/*!***************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/function-bind/index.js ***!
-  \***************************************************************************************************************************************/
+/*!***************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/function-bind/index.js ***!
+  \***************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4186,9 +4386,9 @@ module.exports = Function.prototype.bind || implementation;
 /***/ }),
 
 /***/ "./node_modules/has-symbols/shams.js":
-/*!*************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/has-symbols/shams.js ***!
-  \*************************************************************************************************************************************/
+/*!*************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/has-symbols/shams.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4240,9 +4440,9 @@ module.exports = function hasSymbols() {
 /***/ }),
 
 /***/ "./node_modules/has/src/index.js":
-/*!*********************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/has/src/index.js ***!
-  \*********************************************************************************************************************************/
+/*!*********************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/has/src/index.js ***!
+  \*********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4257,9 +4457,9 @@ module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
 /***/ }),
 
 /***/ "./node_modules/next/dist/client/link.js":
-/*!*****************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/client/link.js ***!
-  \*****************************************************************************************************************************************/
+/*!*****************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/client/link.js ***!
+  \*****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4568,9 +4768,9 @@ exports.default = _default;
 /***/ }),
 
 /***/ "./node_modules/next/dist/client/router.js":
-/*!*******************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/client/router.js ***!
-  \*******************************************************************************************************************************************/
+/*!*******************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/client/router.js ***!
+  \*******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4734,9 +4934,9 @@ function makePublicRouterInstance(router) {
 /***/ }),
 
 /***/ "./node_modules/next/dist/client/with-router.js":
-/*!************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/client/with-router.js ***!
-  \************************************************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/client/with-router.js ***!
+  \************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4776,9 +4976,9 @@ function withRouter(ComposedComponent) {
 /***/ }),
 
 /***/ "./node_modules/next/dist/next-server/lib/mitt.js":
-/*!**************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/mitt.js ***!
-  \**************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/mitt.js ***!
+  \**************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4836,9 +5036,9 @@ exports.default = mitt;
 /***/ }),
 
 /***/ "./node_modules/next/dist/next-server/lib/router-context.js":
-/*!************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router-context.js ***!
-  \************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router-context.js ***!
+  \************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4866,9 +5066,9 @@ exports.RouterContext = React.createContext(null);
 /***/ }),
 
 /***/ "./node_modules/next/dist/next-server/lib/router/rewrite-url-for-export.js":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router/rewrite-url-for-export.js ***!
-  \***************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router/rewrite-url-for-export.js ***!
+  \***************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4898,9 +5098,9 @@ exports.rewriteUrlForNextExport = rewriteUrlForNextExport;
 /***/ }),
 
 /***/ "./node_modules/next/dist/next-server/lib/router/router.js":
-/*!***********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router/router.js ***!
-  \***********************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router/router.js ***!
+  \***********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5551,9 +5751,9 @@ Router.events = mitt_1.default();
 /***/ }),
 
 /***/ "./node_modules/next/dist/next-server/lib/router/utils/is-dynamic.js":
-/*!*********************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router/utils/is-dynamic.js ***!
-  \*********************************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router/utils/is-dynamic.js ***!
+  \*********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5578,9 +5778,9 @@ exports.isDynamicRoute = isDynamicRoute;
 /***/ }),
 
 /***/ "./node_modules/next/dist/next-server/lib/router/utils/route-matcher.js":
-/*!************************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router/utils/route-matcher.js ***!
-  \************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router/utils/route-matcher.js ***!
+  \************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5628,9 +5828,9 @@ exports.getRouteMatcher = getRouteMatcher;
 /***/ }),
 
 /***/ "./node_modules/next/dist/next-server/lib/router/utils/route-regex.js":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router/utils/route-regex.js ***!
-  \**********************************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/router/utils/route-regex.js ***!
+  \**********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5669,9 +5869,9 @@ exports.getRouteRegex = getRouteRegex;
 /***/ }),
 
 /***/ "./node_modules/next/dist/next-server/lib/utils.js":
-/*!***************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/utils.js ***!
-  \***************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/next-server/lib/utils.js ***!
+  \***************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5806,9 +6006,9 @@ exports.SUPPORTS_PERFORMANCE_USER_TIMING = exports.SUPPORTS_PERFORMANCE && typeo
 /***/ }),
 
 /***/ "./node_modules/next/link.js":
-/*!*****************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/link.js ***!
-  \*****************************************************************************************************************************/
+/*!*****************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/link.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5818,9 +6018,9 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 /***/ }),
 
 /***/ "./node_modules/object-assign/index.js":
-/*!***************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object-assign/index.js ***!
-  \***************************************************************************************************************************************/
+/*!***************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object-assign/index.js ***!
+  \***************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -5920,9 +6120,9 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ }),
 
 /***/ "./node_modules/object-keys/implementation.js":
-/*!**********************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object-keys/implementation.js ***!
-  \**********************************************************************************************************************************************/
+/*!**********************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object-keys/implementation.js ***!
+  \**********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6054,9 +6254,9 @@ module.exports = keysShim;
 /***/ }),
 
 /***/ "./node_modules/object-keys/index.js":
-/*!*************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object-keys/index.js ***!
-  \*************************************************************************************************************************************/
+/*!*************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object-keys/index.js ***!
+  \*************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6098,9 +6298,9 @@ module.exports = keysShim;
 /***/ }),
 
 /***/ "./node_modules/object-keys/isArguments.js":
-/*!*******************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object-keys/isArguments.js ***!
-  \*******************************************************************************************************************************************/
+/*!*******************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object-keys/isArguments.js ***!
+  \*******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6127,9 +6327,9 @@ module.exports = function isArguments(value) {
 /***/ }),
 
 /***/ "./node_modules/object.assign/implementation.js":
-/*!************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object.assign/implementation.js ***!
-  \************************************************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object.assign/implementation.js ***!
+  \************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6180,9 +6380,9 @@ module.exports = function assign(target, source1) {
 /***/ }),
 
 /***/ "./node_modules/object.assign/index.js":
-/*!***************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object.assign/index.js ***!
-  \***************************************************************************************************************************************/
+/*!***************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object.assign/index.js ***!
+  \***************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6209,9 +6409,9 @@ module.exports = polyfill;
 /***/ }),
 
 /***/ "./node_modules/object.assign/polyfill.js":
-/*!******************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object.assign/polyfill.js ***!
-  \******************************************************************************************************************************************/
+/*!******************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object.assign/polyfill.js ***!
+  \******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6272,9 +6472,9 @@ module.exports = function getPolyfill() {
 /***/ }),
 
 /***/ "./node_modules/object.assign/shim.js":
-/*!**************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object.assign/shim.js ***!
-  \**************************************************************************************************************************************/
+/*!**************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/object.assign/shim.js ***!
+  \**************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6298,9 +6498,9 @@ module.exports = function shimAssign() {
 /***/ }),
 
 /***/ "./node_modules/prop-types-exact/build/helpers/isPlainObject.js":
-/*!****************************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types-exact/build/helpers/isPlainObject.js ***!
-  \****************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types-exact/build/helpers/isPlainObject.js ***!
+  \****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -6320,9 +6520,9 @@ module.exports = exports['default'];
 /***/ }),
 
 /***/ "./node_modules/prop-types-exact/build/index.js":
-/*!************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types-exact/build/index.js ***!
-  \************************************************************************************************************************************************/
+/*!************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types-exact/build/index.js ***!
+  \************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6387,9 +6587,9 @@ module.exports = exports['default'];
 /***/ }),
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
-/*!*********************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types/checkPropTypes.js ***!
-  \*********************************************************************************************************************************************/
+/*!*********************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types/checkPropTypes.js ***!
+  \*********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6501,9 +6701,9 @@ module.exports = checkPropTypes;
 /***/ }),
 
 /***/ "./node_modules/prop-types/factoryWithTypeCheckers.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types/factoryWithTypeCheckers.js ***!
-  \******************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7104,9 +7304,9 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /***/ }),
 
 /***/ "./node_modules/prop-types/index.js":
-/*!************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types/index.js ***!
-  \************************************************************************************************************************************/
+/*!************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types/index.js ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7130,9 +7330,9 @@ if (true) {
 /***/ }),
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
-  \*******************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
+  \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7154,9 +7354,9 @@ module.exports = ReactPropTypesSecret;
 /***/ }),
 
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
-/*!*****************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/react-is/cjs/react-is.development.js ***!
-  \*****************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/react-is/cjs/react-is.development.js ***!
+  \*****************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7393,9 +7593,9 @@ exports.isSuspense = isSuspense;
 /***/ }),
 
 /***/ "./node_modules/react-is/index.js":
-/*!**********************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/react-is/index.js ***!
-  \**********************************************************************************************************************************/
+/*!**********************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/react-is/index.js ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7410,9 +7610,9 @@ if (false) {} else {
 /***/ }),
 
 /***/ "./node_modules/react/cjs/react.development.js":
-/*!***********************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/react/cjs/react.development.js ***!
-  \***********************************************************************************************************************************************/
+/*!***********************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/react/cjs/react.development.js ***!
+  \***********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9742,9 +9942,9 @@ module.exports = react;
 /***/ }),
 
 /***/ "./node_modules/react/index.js":
-/*!*******************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/react/index.js ***!
-  \*******************************************************************************************************************************/
+/*!*******************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/react/index.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9772,7 +9972,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/AppLayout */ "./components/AppLayout.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "prop-types");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "C:\\Users\\multicampus\\Desktop\\SC_2\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\pages\\_app.js";
+var _jsxFileName = "C:\\Users\\User\\desktop\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\pages\\_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -9809,6 +10009,316 @@ NodeBird.propTypes = {
 
 };
 /* harmony default export */ __webpack_exports__["default"] = (NodeBird);
+
+/***/ }),
+
+/***/ "./pages/signup.js":
+/*!*************************!*\
+  !*** ./pages/signup.js ***!
+  \*************************/
+/*! exports provided: useInput, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useInput", function() { return useInput; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "C:\\Users\\User\\desktop\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\pages\\signup.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+ // 타이핑 칠 때마다 최적화 해주는 방법 (페이스북도 사용 잘 안함)
+// const TextInput = memo(({value, onChange}) => {
+//     return (
+//         <Input name="user-id" value={value} required onChange={onChange}></Input>
+//     );
+// });
+// 커스텀 훅 (반복을 제거 가능)
+
+const useInput = (initValue = null) => {
+  const {
+    0: value,
+    1: setter
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(initValue);
+
+  const handler = e => {
+    setter(e.target.value);
+  };
+
+  return [value, handler];
+}; // const [id, onChangeId] = useInput('');
+
+const TextInput = ({
+  value
+}) => {
+  return __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: undefined
+  }, value);
+};
+
+TextInput.propTypes = {
+  value: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
+};
+
+const Signup = () => {
+  const {
+    0: id,
+    1: setId
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: nick,
+    1: setNick
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: password,
+    1: setPassword
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: passwordCheck,
+    1: setPasswordCheck
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
+  const {
+    0: term,
+    1: setTerm
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const {
+    0: passwordError,
+    1: setPasswordError
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const {
+    0: termError,
+    1: setTermError
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const onSubmit = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(e => {
+    e.preventDefault();
+
+    if (password !== passwordCheck) {
+      return setPasswordError(true);
+    }
+
+    if (!term) {
+      return setTermError(true);
+    }
+  }, [password, passwordCheck, term]);
+
+  const onChangeId = e => {
+    setId(e.target.value);
+  };
+
+  const onChangeNick = e => {
+    setNick(e.target.value);
+  };
+
+  const onChangePassword = e => {
+    setPassword(e.target.value);
+  };
+
+  const onChangePasswordChk = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(e => {
+    setPasswordError(e.target.value !== password);
+    setPasswordCheck(e.target.value);
+  }, [password]);
+  const onChangeTerm = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(e => {
+    setTermError(false);
+    setTerm(e.target.checked);
+  }, []);
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+    onSubmit: onSubmit,
+    style: {
+      padding: 10
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71
+    },
+    __self: undefined
+  }, __jsx(TextInput, {
+    value: "135135",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72
+    },
+    __self: undefined
+  }), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73
+    },
+    __self: undefined
+  }, __jsx("label", {
+    htmlFor: "user-id",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 74
+    },
+    __self: undefined
+  }, "\uC544\uC774\uB514"), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75
+    },
+    __self: undefined
+  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    name: "user-id",
+    value: id,
+    required: true,
+    onChange: onChangeId,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76
+    },
+    __self: undefined
+  })), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 79
+    },
+    __self: undefined
+  }, __jsx("label", {
+    htmlFor: "user-nick",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80
+    },
+    __self: undefined
+  }, "\uB2C9\uB124\uC784"), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 81
+    },
+    __self: undefined
+  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    name: "user-nick",
+    value: nick,
+    required: true,
+    onChange: onChangeNick,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 82
+    },
+    __self: undefined
+  })), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 84
+    },
+    __self: undefined
+  }, __jsx("label", {
+    htmlFor: "user-password",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 85
+    },
+    __self: undefined
+  }, "\uBE44\uBC00\uBC88\uD638"), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86
+    },
+    __self: undefined
+  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    name: "user-password",
+    type: "password",
+    value: password,
+    required: true,
+    onChange: onChangePassword,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87
+    },
+    __self: undefined
+  })), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89
+    },
+    __self: undefined
+  }, __jsx("label", {
+    htmlFor: "user-password-check",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90
+    },
+    __self: undefined
+  }, "\uBE44\uBC00\uBC88\uD638\uCCB4\uD06C"), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 91
+    },
+    __self: undefined
+  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    name: "user-password-check",
+    type: "password",
+    value: passwordCheck,
+    required: true,
+    onChange: onChangePasswordChk,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 92
+    },
+    __self: undefined
+  }), passwordError && __jsx("div", {
+    style: {
+      color: 'red'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 93
+    },
+    __self: undefined
+  }, " \uBE44\uBC00\uBC88\uD638\uAC00 \uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.")), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Checkbox"], {
+    name: "user-term",
+    value: term,
+    onChange: onChangeTerm,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96
+    },
+    __self: undefined
+  }, "\uC81C\uB85C\uCD08 \uB9D0\uC744 \uC798 \uB4E4\uC744 \uAC83\uC744 \uB3D9\uC758\uD569\uB2C8\uB2E4."), termError && __jsx("div", {
+    style: {
+      color: 'red'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 97
+    },
+    __self: undefined
+  }, " \uC57D\uAD00\uC5D0 \uB3D9\uC758\uD558\uC154\uC57C \uD569\uB2C8\uB2E4.")), __jsx("div", {
+    style: {
+      marginTop: 10
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 99
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    type: "primary",
+    htmlType: "submit",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 100
+    },
+    __self: undefined
+  }, "\uAC00\uC785\uD558\uAE30"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Signup);
 
 /***/ }),
 

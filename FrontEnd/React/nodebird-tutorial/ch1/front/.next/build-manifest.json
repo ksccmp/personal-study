@@ -1,7 +1,7 @@
 {
   "devFiles": [
-    "static/development/dll/dll_c91d8c6875994aa8a72b.js",
-    "static/development/dll/dll_c91d8c6875994aa8a72b.js.map"
+    "static/development/dll/dll_d6a88dbe3071bd165157.js",
+    "static/development/dll/dll_d6a88dbe3071bd165157.js.map"
   ],
   "pages": {
     "/": [
@@ -24,7 +24,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/signup": [
+    "/profile": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

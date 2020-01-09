@@ -9,6 +9,17 @@ import PropTypes from 'prop-types';
 //     );
 // });
 
+// 커스텀 훅 (반복을 제거 가능)
+export const useInput = (initValue = null) => {
+    const [value, setter] = useState(initValue);
+    const handler = (e) => {
+        setter(e.target.value);
+
+    };
+    return [value, handler];
+};
+// const [id, onChangeId] = useInput('');
+
 const TextInput = ({value}) => {
     return (
         <div>{value}</div>
@@ -54,17 +65,6 @@ const Signup = () => {
         setTermError(false);
         setTerm(e.target.checked)
     }, []);
-
-    // 커스텀 훅 (반복을 제거 가능)
-    // const useInput = (initValue = null) => {
-    //     const [value, setter] = useState(initValue);
-    //     const handler = (e) => {
-    //         setter(e.target.value);
-    
-    //     };
-    //     return [value, handler];
-    // };
-    // const [id, onChangeId] = useInput('');
 
     return (
         <>
