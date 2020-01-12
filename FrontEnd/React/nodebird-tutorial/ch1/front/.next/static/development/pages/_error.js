@@ -1,6 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\_error.js"],{
 
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js?1828":
 /*!*************************************************************************************************************************************************!*\
   !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/@babel/runtime-corejs2/core-js/array/from.js ***!
   \*************************************************************************************************************************************************/
@@ -275,7 +275,7 @@ module.exports = _interopRequireDefault;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _Array$from = __webpack_require__(/*! ../core-js/array/from */ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js");
+var _Array$from = __webpack_require__(/*! ../core-js/array/from */ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js?1828");
 
 var _isIterable = __webpack_require__(/*! ../core-js/is-iterable */ "./node_modules/@babel/runtime-corejs2/core-js/is-iterable.js?ac2e");
 
