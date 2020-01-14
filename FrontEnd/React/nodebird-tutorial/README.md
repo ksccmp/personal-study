@@ -22,3 +22,6 @@
 
 # next에서 redux 사용할 때
  * npm install next-redux-wrapper
+
+# redux-saga 설치
+ * npm install redux-saga

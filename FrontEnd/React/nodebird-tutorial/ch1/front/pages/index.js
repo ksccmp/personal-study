@@ -24,4 +24,8 @@ const Home = () => {
     );
 };
 
+function* generator() {
+    
+}
+
 export default Home;

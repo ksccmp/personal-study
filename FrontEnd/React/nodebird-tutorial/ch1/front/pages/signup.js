@@ -1,6 +1,8 @@
 import React, {useState, useCallback, memo} from 'react';
 import {Form, Input, Checkbox, Button} from 'antd';
 import PropTypes from 'prop-types';
+import { signUpAction } from '../reducers/user';
+import {useDispatch} from 'react-redux';
 
 // 타이핑 칠 때마다 최적화 해주는 방법 (페이스북도 사용 잘 안함)
 // const TextInput = memo(({value, onChange}) => {
@@ -38,6 +40,7 @@ const Signup = () => {
     const [term, setTerm] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
     const [termError, setTermError] = useState(false);
+    const dispatch = useDispatch();
 
     const onSubmit = useCallback((e) => {
         e.preventDefault();
@@ -47,6 +50,11 @@ const Signup = () => {
         if(!term) {
             return setTermError(true);
         }
+        dispatch(signUpAction({
+            id,
+            password,
+            nick,
+        }));
     }, [password, passwordCheck, term]);
     const onChangeId = (e) => {
         setId(e.target.value);

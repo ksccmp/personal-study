@@ -108,7 +108,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "prop-types");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "C:\\Users\\multicampus\\Desktop\\SC_2\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\components\\PostCard.js";
+var _jsxFileName = "C:\\Users\\User\\desktop\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\components\\PostCard.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -218,7 +218,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "C:\\Users\\multicampus\\Desktop\\SC_2\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\components\\PostForm.js";
+var _jsxFileName = "C:\\Users\\User\\desktop\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\components\\PostForm.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -438,7 +438,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
-var _jsxFileName = "C:\\Users\\multicampus\\Desktop\\SC_2\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\pages\\index.js";
+var _jsxFileName = "C:\\Users\\User\\desktop\\personal-study\\frontend\\react\\nodebird-tutorial\\ch1\\front\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -490,14 +490,18 @@ const Home = () => {
 /*!**************************!*\
   !*** ./reducers/user.js ***!
   \**************************/
-/*! exports provided: initialState, LOG_IN, LOG_OUT, loginAction, logoutAction, default */
+/*! exports provided: initialState, SIGN_UP, SIGN_UP_SUCCESS, LOG_IN, LOG_OUT, signUpAction, signUpSuccess, loginAction, logoutAction, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP", function() { return SIGN_UP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGN_UP_SUCCESS", function() { return SIGN_UP_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_IN", function() { return LOG_IN; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOG_OUT", function() { return LOG_OUT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signUpAction", function() { return signUpAction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signUpSuccess", function() { return signUpSuccess; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginAction", function() { return loginAction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutAction", function() { return logoutAction; });
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js?85f2");
@@ -533,10 +537,26 @@ const dummyUser = {
 };
 const initialState = {
   isLoggedIn: false,
-  user: null
+  user: null,
+  signUpData: {
+    id: '',
+    nick: '',
+    password: ''
+  }
 };
+const SIGN_UP = 'SIGN_UP';
+const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS';
 const LOG_IN = 'LOG_IN';
 const LOG_OUT = 'LOG_OUT';
+const signUpAction = data => {
+  return {
+    type: SIGN_UP,
+    data: data
+  };
+};
+const signUpSuccess = {
+  type: SIGN_UP_SUCCESS
+};
 const loginAction = {
   type: LOG_IN,
   data: {
@@ -565,6 +585,13 @@ const reducer = (state = initialState, action) => {
         });
       }
 
+    case SIGN_UP:
+      {
+        return _objectSpread({}, state, {
+          signUpData: action.data
+        });
+      }
+
     default:
       {
         return _objectSpread({}, state);
@@ -583,7 +610,7 @@ const reducer = (state = initialState, action) => {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\multicampus\Desktop\SC_2\personal-study\frontend\react\nodebird-tutorial\ch1\front\pages\index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! C:\Users\User\desktop\personal-study\frontend\react\nodebird-tutorial\ch1\front\pages\index.js */"./pages/index.js");
 
 
 /***/ }),

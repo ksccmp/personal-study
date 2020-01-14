@@ -2336,9 +2336,9 @@ for (var i = 0; i < DOMIterables.length; i++) {
 /***/ }),
 
 /***/ "./node_modules/next/dist/build/polyfills/fetch/index.js":
-/*!*********************************************************************************************************************************************************!*\
-  !*** C:/Users/multicampus/Desktop/SC_2/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/build/polyfills/fetch/index.js ***!
-  \*********************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************!*\
+  !*** C:/Users/User/Desktop/personal-study/FrontEnd/React/nodebird-tutorial/ch1/front/node_modules/next/dist/build/polyfills/fetch/index.js ***!
+  \*********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
