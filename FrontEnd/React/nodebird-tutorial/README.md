@@ -11,10 +11,10 @@
  * npm install prop-types
 
 # 기본구성
- ## _document.js => html, head, body
- ## _app.js => root
- ## pages => 실제 컴포넌트
- ## _error.js => 에러가 발생할 때 (배포하기 전에는 굳이 커스터마이징 할 필요가 없음)
+ ### _document.js => html, head, body
+ ### _app.js => root
+ ### pages => 실제 컴포넌트
+ ### _error.js => 에러가 발생할 때 (배포하기 전에는 굳이 커스터마이징 할 필요가 없음)
 
 # redux 설치
  * npm install redux react-redux
