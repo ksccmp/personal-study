@@ -1,19 +1,26 @@
-export const initialState = {
-    isLoggedIn: true,
-    user: {},
+const dummyUser = {
+    nickname: '제로초',
+    Post: [],
+    Followings: [],
+    Followers: [],
 };
 
-const LOG_IN = 'LOG_IN';
-const LOG_OUT = 'LOG_OUT';
+export const initialState = {
+    isLoggedIn: false,
+    user: null,
+};
 
-const loginAction = {
+export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';
+
+export const loginAction = {
     type: LOG_IN,
     data: {
         nickname: "제로초",
     }
 };
 
-const logoutAction = {
+export const logoutAction = {
     type: LOG_OUT,
 };
 
@@ -23,7 +30,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoggedIn: true,
-                user: action.data,
+                user: dummyUser,
             }
         }
 

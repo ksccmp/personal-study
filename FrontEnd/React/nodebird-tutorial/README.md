@@ -18,6 +18,7 @@
 
 # redux 설치
  * npm install redux react-redux
+ * npm install react-redux@next
 
 # next에서 redux 사용할 때
  * npm install next-redux-wrapper
