@@ -13,7 +13,7 @@
    5. 실기억장치에 저장된 프로그램
 
   * 프로세스 구조
-  <img src="/image/processStructure.png" width="400px" height="300px" title="프로세스 구조" alt="Process Structure">
+  <img src="image/processStructure.png" width="400px" height="300px" title="프로세스 구조" alt="Process Structure">
 
 ## 스케줄링
 ### 스케줄링이란 ?
