@@ -9,11 +9,11 @@
    2. 비동기적 행위
    3. 실행중인 프로시저
    4. PCB를 가진 프로그램
-     * PCB(Process Control Block): 특정 프로세스를 제어할 때 필요한 상태 정보를 포함하는 운영체제 커널의 자료구조 / 프로세스가 생성되면 메모리에 PCB를 생성하고 프로세스가 실행을 종료하면 PCB도 삭제된다.
+     - PCB(Process Control Block): 특정 프로세스를 제어할 때 필요한 상태 정보를 포함하는 운영체제 커널의 자료구조 / 프로세스가 생성되면 메모리에 PCB를 생성하고 프로세스가 실행을 종료하면 PCB도 삭제된다.
    5. 실기억장치에 저장된 프로그램
 
   * 프로세스 구조
-  <img src="image/processStructure.png" width="400px" height="300px" title="프로세스 구조" alt="Process Structure">
+  <img src="image/processStructure.png" width="600px" height="300px" title="프로세스 구조" alt="Process Structure">
 
 ## 스케줄링
 ### 스케줄링이란 ?
@@ -25,7 +25,7 @@
    1. FCFS: 프로세스가 도착한 순서대로 CPU를 할당하는 기법
    2. SJF: 실행시간이 가장 짧은 프로세스에게 먼저 CPU를 할당하는 기법
    3. HRN: 우선순위를 계산하여 가장 높은 것부터 CPU를 할당하는 기법
-     * 우선순위 = (대기시간 + 실행시간) / 실행시간
+     - 우선순위 = (대기시간 + 실행시간) / 실행시간
 
 ### 선점 스케줄링
  * 하나의 프로세스가 CPU를 할당받아 실행하고 있을 때 다른 프로세스가 CPU를 강제로 빼앗아 사용할 수 있는 스케줄링 기법
