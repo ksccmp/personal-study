@@ -10,7 +10,7 @@
     * Springfox Swagger UI를 클릭하여 최신버전 클릭 후 dependency를 pom.xml에 복사 붙여넣기
     * 프로젝트 오른쪽 클릭 후 maven -> update project 클릭
     * src/main/java/{Group}.{Artifact}에 있는 SpringApplication에 다음과 같이 기입
-        <img src="image/springApplication.PNG" width="600px" height="400px" title="swagger 등록" alt="Register Swagger">
+        <img src="image/springApplication.PNG" width="800px" height="400px" title="swagger 등록" alt="Register Swagger">
  * Properties 설정 (MySQL 등록)
     * 다음 사진과 같이 기입 (주석은 jsp를 사용할 경우, mybatis.config는 MyBatis를 사용할 경우)
-        <img src="image/properties.PNG" width="600px" height="400px" title="properties 등록" alt="Register Properties">
+        <img src="image/properties.PNG" width="800px" height="400px" title="properties 등록" alt="Register Properties">

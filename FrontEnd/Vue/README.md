@@ -30,19 +30,19 @@
   * yarn을 설치하였을 경우 yarn add axios 입력도 가능
   아래는 보류
   * main.js의 상단에 import axios from 'axios', new Vue 안에 axios 입력
-    <img src="image/axios.PNG" width="600px" height="400px" title="axios 등록" alt="Register Axios">
+    <img src="image/axios.PNG" width="800px" height="400px" title="axios 등록" alt="Register Axios">
 
 ## vue router 사용하기
  * terminal에 npm install --save vue-router 입력
  * yarn을 설치하였을 경우 yarn add vue-router 입력도 가능
  * main.js의 상단에 import VueRouter from 'vue-router', 비어있는 곳에 Vue.use(VueRouter) 입력
-    <img src="image/vue-router1.PNG" width="600px" height="400px" title="vue-router 등록1" alt="Register Vue-Router1">
+    <img src="image/vue-router1.PNG" width="800px" height="400px" title="vue-router 등록1" alt="Register Vue-Router1">
  * 사진과 같이 assets에 router.js를 만들고 router로 사용할 컴포넌트들을 등록
-    <img src="image/vue-router2.PNG" width="600px" height="400px" title="vue-router 등록2" alt="Register Vue-Router2">
+    <img src="image/vue-router2.PNG" width="800px" height="400px" title="vue-router 등록2" alt="Register Vue-Router2">
  * main.js의 상단에 router.js의 위치를 찾아 import해주고, new Vue 안에 router 입력
-    <img src="image/vue-router3.PNG" width="600px" height="400px" title="vue-router 등록3" alt="Register Vue-Router3">
+    <img src="image/vue-router3.PNG" width="800px" height="400px" title="vue-router 등록3" alt="Register Vue-Router3">
  * router를 사용하고 싶은 곳에 <router-view></router-view>로 router위치 등록, 등록된 위치에 router를 가져오는 방법은 this.$router.push를 사용
-    <img src="image/vue-router4.PNG" width="600px" height="400px" title="vue-router 등록4" alt="Register Vue-Router4">
+    <img src="image/vue-router4.PNG" width="800px" height="400px" title="vue-router 등록4" alt="Register Vue-Router4">
 
 ## vuetify 사용하기
  * terminal에 npm install vuetify 입력
@@ -56,12 +56,12 @@
  * terminal에 npm install vuex 입력
  * yarn을 설치하였을 경우 yarn add vuex 입력도 가능
  * 사진과 같이 assets에 vuex.js를 만들고 state, mutation, action을 등록
-    <img src="image/vuex1.PNG" width="800px" height="350px" title="vuex 등록1" alt="Register Vuex1">
+    <img src="image/vuex1.PNG" width="800px" height="400px" title="vuex 등록1" alt="Register Vuex1">
  * Constant는 상수값을 저장하기 위한 용도, 다음과 같이 asset에 Constant.js를 만들고 등록
-    <img src="image/vuex2.PNG" width="600px" height="400px" title="vuex 등록2" alt="Register Vuex2">
+    <img src="image/vuex2.PNG" width="800px" height="400px" title="vuex 등록2" alt="Register Vuex2">
  * main.js의 상단에 vuex위치를 찾아 store로 저장하고 new Vue 안에 vuex 입력
-    <img src="image/vuex3.PNG" width="600px" height="400px" title="vuex 등록3" alt="Register Vuex3">
+    <img src="image/vuex3.PNG" width="800px" height="400px" title="vuex 등록3" alt="Register Vuex3">
  * vuex의 state 값에 데이터 저장 방법 (dispatch 사용)
-    <img src="image/vuex4.PNG" width="600px" height="400px" title="vuex 등록4" alt="Register Vuex4">
+    <img src="image/vuex4.PNG" width="800px" height="400px" title="vuex 등록4" alt="Register Vuex4">
  * vuex의 state 값에 있는 데이터 불러오는 방법
-    <img src="image/vuex5.PNG" width="600px" height="400px" title="vuex 등록5" alt="Register Vuex5">
+    <img src="image/vuex5.PNG" width="800px" height="400px" title="vuex 등록5" alt="Register Vuex5">
