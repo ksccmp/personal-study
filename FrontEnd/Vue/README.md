@@ -1,12 +1,12 @@
 ## 기본설정
  * VS Code를 실행시키고 왼쪽바의 맨 아래 Extension에서 다음 파일들 설치
-  * Live Server
-  * Vue 2 Snippets
-  * Beautify
-  * Auto Rename Tag
-  * Vue Peek
-  * Vetur
-  * Bracket Pair Colorizer
+    * Live Server
+    * Vue 2 Snippets
+    * Beautify
+    * Auto Rename Tag
+    * Vue Peek
+    * Vetur
+    * Bracket Pair Colorizer
  * 크롬 웹스토어에에서 확장 프로그램 추가
   + Vue.js devtools
  * Node.js 설치
