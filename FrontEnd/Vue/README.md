@@ -56,7 +56,7 @@
  * terminal에 npm install vuex 입력
  * yarn을 설치하였을 경우 yarn add vuex 입력도 가능
  * 사진과 같이 assets에 vuex.js를 만들고 state, mutation, action을 등록
-    <img src="image/vuex1.PNG" width="800px" height="250px" title="vuex 등록1" alt="Register Vuex1">
+    <img src="image/vuex1.PNG" width="800px" height="350px" title="vuex 등록1" alt="Register Vuex1">
  * Constant는 상수값을 저장하기 위한 용도, 다음과 같이 asset에 Constant.js를 만들고 등록
     <img src="image/vuex2.PNG" width="600px" height="400px" title="vuex 등록2" alt="Register Vuex2">
  * main.js의 상단에 vuex위치를 찾아 store로 저장하고 new Vue 안에 vuex 입력
