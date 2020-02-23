@@ -10,7 +10,7 @@
  * 크롬 웹스토어에에서 확장 프로그램 추가
     * Vue.js devtools
  * Node.js 설치
-    * https://nodejs.org/ko/로 접속 or 검색창에 Node.js 검색
+    * https://nodejs.org/ko/ 로 접속 or 검색창에 Node.js 검색
  * yarn 설치
     * VS Code 상단바에 있는 Terminal을 눌러 New Terminal or 키보드로 ctrl + shift + ` 입력
     * terminal에서 npm install -g yarn 입력
