@@ -28,9 +28,10 @@
  ## axios 사용하기
   * terminal에 npm install --save axios 입력
   * yarn을 설치하였을 경우 yarn add axios 입력도 가능
-  아래는 보류
   * main.js의 상단에 import axios from 'axios', new Vue 안에 axios 입력
-    <img src="image/axios.PNG" width="800px" height="400px" title="axios 등록" alt="Register Axios">
+    <img src="image/axios1.PNG" width="800px" height="400px" title="axios 등록1" alt="Register Axios1">
+  * 원하는 곳에 사진과 같이 axios 사용 (axios 종류 => axios.get, axios.put, axios.post, axios.delete)
+    <img src="image/axios1.PNG" width="800px" height="400px" title="axios 등록2" alt="Register Axios2">
 
 ## vue router 사용하기
  * terminal에 npm install --save vue-router 입력
