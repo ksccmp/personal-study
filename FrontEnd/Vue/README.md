@@ -43,7 +43,7 @@
  * main.js의 상단에 router.js의 위치를 찾아 import해주고, new Vue 안에 router 입력
     <img src="image/vue-router3.PNG" width="800px" height="400px" title="vue-router 등록3" alt="Register Vue-Router3">
  * router를 사용하고 싶은 곳에 <router-view></router-view>로 router위치 등록, 등록된 위치에 router를 가져오는 방법은 this.$router.push를 사용
-    <img src="image/vue-router4.PNG" width="800px" height="400px" title="vue-router 등록4" alt="Register Vue-Router4">
+    <img src="image/vue-router4.PNG" width="800px" height="800px" title="vue-router 등록4" alt="Register Vue-Router4">
 
 ## vuetify 사용하기
  * terminal에 npm install vuetify 입력
