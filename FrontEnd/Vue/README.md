@@ -31,7 +31,7 @@
   * main.js의 상단에 import axios from 'axios', new Vue 안에 axios 입력
     <img src="image/axios1.PNG" width="800px" height="400px" title="axios 등록1" alt="Register Axios1">
   * 원하는 곳에 사진과 같이 axios 사용 (axios 종류 => axios.get, axios.put, axios.post, axios.delete)
-    <img src="image/axios1.PNG" width="800px" height="400px" title="axios 등록2" alt="Register Axios2">
+    <img src="image/axios2.PNG" width="800px" height="400px" title="axios 등록2" alt="Register Axios2">
 
 ## vue router 사용하기
  * terminal에 npm install --save vue-router 입력
