@@ -5,7 +5,7 @@
     * STS 3.9.7버전을 사용할 경우 프로젝트에 빨간불이 들어와 있는데 pom.xml에 properties안에 <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>를 기입 후 프로젝트 오른쪽 클릭 후 maven -> update project 클릭
 
 ## Swagger 사용방법
- * mvnrepository.com에 접속
+ * https://mvnrepository.com 에 접속
  * 검색창에 springfox 검색
  * Springfox Swagger2를 클릭하여 최신버전 클릭 후 dependency를 pom.xml에 복사 붙여넣기
  * Springfox Swagger UI를 클릭하여 최신버전 클릭 후 dependency를 pom.xml에 복사 붙여넣기
