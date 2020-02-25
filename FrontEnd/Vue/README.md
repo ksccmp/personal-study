@@ -12,7 +12,7 @@
 * Prettier 설정방법
     * ctrl + , 을 누르면 설정파일이 나옴
     * 맨 오른쪽 상단에 위치한 곳에서 사진에 보이는 것중 맨 왼쪽꺼 클링
-    <img src="image/prettier1.PNG" width="800px" height="400px" title="prettier 등록1" alt="Register Prettier1">
+    <img src="image/prettier1.PNG" width="800px" height="200px" title="prettier 등록1" alt="Register Prettier1">
     * json파일이 나오는데 다음 사진과 같이 등록
     <img src="image/prettier2.PNG" width="800px" height="400px" title="prettier 등록2" alt="Register Prettier2">
     * VS Code 재시작
@@ -36,10 +36,8 @@
 
 * terminal에 npm install --save axios 입력
 * yarn을 설치하였을 경우 yarn add axios 입력도 가능
-* main.js의 상단에 import axios from 'axios', new Vue 안에 axios 입력
-    <img src="image/axios1.PNG" width="800px" height="400px" title="axios 등록1" alt="Register Axios1">
-* 원하는 곳에 사진과 같이 axios 사용 (axios 종류 => axios.get, axios.put, axios.post, axios.delete)
-    <img src="image/axios2.PNG" width="800px" height="400px" title="axios 등록2" alt="Register Axios2">
+* 원하는 곳에 사진과 같이 axios를 import 해주고 사용 (axios 종류 => axios.get, axios.put, axios.post, axios.delete)
+    <img src="image/axios.PNG" width="800px" height="400px" title="axios 등록" alt="Register Axios">
 
 ## vue router 사용하기
 
@@ -77,3 +75,12 @@
     <img src="image/vuex4.PNG" width="800px" height="400px" title="vuex 등록4" alt="Register Vuex4">
 * vuex의 state 값에 있는 데이터 불러오는 방법
     <img src="image/vuex5.PNG" width="800px" height="400px" title="vuex 등록5" alt="Register Vuex5">
+
+## moment 사용하기
+* js에서 시간과 관련된 값을 구하기 위해 moment를 사용
+* terminal에 npm install moment --save 입력
+* yarn을 설치하였을 경우 yarn add moment  입력도 가능
+* 사용방법은 axios와 동일
+* 원하는 곳에 사진과 같이 moment를 import 해주고 사용
+    <img src="image/moment.PNG" width="800px" height="400px" title="moment 등록" alt="Register Moment">
+* format에 관한 자세한 내용은 https://momentjs.com/ 참조
