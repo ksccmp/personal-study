@@ -84,3 +84,12 @@
 * 원하는 곳에 사진과 같이 moment를 import 해주고 사용
     <img src="image/moment.PNG" width="800px" height="400px" title="moment 등록" alt="Register Moment">
 * format에 관한 자세한 내용은 https://momentjs.com/ 참조
+
+## router 새로고침하기
+ * this.$router.push(...) 대신에 this.$router.go()를 사용
+    <img src="image/reload.PNG" width="800px" height="200px" title="router 새로고침" alt="Reload Router">
+
+## jquery 사용하기
+* terminal에 npm install --save jquery 입력
+* yarn을 설치하였을 경우 yarn add jquery 입력도 가능
+    <img src="image/jquery.PNG" width="800px" height="400px" title="jquery 등록" alt="Register Jquery">
