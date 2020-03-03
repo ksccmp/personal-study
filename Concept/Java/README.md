@@ -93,7 +93,7 @@
 * 하나의 역할을 수행하는 메서드와 변수의 묶음
 * ex) 붕어빵
 ### 객체지향 프로그래밍의 특징
-* OOP is a pie (Object Oriented Programming is Abstract Polynomial Inherit Encapsulate)
+* OOP is A PIE (Object Oriented Programming is Abstract Polynomial Inherit Encapsulate)
 * 추상화(Abstract)
    * 목적과 관련이 없는 부분을 제거하여 필요한 부분만을 표현하기 위한 개념
    * ex) 붕어빵을 만들려고 한다고 가정한다면 붕어빵 재료인 밀가루반죽과 팥만 필요하다고 명확하게 명시
