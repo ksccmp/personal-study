@@ -25,8 +25,7 @@
   * 속성의 갯수
 * 카디너리티
   * 튜플의 갯수
-* 예제
-  <img src="image/table.PNG" width="800px" height="400px" title="테이블 구성요소" alt="Table">
+<img src="image/table.PNG" width="800px" height="400px" title="테이블 구성요소" alt="Table">
 
 ## 키 (Key)
 ### 키란 ?
