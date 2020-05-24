@@ -81,4 +81,39 @@
 
 # 고정 IP 등록
 * root계정으로 접속 (터미널에서 입력) </br>
-    ```su - root```
+    ```su - root``` 입력 후 등록한 비밀번호 입력
+* 네트워크 설정 폴더로 이동 </br>
+    ```cd /etc/sysconfig/network-scripts```
+* 설정 파일 텍스트 열기 (파일 이름이 다를 수도 있음) </br>
+    ```vi ifcfg-enp0s3```
+* 텍스트 파일 변경하기 </br>
+    ```
+    TYPE="Ethernet"
+    PROXY_METHOD="none"
+    BROWSER_ONLY="no"
+    #BOOTPROTO="dhcp" --> 변경
+    DEFROUTE="yes"
+    IPV4_FAILURE_FATAL="no"
+    #IPV6INIT="yes" --> 변경
+    #IPV6_AUTOCONF="yes" --> 변경
+    #IPV6_DEFROUTE="yes" --> 변경
+    #IPV6_FAILURE_FATAL="no" --> 변경
+    #IPV6_ADDR_GEN_MODE="stable-privacy" --> 변경
+    NAME="enp0s3"
+    UUID="a63b84el-lb4e-48b3-al87-d3360b0f9025"
+    DEVICE="enp0s3"
+    ONBOOT="yes"
+
+    BOOTPROTO="static" --> 추가
+    IPADDR="192.168.0.121" --> 추가
+    NETMASK="255.255.255.0" --> 추가
+    GATEWAY="192.168.0.1" --> 추가
+    DNS1="168.126.63.1" --> 추가
+    DNS2="168.126.63.2" --> 추가
+    ```
+* 네트워크 재시작하기 </br>
+    ```systemctl restart network```
+* 네트워크 재시작이 에러 날 경우 </br>
+    ```systemctl is-active network``` --> 동작하는지 확인
+    동작하지 않을 경우 ```yum install network-scripts``` 로 설치
+* 재시작을 해서 ip 변경이 일어나지 않을 경우 centOS 종료 후 다시 시작하기
