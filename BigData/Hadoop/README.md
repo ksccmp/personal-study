@@ -115,5 +115,5 @@
     ```systemctl restart network```
 * 네트워크 재시작이 에러 날 경우 </br>
     ```systemctl is-active network``` --> 동작하는지 확인
-    동작하지 않을 경우 ```yum install network-scripts``` 로 설치
+    active가 아닐 경우 ```yum install network-scripts``` 로 설치
 * 재시작을 해서 ip 변경이 일어나지 않을 경우 centOS 종료 후 다시 시작하기
