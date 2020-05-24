@@ -16,15 +16,15 @@
     <img src="image/virtualbox1.PNG" width="800px" height="400px" title="설치 1" alt="Install 1">
 * 이름, 머신폴더, 종류, 버전 선택 </br>
     <img src="image/virtualbox2.PNG" width="400px" height="400px" title="설치 2" alt="Install 2">
-* 메모리 크기 선택 (Cloudera를 설치 할 OS는 8192MB로 나머지는 1024MB로)
+* 메모리 크기 선택 (Cloudera를 설치 할 OS는 8192MB로 나머지는 1024MB로) </br>
     <img src="image/virtualbox3.PNG" width="400px" height="400px" title="설치 3" alt="Install 3">
-* 하드디스크 선택
+* 하드디스크 선택 </br>
     <img src="image/virtualbox4.PNG" width="400px" height="400px" title="설치 4" alt="Install 4">
-* 디스크 파일종류 선택
+* 디스크 파일종류 선택 </br>
     <img src="image/virtualbox5.PNG" width="400px" height="400px" title="설치 5" alt="Install 5">
-* 할당방식 선택
+* 할당방식 선택 </br>
     <img src="image/virtualbox6.PNG" width="400px" height="400px" title="설치 6" alt="Install 6">
-* 디스크 크기 선택 (모두 40GB로)
+* 디스크 크기 선택 (모두 40GB로) </br>
     <img src="image/virtualbox7.PNG" width="400px" height="400px" title="설치 7" alt="Install 7">
 
 ## 포인팅 장치 셋팅
@@ -32,7 +32,7 @@
     <img src="image/mouseSetting.PNG" width="800px" height="400px" title="마우스 세팅" alt="Setting Mouse">
 
 ## OS 설치하기
-* 설치받은 iso를 등록하여 가상머신 실행시키기
+* 설치받은 iso를 등록하여 가상머신 실행시키기 </br>
     <img src="image/os1.PNG" width="400px" height="400px" title="OS 1" alt="OS 1">
 * Install CentOS Linux 8 선택
     <img src="image/os2.PNG" width="800px" height="400px" title="OS 2" alt="OS 2">
@@ -52,9 +52,9 @@
     <img src="image/os9.PNG" width="800px" height="400px" title="OS 9" alt="OS 9">
 * 등록한 iso 제거하기
     <img src="image/os10.PNG" width="800px" height="400px" title="OS 10" alt="OS 10">
-* 강제 마운트 해제 클릭
+* 강제 마운트 해제 클릭 </br>
     <img src="image/os11.PNG" width="400px" height="400px" title="OS 11" alt="OS 11">
-* 시스템 전원 끄기를 클릭하여 종료하기
+* 시스템 전원 끄기를 클릭하여 종료하기 </br>
     <img src="image/os12.PNG" width="400px" height="400px" title="OS 12" alt="OS 12">
 * 다시 실행을 시킨 뒤 License Information 클릭
     <img src="image/os13.PNG" width="800px" height="400px" title="OS 13" alt="OS 13">
@@ -80,5 +80,5 @@
     <img src="image/os23.PNG" width="800px" height="400px" title="OS 23" alt="OS 23">
 
 # 고정 IP 등록
-* root계정으로 접속 (터미널에서 입력)
+* root계정으로 접속 (터미널에서 입력) </br>
     ```su - root```
