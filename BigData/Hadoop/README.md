@@ -14,7 +14,7 @@
 ## 가상머신 만들기
 * Virtual Box 실행시키기
     <img src="image/virtualbox1.PNG" width="800px" height="400px" title="설치 1" alt="Install 1">
-* 이름, 머신폴더, 종류, 버전 선택
+* 이름, 머신폴더, 종류, 버전 선택 </br>
     <img src="image/virtualbox2.PNG" width="400px" height="400px" title="설치 2" alt="Install 2">
 * 메모리 크기 선택 (Cloudera를 설치 할 OS는 8192MB로 나머지는 1024MB로)
     <img src="image/virtualbox3.PNG" width="400px" height="400px" title="설치 3" alt="Install 3">
