@@ -27,6 +27,10 @@
 * 디스크 크기 선택 (모두 40GB로)
     <img src="image/virtualbox7.PNG" width="800px" height="400px" title="설치 7" alt="Install 7">
 
+## 포인팅 장치 셋팅
+* 설정에 들어가서 포인팅 장치를 USB 태블릿으로 변경
+    <img src="image/mouseSetting.PNG" width="800px" height="400px" title="마우스 세팅" alt="Setting Mouse">
+
 ## OS 설치하기
 * 설치받은 iso를 등록하여 가상머신 실행시키기
     <img src="image/os1.PNG" width="800px" height="400px" title="OS 1" alt="OS 1">
