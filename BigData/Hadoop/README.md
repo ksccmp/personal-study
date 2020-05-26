@@ -79,8 +79,8 @@
 * 필요한 경우 읽고 필요없을 경우 오른쪽 상단의 X를 클릭하면 메인화면 등장하며 설치 완료
     <img src="image/os23.PNG" width="800px" height="400px" title="OS 23" alt="OS 23">
 
-# 고정 IP 등록
-* root계정으로 접속 (터미널에서 입력) </br>
+# 고정 IP 등록 (터미널에서 수행)
+* root계정으로 접속 </br>
     ```su - root``` 입력 후 등록한 비밀번호 입력
 * 네트워크 설정 폴더로 이동 </br>
     ```cd /etc/sysconfig/network-scripts```
@@ -117,3 +117,7 @@
     ```systemctl is-active network``` --> 동작하는지 확인
     active가 아닐 경우 ```yum install network-scripts``` 로 설치
 * 재시작을 해서 ip 변경이 일어나지 않을 경우 centOS 종료 후 다시 시작하기
+
+# HostName 영구적으로 변경하기 (터미널에서 수행)
+* ```hostnamectl status```를 입력하면 정보 확인 가능, default로 localhost.localdomain 되어 있음
+* ```hostnamectl set-hostname {host명}```을 입력하면 root계정 정보 입력 후 변경
