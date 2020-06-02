@@ -87,7 +87,7 @@
 * 네트워크 설정 폴더로 이동 </br>
     ```cd /etc/sysconfig/network-scripts```
 * 설정 파일 텍스트 열기 (파일 이름이 다를 수도 있음) </br>
-    ```vi ifcfg-enp0s3```
+    ```vim ifcfg-enp0s3```
 * 텍스트 파일 변경하기 </br>
     ```
     TYPE="Ethernet"
@@ -107,10 +107,10 @@
     ONBOOT="yes"
 
     BOOTPROTO="static" --> 추가
-    IPADDR="192.168.0.121" --> 추가
+    IPADDR="192.168.0.121" --> 추가, 아래 입력된 Gateway의 마지막만 값을 변경하여 설정 ex )192.168.0.xxx
     NETMASK="255.255.255.0" --> 추가
-    GATEWAY="192.168.0.1" --> 추가
-    DNS1="168.126.63.1" --> 추가
+    GATEWAY="192.168.0.1" --> 추가, Local PC의 이더넷 Default Gateway로 설정
+    DNS1="168.126.63.1" --> 추가, KT DNS 서버 주소
     DNS2="168.126.63.2" --> 추가
     ```
 * 네트워크 재시작하기 </br>
@@ -123,3 +123,53 @@
 # HostName 영구적으로 변경하기 (터미널에서 수행)
 * ```hostnamectl status```를 입력하면 정보 확인 가능, default로 localhost.localdomain 되어 있음
 * ```hostnamectl set-hostname {host명}```을 입력하면 root계정 정보 입력 후 변경
+
+# Cloudera 설치 (터미널에서 수행)
+* root 계정 접속 </br>
+    ```su - root``` 후 비밀번호 입력
+* Cloudera Manager 설치 </br>
+    ```wget http://archive.cloudera.com/cm5/redhat/6/x86_64/cm/cloudera-manager.repo```
+* repo파일 편집기 켜기 </br>
+    ```vim cloudera-manager.repo```
+* repo 파일 수정 </br>
+    ```
+    [cloudera-manager]
+    # Packages for Cloudera Manager, Version 5, on Redhat or CentOS 6 x86_64
+    
+    name=Cloudera Manager
+    baseurl=https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/5.9.0 --> 수정
+    gpgkey=https://archive.cloudera.com/cm5/redhat/6/x86_64/cm/RPM-GPG-KEY-cloudera
+    gpgcheck = 1
+    ```
+* repo 파일 위치 변경 </br>
+    ```mv ./cloudera-manager.repo /etc/yum.repos.d/```
+* jdk 설치 </br>
+    ```yum install oracle-j2sdk1.7```
+* 데몬, 서버 설치 </br>
+    ```yum -y install cloudera-manager-daemons cloudera-manager-server```
+* DB 설치 </br>
+    ```yum -y install cloudera-manager-server-db-2```
+* selinux 편집기 켜기 </br>
+    ```vim /etc/sysconfig/selinux```
+* selinux 파일 수정 </br>
+    ```
+    # This File controls the state of SELinux on the system.
+    # SELINUX= can take one of these three values:
+    #   enforcing - SELinux security policy is enforced.
+    #   permissive - SELinux prints warnings instead of enforcing.
+    #   disabled - No SELinux policy is loaded.
+    SELIUNX=disabled --> 수정
+    # SELINUXTYPE= can take one of these three values:
+    #   targeted - Targeted processes are protected.
+    #   minimum - Modification of targeted policy. Only selected processes are protected.
+
+    #   mls - Multi Level Security protection.
+    SELINUXTYPE=targeted
+    ```
+* 전원 종료 후 재시작 및 root계정 접속
+* DB 실행
+    ```service cloudera-scm-server-db start```
+* 서버 실행
+    ```service cloudera-scm-server start```
+* 서버 실행 확인
+    ```service --status-all```
