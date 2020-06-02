@@ -167,9 +167,9 @@
     SELINUXTYPE=targeted
     ```
 * 전원 종료 후 재시작 및 root계정 접속
-* DB 실행
+* DB 실행 </br>
     ```service cloudera-scm-server-db start```
-* 서버 실행
+* 서버 실행 </br>
     ```service cloudera-scm-server start```
-* 서버 실행 확인
+* 서버 실행 확인 </br>
     ```service --status-all```
