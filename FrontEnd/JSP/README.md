@@ -27,10 +27,12 @@
 * Jquery CDN 가져오기(아래쪽에 구글CDN 선택) : https://jquery.com/download/
 * 3.x snippet에 있는 script를 복사하여 jsp 파일에 붙여넣기 
     ```<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>```
+
 ## Jquery 자동완성 플러그인 설치 (Eclipse, STS 사용자)
 * 툴 상단의 Help -> Install New Software... -> Work with에 ```http://oss.opensagres.fr/tern.repository/1.2.0/``` 복붙 한 뒤 Embedded, IDE, Tooling 선택 후 next 및 finish
 * 재시작 Alert가 나올때 까지 종료하지 않고 기다리기
 * 재시작 후 적용시키고 싶은 프로젝트 우클릭 -> Configure -> Convert to Tern Project -> jquery, jquery extension 클릭
+
 ## on click 사용법
     ```
     <body>
@@ -42,4 +44,35 @@
             console.log("회원가입");
         })
     </script>
+    ```
+
+## ajax 사용법
+    ```
+    let data = {
+                authorno: $("#authorno").val(),
+                description: $("#description").text(),
+                isbn: $("#isbn").val(),
+                price: $("#price").val(),
+                publisher: $("#publisher").val(),
+                title: $("#title").val()
+            };
+    
+    $.ajax({
+        url: "/rest/book",
+        type: "post",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function(resTxt) {
+            console.log(res);
+            if(res.status) {
+                list("추가 성공");
+            } else {
+                list("추가 실패");
+            }
+        },
+        error: function(error) {
+            list("추가 실패");
+            console.log(error);
+        }
+    });
     ```

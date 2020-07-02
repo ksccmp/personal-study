@@ -594,3 +594,12 @@
    }
 
    ```
+
+# Mybatis log 설정
+* src/main/resources/logback.xml에 코드 작성
+   ```
+   <!-- Application Loggers -->
+   <logger name="${basepackage 이름}"> --> ex) <logger name="market.place">
+      <level value="debug" />
+   </logger>
+   ```
