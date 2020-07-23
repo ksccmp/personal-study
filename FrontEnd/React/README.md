@@ -65,7 +65,9 @@
   ReactDOM.render(<App />, document.querySelector("#root"));
   ```
 * 바벨에 필요한 모듈 설치 : 브라우저가 이해할 수 있는 자바스크립트의 최신 문법으로 변환 (ES5 -> ES6)
-  ```npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader```
+  ```
+  npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader
+  ```
   * @babel/core : 바벨을 사용하기 위한 필수 모듈
   * @babel/preset-env : 바벨에서 스크립트 코드를 트랜스 파일링 하기 위한 플러그인들을 모아둔 모듈
   * @babel/preset-react : 바벨에서 리액트 코드를 트랜스 파일링 하기 위한 플러그인들을 모아둔 모듈
@@ -87,7 +89,9 @@
   };
   ```
 * 웹팩에 필요한 모듈 설치 : 모든 리액트 관련 파일들을 브라우저에서 이용할 수 있는 하나의 번들로 묶어 패킹하는 모듈 번들러
-  ```npm i -D webpack webpack-cli html-webpack-plugin```
+  ```
+  npm i -D webpack webpack-cli html-webpack-plugin
+  ```
   * webpack : 웹팩 모듈 (모든 리액트 파일을 하나의 컴파일된 자바스크립트 파일로 생성)
   * webpack-cli : 웹팩 명령어를 커맨드 라인에서 실행할 때 필요한 모듈
   * html-webpack-plugin : 웹팩 실행이 완료된 번들 파일을 붙인 html 파일을 만들어 주는 모듈
@@ -136,7 +140,9 @@
   * html-webpack-plugin : index.html 파일을 dist폴더에 bundle 파일과 함께 자동으로 생성
   * output: bundle된 파일의 결과물을 위한 설정
 * 웹팩에 필요한 모듈 추가 설치
-  ```npm i -D webpack-dev-server```
+  ```
+  npm i -D webpack-dev-server
+  ```
   * webpack-dev-server : 변경사항이 있을 때 마다 자동으로 webpack을 수정해주는 역할, npm start할 시 자동으로 페이지 로드 수행
 * package.json에 설정 추가
   ```
@@ -152,12 +158,97 @@
   port: {port명} ex) 8888
   },
   ```
+# ESLint, Prettier 적용하기
+## ESLint 설정
+* ESLint를 위한 필수 패키지 설치
+  ```
+  yarn add --dev eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
+  ```
+* root폴더에 .eslintrc 파일 생성
+* .eslintrc에 내용 입력
+  ```
+  {
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "extends": ["airbnb", "prettier", "prettier/react"],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "plugins": ["react", "prettier"],
+    "rules": {
+      "react/prop-types": 0,
+      "no-underscore-dangle": 0,
+      "import/imports-first": ["error", "absolute-first"],
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": true
+        }
+      ],
+      "import/newline-after-import": "error",
+      "import/prefer-default-export": 0,
+      "react/prefer-stateless-function": 0,
+      "react/jsx-filename-extension": 0,
+      "react/jsx-one-expression-per-line": 0,
+      "linebreak-style": 0,
+      "no-unused-vars": 0,
+      "camelcase": 0
+
+      // error off : 0 , warning 1,
+    }
+  }
+  ```
+* 설정 창 오픈 (ctrl + ,)
+* 오른쪽 상단에 3개 아이콘 중 맨 왼쪽 클릭 (파일모양)
+* setting.json에 내용 입력
+  ```
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+  },
+  ```
+  * editor.codeActionsOnSave : 저장할 때 속성값 수행
+  * source.fixAll.eslint : ESLint에 정해진 대로 코드 자동 수정
+## Prettier 설정
+* Prettier를 위한 필수 패키지 설치
+  ```
+  yarn add --dev prettier eslint-config-prettier eslint-plugin-prettier babel-eslint
+  ```
+* 설정 창 오픈 (ctrl + ,)
+* 오른쪽 상단에 3개 아이콘 중 맨 왼쪽 클릭 (파일모양)
+* setting.json에 내용 입력
+  ```
+  {
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
+    "[javascriptreact]": {
+        "editor.formatOnSave": true
+    },
+    "prettier.singleQuote": true,
+    "prettier.semi": true,
+    "prettier.tabWidth": 4,
+    "prettier.trailingComma": "all",
+    "prettier.printWidth": 120,
+    "prettier.arrowParens": "always"
+  }
+  ```
+  * singleQuote : 문자열에 싱글쿼트(') 사용
+  * semi : 코드 끝에 세미클론(;) 사용
+  * tabWidth : 들여쓰기 4칸
+  * trailingComma : 객체나 배열 작성할 때 값 맨 뒤에거에도 쉼표(,) 사용
+  * printWidth : 한 줄에 120칸 까지 작성
+  * arrowParens : 화살표 함수 매개변수 하나인건 괄호 사용 안함 (const test = variable => {})
 # redux 사용 방법
 ## 기본 설정
 * redux devtools 크롬 확장자 설치
   * https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=ko
 * redux에 필요한 모듈 설치
-  ```yarn add redux react-redux@next redux-devtools-extension```
+  ```
+  yarn add redux react-redux@next redux-devtools-extension
+  ```
 * src에 modules폴더 생성
 * src/modules에 index.js 파일 생성
 * index.js에 내용 입력
@@ -204,7 +295,7 @@
 
   export default reducer;
   ```
-* src/modules에 내용 추가
+* src/modules/index.js에 내용 추가
   ```
   import user from './user';
 
@@ -259,4 +350,20 @@
   }
 
   export default login;
+  ```
+# react hook 사용 방법
+* useState 사용 방법
+  ```
+  const [userId, setUserId] = useState('');
+
+  const onUserId = (e) => {
+    setUserId(e.target.value);
+  };
+
+  return (
+    <div>
+        <h1>SCVC Login</h1>
+        <input type="text" onChange={onUserId} />
+    </div>
+  );
   ```
