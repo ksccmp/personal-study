@@ -241,6 +241,65 @@
   * trailingComma : 객체나 배열 작성할 때 값 맨 뒤에거에도 쉼표(,) 사용
   * printWidth : 한 줄에 120칸 까지 작성
   * arrowParens : 화살표 함수 매개변수 하나인건 괄호 사용 안함 (const test = variable => {})
+# Axios 적용하기
+## 기본 설정
+* axios 설치하기
+  ```
+  yarn add axios
+  ```
+## baseURL 등록하기
+* src/api에 axios.js 파일 생성
+* axios.js에 내용 입력
+  ```
+  import axios from 'axios';
+
+  const axiosAPI = axios.create({
+      baseURL: 'http://localhost:8080/videochat', // axios 사용할 때 path앞에 baseURL이 항상 추가
+  });
+
+  export default axiosAPI;
+  ```
+## 사용방법
+* 회원가입 예제
+  ```
+  import React from 'react';
+  import axios from '../api/axios';
+
+  const signUp = () => {
+      const userSignUp = () => {
+          let user = {
+              user_id: '123',
+              user_pw: '456',
+              user_nm: '789',
+              user_gd: 'M',
+              user_age: 30,
+              user_ph: '010-1234-5678',
+              user_ma: 'abc@d.com',
+          };
+
+          axios
+              .post('/user/insert', user)
+              .then((res) => {
+                  if (res.data.data == 1) {
+                      console.log('회원가입 성공!');
+                  }
+              })
+              .catch((e) => {
+                  console.log(e);
+              });
+      };
+
+      return (
+          <>
+              <p>HELLO</p>
+              <input type="button" value="signUp" onClick={userSignUp} />
+          </>
+      );
+  };
+
+  export default signUp;
+  ```
+  
 # redux 사용 방법
 ## 기본 설정
 * redux devtools 크롬 확장자 설치
