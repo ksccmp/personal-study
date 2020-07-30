@@ -123,6 +123,7 @@
     output: {
       path: path.resolve(__dirname, "dist"), // __dirname : 현재 디렉토리
       filename: "bundle.js"
+      publicPath: '/', // 새로고침을 할 시 페이지 유지
     },
 
     plugins: [
@@ -153,9 +154,10 @@
 * webpack.config.js 설정 추가
   ```
   devServer: {
-  contentBase: path.join(__dirname, "dist"), // 이 경로에 있는 파일이 변경될 때 번들을 다시 컴파일
-  compress: true,
-  port: {port명} ex) 8888
+    historyApiFallback: true, // 새로고침을 할 시 페이지 유지
+    contentBase: path.join(__dirname, "dist"), // 이 경로에 있는 파일이 변경될 때 번들을 다시 컴파일
+    compress: true,
+    port: {port명} ex) 8888
   },
   ```
 # ESLint, Prettier 적용하기
@@ -298,6 +300,64 @@
   };
 
   export default signUp;
+  ```
+# router 적용하기
+## 기본설정
+* router를 위한 필수 패키지 설치
+  ```
+  yarn add react-router react-router-dom
+  ```
+## 사용방법
+* App.js 파일 수정
+  ```
+  import React from 'react';
+  import { Redirect, Route } from 'react-router'; // Redirect: 페이지 Redirect, Route: path에 알맞은 component 등록
+  import { BrowserRouter } from 'react-router-dom'; // Route 외부에 덮어져서 Browser 이동을 도움
+  import SignIn from './pages/signIn';
+  import SignUp from './pages/signUp';
+
+  const App = () => {
+      return (
+          <>
+              <BrowserRouter>
+                  <Route exact path="/">
+                      <Redirect to="/user/signIn" />
+                  </Route>
+                  <Route path="/user/signIn" component={SignIn} />
+                  <Route path="/user/signUp" component={SignUp} />
+              </BrowserRouter>
+          </>
+      );
+  };
+
+  export default App;
+  ```
+* Link 사용하기 (a태그와 유사)
+  ```
+  <Link to="/user/signUp">signUp</Link>
+  ```
+* useHistory 사용하기 (window.history와 유사)
+  ```
+  import React from 'react';
+  import { useHistory } from 'react-router';
+
+  const signIn = () => {
+    const history = useHistory();
+
+    const onSignUp = () => {
+        history.push('/user/signUp');
+    };
+
+    return (
+      <>
+        <div>
+            <input type="button" value="SignUp" onClick={onSignUp} />
+        </div>
+      </>
+    )
+  }
+
+  export default signIn;
   ```
   
 # redux 사용 방법

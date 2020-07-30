@@ -456,6 +456,10 @@
       PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       "http://mybatis.org/dtd/mybatis-3-config.dtd">
       <configuration>
+         <settings>
+            <setting name="mapUnderscoreToCamelCase" value="true"/> <!-- camelcase 설정 -->
+         </settings>
+
          <typeAliases>
             <typeAlias type="sc.video.chat.dto.User" alias="user"/> <!-- DTO로 sc.video.chat.dto 패키지에 User라는 클래스를 생성 -->
          </typeAliases>
