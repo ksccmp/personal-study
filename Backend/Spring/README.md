@@ -668,3 +668,261 @@
       <level value="debug" />
    </logger>
    ```
+
+# JWT 적용하기
+## dependency 추가하기
+* https://mvnrepository.com/ 에 접속하여 "JSON Web Token Support For The JVM" 선택 하여 dependency 추가
+   ```
+   <!-- JWT -->
+   <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>0.9.1</version>
+   </dependency>
+   ```
+## 기본설정
+* jwt 전용 패키지 만들기 ex) sc.video.chat.jwt
+* 패키지 안에 JwtService 클래스 생성 및 작성
+   ```
+   package sc.video.chat.jwt;
+
+   import java.util.Date;
+   import java.util.Map;
+
+   import org.springframework.stereotype.Component;
+
+   import io.jsonwebtoken.Claims;
+   import io.jsonwebtoken.Jws;
+   import io.jsonwebtoken.Jwts;
+   import io.jsonwebtoken.SignatureAlgorithm;
+   import sc.video.chat.dto.User;
+
+   @Component
+   public class JwtService {
+      private String secretKey = "video-chat"; // 암호화 알고리즘 적용 key
+      private Long expireTime = 1000L * 60 * 5; // 토큰의 유효시간
+      
+      // 토큰 생성
+      public String createUserToken(User user) {
+         return Jwts.builder()
+            .setHeaderParam("typ",  "JWT") // 토큰의 타입
+               .setSubject("userToken") // 토큰의 제목
+               .setExpiration(new Date(System.currentTimeMillis() + expireTime)) // 토큰의 유효시간
+               .claim("user", user) // 토큰에 담고 싶은 정보
+               .signWith(SignatureAlgorithm.HS256, secretKey.getBytes()) // secretKey를 사용하여 암호화 알고리즘 적용
+               .compact(); // 직렬화 처리 (String으로 변경)
+      }
+      
+      // 토큰을 사용하여 유저정보 얻기
+      public Map<String, Object> getUser(String token) {
+         Jws<Claims> claims = null;
+         try {
+            claims = Jwts.parser().setSigningKey(secretKey.getBytes()).parseClaimsJws(token); // secretKey를 사용하여 복호화
+         } catch(Exception e) {
+            throw new RuntimeException();
+         }
+         
+         return claims.getBody();
+      }
+      
+      // 토큰의 유효성 검증
+      // 문제가 존재하면 예외 발생, 그렇지 않은 경우는 문제 없다고 판단
+      public void checkValid(String token) {
+         Jwts.parser().setSigningKey(secretKey.getBytes()).parseClaimsJws(token);
+      }
+   }
+   ```
+* 패키지 안에 JwtInterceptor 클래스 생성 및 작성
+   ```
+   package sc.video.chat.jwt;
+
+   import javax.servlet.http.HttpServletRequest;
+   import javax.servlet.http.HttpServletResponse;
+
+   import org.springframework.beans.factory.annotation.Autowired;
+   import org.springframework.stereotype.Component;
+   import org.springframework.web.servlet.HandlerInterceptor;
+
+   @Component
+   public class JwtInterceptor implements HandlerInterceptor {
+      
+      @Autowired
+      private JwtService jwtService;
+      
+      @Override
+      public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws Exception {
+         
+         // option 요청은 바로 통과
+         if(request.getMethod().equals("OPTIONS")) {
+            return true;
+         } else {
+            String token = request.getHeader("jwt-user-token"); // request의 header에 jwt-user-token이라는 key값에 알맞는 value값을 token으로 저장
+            if(token != null && token.length() > 0) {
+               jwtService.checkValid(token); // 토큰의 유효성 검증
+               return true;
+            } else { // 해당 토큰의 유효성이 알맞지 않은 경우
+               throw new RuntimeException("인증 토큰이 존재하지 않습니다.");
+            }
+         }
+      }
+   }
+   ```
+* ServletContext 클래스 수정 (basepackage 추가 및 Interceptor 등록)
+   ```
+   package sc.video.chat.config;
+
+   import org.springframework.beans.factory.annotation.Autowired;
+   import org.springframework.context.annotation.Bean;
+   import org.springframework.context.annotation.ComponentScan;
+   import org.springframework.context.annotation.Configuration;
+   import org.springframework.web.servlet.ViewResolver;
+   import org.springframework.web.servlet.config.annotation.CorsRegistry;
+   import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+   import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+   import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+   import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+   import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+   import sc.video.chat.jwt.JwtInterceptor;
+
+   @Configuration
+   @EnableWebMvc
+   @ComponentScan(basePackages = {"sc.video.chat.controller", "sc.video.chat.config", "sc.video.chat.jwt"})
+   public class ServletContext implements WebMvcConfigurer {
+      
+      @Override
+      public void addResourceHandlers(ResourceHandlerRegistry registry) {
+         registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/"); // swagger 등록
+         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/"); // swagger 등록
+         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+      }
+      
+      @Bean
+      public ViewResolver viewResolver() {
+         InternalResourceViewResolver vr = new InternalResourceViewResolver();
+         vr.setPrefix("/"); // Controller에서 jsp파일 위치를 src/main/webapp/ 로 판단
+         vr.setSuffix(".jsp");
+         return vr;
+      }
+      
+      @Autowired
+      private JwtInterceptor jwtInter;
+      
+      private final String excludePath[] = {
+            "/user/**", // 토큰을 생성해야 하는 곳인 로그인과 회원가입 관련된 곳 제외, ex) http://localhost:8080/user/{*}
+            "/v2/api-docs",
+            "/swagger-resource/**",
+            "/swagger-ui.html/**", // swagger 제외
+            "/webjars/**"
+      };
+      
+      @Override
+      public void addCorsMappings(CorsRegistry registry) {
+         registry.addMapping("/**")
+               .allowedOrigins("*")
+               .allowedMethods("*")
+               .allowedHeaders("*")
+               .exposedHeaders("jwt-user-token");
+      }
+      
+      @Override
+      public void addInterceptors(InterceptorRegistry registry) { // addCorsMappings와 addInterceptors의 위치가 바뀔 시 에러 발생 가능
+         registry.addInterceptor(jwtInter)
+               .addPathPatterns("/**") // 적용 경로 지정
+               .excludePathPatterns(excludePath); // 제외 경로 지정
+      }
+   }
+   ```
+## Controller에 적용하기
+* User 관련 Controller에 해당 Mapping 추가
+   ```
+   @Autowired
+	JwtService jServ;
+
+	@GetMapping("/user/selectByUserId")
+	public ResponseEntity<Map<String, Object>> userSelectByUserId(@RequestParam String userId, @RequestParam String userPw, HttpServletResponse res) {
+		try {
+			User user = uServ.selectByUserId(userId);
+			if(user.getUserPw().equals(userPw)) {
+				String token = jServ.createUserToken(user); // user를 저장하는 토큰 생성
+				res.setHeader("jwt-user-token", token); // response의 header에 jwt-user-token 이름으로 만들어진 토큰을 담아 client에 전달
+
+				return response(user, HttpStatus.OK, true); 
+			} else {
+				return response(0, HttpStatus.OK, false);
+			}
+		} catch(RuntimeException e) {
+			return response(e.getMessage(), HttpStatus.CONFLICT, false);
+		}
+	}
+	
+	@GetMapping("/user/selectByUserToken")
+	public ResponseEntity<Map<String, Object>> userSelectByUserToken(@RequestParam String userToken) {
+		try {
+			Map<String, Object> userTokenMap = jServ.getUser(userToken);
+			return response(userTokenMap.get("user"), HttpStatus.OK, true);
+		} catch(RuntimeException e) {
+			return response(e.getMessage(), HttpStatus.CONFLICT, false);
+		}
+	}
+   ```
+## Client에 적용하기 (React에 적용)
+* 로그인 axios에 localStorage 활용하기
+   ```
+   const onSignIn = () => {
+        axios
+            .get('/user/selectByUserId', {
+                params: {
+                    userId,
+                    userPw,
+                },
+            })
+            .then((res) => {
+                if (res.data.data === 0) {
+                    alert('로그인 실패');
+                } else {
+                    dispatch(setUserAction(res.data.data));
+                    dispatch(setIsSignInAction());
+                    localStorage.userToken = res.headers['jwt-user-token']; // jwt-user-token으로 response온 값을 localStorage에 저장
+                    alert('로그인 성공');
+                }
+            })
+            .catch((e) => {
+                alert(e);
+            });
+    };
+   ```
+* App.js에서 token 존재여부 확인하여 자동 로그인
+   ```
+   const dispatch = useDispatch();
+
+   const reduxIsSignIn = useSelector((state) => state.user.isSignIn);
+
+   useEffect(() => {
+      if (reduxIsSignIn === false && localStorage.userToken) {
+         axios
+            .get('/user/selectByUserToken', {
+               params: {
+                  userToken: localStorage.userToken,
+               },
+            })
+            .then((res) => {
+               dispatch(setUserAction(res.data.data));
+               dispatch(setIsSignInAction());
+            })
+            .catch((e) => {
+               alert(e);
+            });
+      }
+   });
+   ```
+* excludePath에 해당하지 않은 axios 작성 방법
+   ```
+   axios
+      .get('/notExcludePath', {
+         headers: {
+            "jwt-user-token": localStorage.userToken
+         },
+      })
+   ```
