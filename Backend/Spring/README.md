@@ -926,3 +926,88 @@
          },
       })
    ```
+## 갱신 토큰 만들기
+* 토큰을 저장하는 DB 생성 (MySQL 기준)
+   ```
+   create table UserToken (
+      user_id varchar(100) primary key, -- 사용자 아이디
+      refresh_token varchar(500), -- 사용자 갱신 토큰
+      updt_tm datetime -- 수정시간
+   );
+   ```
+* 사용자 계정을 생성할 때 토큰 저장 DB에 데이터 같이 저장 (MyBatis 기준)
+   ```
+   <insert id="insertToken" parameterType="user">
+		insert into UserToken(user_id, refresh_token, updt_tm)
+		values (#{userId}, null, null)
+	</insert>
+   ```
+* 일반 접근 토큰을 생성할 때 갱신 토큰도 생성하여 토큰 저장 DB 갱신 (User 관련 Controller 수정)
+   ```
+   ...
+   if(user.getUserPw().equals(userPw)) {
+      String token = jServ.createUserToken(user); // user를 저장하는 토큰 생성
+      String refreshToken = jServ.createUserRefreshToken(user); // user를 저장하는 갱신 토큰 생성
+      
+      uServ.updateToken(new UserToken(userId, refreshToken, null)); // 갱신 토큰을 DB에 저장
+      res.setHeader("jwt-user-token", token); // response의 header에 jwt-user-token 이름으로 만들어진 토큰을 담아 client에 전달
+
+      return response(user, HttpStatus.OK, true); 
+   } 
+   ...
+   ```
+   ```
+   <update id="updateToken" parameterType="userToken">
+		update UserToken
+		set refresh_token = #{refreshToken}, updt_tm = current_timestamp()
+		where user_id = #{userId}
+	</update>
+   ```
+* Client에 jwt-decode 패키지 설치 (React 기준)
+   ```
+   yarn add jwt-decode
+   ```
+* App.js에 내용 수정
+   ```
+   import JwtDecode from 'jwt-decode';
+   ...
+   useEffect(() => {
+      if (reduxIsSignIn === false && localStorage.userToken) {
+         axios
+               .get('/user/selectByUserToken', {
+                  params: {
+                     userToken: localStorage.userToken,
+                  },
+               })
+               .then((res) => {
+                  dispatch(setUserAction(res.data.data));
+                  dispatch(setIsSignInAction());
+               })
+               .catch(() => {
+                  // 기존 접근 토큰에 예외 발생 시 갱신 토큰 확인
+                  const userToken = JwtDecode(localStorage.userToken); // 기존의 Storage에 저장되어 있던 토큰 복호화
+                  axios
+                     .get('/user/selectByUserId', {
+                           params: {
+                              userId: userToken.user.userId,
+                              userPw: userToken.user.userPw,
+                           },
+                     })
+                     .then((res) => {
+                           if (res.data.data === 0) { // 비밀번호 변경한 경우 (비밀번호 변경 시 재 로그인하도록 하면 발생하지 않음)
+                              alert('로그인 실패');
+                           } else {
+                              dispatch(setUserAction(res.data.data));
+                              dispatch(setIsSignInAction());
+                              localStorage.userToken = res.headers['jwt-user-token'];
+                           }
+                     })
+                     .catch(() => {
+                           localStorage.removeItem('userToken'); // 갱신 토큰도 만료되었을 시 재 로그인
+                           alert('다시 로그인 해주세요');
+                     });
+               });
+      }
+   });
+   ...
+   ```
