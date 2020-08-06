@@ -810,10 +810,13 @@
       private JwtInterceptor jwtInter;
       
       private final String excludePath[] = {
-            "/user/**", // 토큰을 생성해야 하는 곳인 로그인과 회원가입 관련된 곳 제외, ex) http://localhost:8080/user/{*}
+            // 토큰을 생성해야 하는 곳인 로그인과 회원가입 관련된 곳 제외, ex) http://localhost:8080/user/{*}
+            "/user/**",
+
+            // swagger 제외
             "/v2/api-docs",
-            "/swagger-resource/**",
-            "/swagger-ui.html/**", // swagger 제외
+            "/swagger-resources/**", 
+            "/swagger-ui.html/**",
             "/webjars/**"
       };
       
@@ -972,42 +975,65 @@
    import JwtDecode from 'jwt-decode';
    ...
    useEffect(() => {
-      if (reduxIsSignIn === false && localStorage.userToken) {
-         axios
-               .get('/user/selectByUserToken', {
-                  params: {
-                     userToken: localStorage.userToken,
-                  },
-               })
-               .then((res) => {
-                  dispatch(setUserAction(res.data.data));
-                  dispatch(setIsSignInAction());
-               })
-               .catch(() => {
-                  // 기존 접근 토큰에 예외 발생 시 갱신 토큰 확인
-                  const userToken = JwtDecode(localStorage.userToken); // 기존의 Storage에 저장되어 있던 토큰 복호화
-                  axios
-                     .get('/user/selectByUserId', {
-                           params: {
-                              userId: userToken.user.userId,
-                              userPw: userToken.user.userPw,
-                           },
-                     })
-                     .then((res) => {
-                           if (res.data.data === 0) { // 비밀번호 변경한 경우 (비밀번호 변경 시 재 로그인하도록 하면 발생하지 않음)
-                              alert('로그인 실패');
-                           } else {
-                              dispatch(setUserAction(res.data.data));
-                              dispatch(setIsSignInAction());
-                              localStorage.userToken = res.headers['jwt-user-token'];
-                           }
-                     })
-                     .catch(() => {
-                           localStorage.removeItem('userToken'); // 갱신 토큰도 만료되었을 시 재 로그인
-                           alert('다시 로그인 해주세요');
-                     });
-               });
-      }
+        if (reduxIsSignIn === false && localStorage.userToken) {
+            axios
+                .get('/user/selectByUserToken', {
+                    params: {
+                        userToken: localStorage.userToken,
+                    },
+                })
+                .then((res) => {
+                    dispatch(setUserAction(res.data.data));
+                    dispatch(setIsSignInAction(true));
+                })
+                .catch(() => {
+                    // 기존 접근 토큰에 예외 발생 시 갱신 토큰 확인
+                    const userToken = JwtDecode(localStorage.userToken); // 기존의 Storage에 저장되어 있던 토큰 복호화
+                    axios
+                        .get('/user/selectByUserRefreshToken', {
+                            params: {
+                                userId: userToken.user.userId,
+                            },
+                        })
+                        .then((res) => {
+                            dispatch(setUserAction(res.data.data));
+                            dispatch(setIsSignInAction(true));
+                            localStorage.userToken = res.headers['jwt-user-token'];
+                        })
+                        .catch(() => {
+                            localStorage.removeItem('userToken'); // 갱신 토큰도 만료되었을 시 재 로그인
+                            alert('다시 로그인 해주세요');
+                });
+            });
+        }
    });
    ...
+   ```
+   ```
+   @GetMapping("/user/selectByUserRefreshToken")
+	public ResponseEntity<Map<String, Object>> useSelectByUserRefreshToken(@RequestParam String userId, HttpServletResponse res) {
+		try {
+			UserToken userToken = uServ.selectTokenByUserId(userId);
+			Map<String, Object> userTokenMap = jServ.getUser(userToken.getRefreshToken());
+			
+			User user = (User)userTokenMap.get("user");
+			
+			String token = jServ.createUserToken(user); // user를 저장하는 토큰 생성
+			String refreshToken = jServ.createUserRefreshToken(user); // user를 저장하는 갱신 토큰 생성
+			
+			uServ.updateToken(new UserToken(userId, refreshToken, null)); // 갱신 토큰을 DB에 저장
+			res.setHeader("jwt-user-token", token); // response의 header에 jwt-user-token 이름으로 만들어진 토큰을 담아 client에 전달
+
+			return response(user, HttpStatus.OK, true);
+		} catch(RuntimeException e) {
+			return response(e.getMessage(), HttpStatus.CONFLICT, false);
+		}
+	}
+   ```
+   ```
+   <select id="selectTokenByUserId" parameterType="string" resultType="usertoken">
+		select *
+		from UserToken
+		where user_id = #{value}
+	</select>
    ```

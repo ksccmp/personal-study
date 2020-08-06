@@ -369,7 +369,7 @@
   yarn add redux react-redux@next redux-devtools-extension
   ```
 * src에 modules폴더 생성
-* src/modules에 index.js 파일 생성
+* src/modules/reducer에 index.js 파일 생성
 * index.js에 내용 입력
   ```
   import { combineReducers } from 'redux';
@@ -379,13 +379,9 @@
 
   export default rootReducer;
   ```
-* src/modules에 user.js 파일 생성
-* user.js에 내용 입력
+* src/modules에 actions.js 파일 생성
+* actions.js에 내용 입력
   ```
-  export const initState = {
-    user: {},
-  }
-
   const user_setUser = 'user_setUser';
 
   export const setUserAction = res => {
@@ -394,10 +390,19 @@
           payload: res,
       }
   }
+  ```
+* src/modules/reducer에 user.js 파일 생성
+* user.js에 내용 입력
+  ```
+  import * as actions from '../actions';
+
+  export const initState = {
+    user: {},
+  }
 
   const reducer = (state = initState, action) => {
       switch(action.type) {
-          case user_setUser: {
+          case actions.user_setUser: {
               return {
                   ...state,
                   user: action.payload,
@@ -414,7 +419,7 @@
 
   export default reducer;
   ```
-* src/modules/index.js에 내용 추가
+* src/modules/reducer/index.js에 내용 추가
   ```
   import user from './user';
 
@@ -422,20 +427,30 @@
       user,
   });
   ```
-* src의 index.js파일 설정 추가
+* src/modules에 store.js 파일 생성
+* store.js에 내용 추가
   ```
-  import {createStore} from 'redux';
-  import {composeWithDevTools} from 'redux-devtools-extension';
-  import rootReducer from './modules';
-  import {Provider} from 'react-redux';
+  import { createStore } from 'redux';
+  import { composeWithDevTools } from 'redux-devtools-extension';
+  import rootReducer from './reducer';
 
   const store = createStore(rootReducer, composeWithDevTools());
+
+  export default store; 
+  ```
+* src의 index.js파일 설정 추가
+  ```
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import { Provider } from 'react-redux';
+  import App from './App';
+  import store from './modules/store';
 
   ReactDOM.render(
       <Provider store={store}>
           <App />
-      </Provider>, 
-      document.querySelector("#root")
+      </Provider>,
+      document.querySelector('#root'),
   );
   ```
 * src/pages폴더 생성
@@ -444,7 +459,7 @@
   ```
   import React from 'react';
   import { useDispatch, useSelector } from 'react-redux';
-  import { setUserAction } from '../modules/user';
+  import { setUserAction } from '../modules/actions';
 
   const login = () => {
       const dispatch = useDispatch(); // redux에 데이터를 전송하여 저장하는 역할 수행
@@ -492,4 +507,161 @@
 * material 패키지 설치하기
   ```
   yarn add @material-ui/core
+  ```
+
+# redux-saga 사용하기
+## 기본 설정
+* 필수 패키지 설치
+  ```
+  yarn add redux-saga
+  ```
+* babel.config.js 내용 추가 // async, await 사용 위함
+  ```
+  module.exports = function (api) {
+      api.cache(true);
+
+      // preset-env에 targets 추가
+      const presets = [
+          [
+              '@babel/preset-env',
+              {
+                  targets: {
+                      node: true,
+                  },
+              },
+          ],
+          '@babel/preset-react',
+      ];
+
+      const plugins = [];
+
+      return {
+          presets,
+          plugins,
+      };
+  };
+  ```
+* src/modules/saga index.js 파일 생성
+* index.js에 내용 입력
+  ```
+  import { all } from 'redux-saga/effects';
+
+  function* rootSaga() {
+      yield all();
+  }
+
+  export default rootSaga;
+
+  ```
+* src/modules/saga user.js 파일 생성
+* user.js에 내용 입력
+  ```
+  import * as actions from '../actions';
+  import axios from '../../api/axios';
+
+  const saga = [];
+
+  export default saga;
+  ```
+* src/modules/store.js 내용 변경
+  ```
+  import { createStore, applyMiddleware } from 'redux'; // applyMiddleware 추가
+  import { composeWithDevTools } from 'redux-devtools-extension';
+  import createSagaMiddleware from 'redux-saga'; // 추가
+  import rootReducer from './reducer';
+  import rootSaga from './saga'; // 추가
+
+  const sagaMiddleware = createSagaMiddleware(); // 추가
+  const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware))); // DevTools 괄혼안에 applyMiddleware(sagaMiddleware) 추가
+
+  sagaMiddleware.run(rootSaga); // 추가
+
+  export default store;
+  ```
+## 예시 (로그인을 할 때 saga를 이용하여 비동기 처리하기)
+* src/modules/action.js에 내용 추가
+  ```
+  // Saga
+  export const userSelectByUserId = 'userSelectByUserId';
+
+  export const userSelectByUserIdAction = (res) => {
+      return {
+          type: userSelectByUserId,
+          payload: res,
+      };
+  };
+  ```
+* src/modules/reducer/user.js에 내용 추가
+  ```
+  import * as actions from '../actions';
+
+  const initState = {
+      user: '',
+  };
+
+  const reducer = (state = initState, action) => {
+      switch (action.type) {
+          // Saga
+          case actions.userSelectByUserId: {
+              return {
+                  ...state,
+                  payload: action.payload,
+              };
+          }
+
+          // Not Saga
+          case actions.userSetUser: {
+              return {
+                  ...state,
+                  user: action.payload,
+              };
+          }
+
+          default: {
+              return {
+                  ...state,
+              };
+          }
+      }
+  };
+
+  export default reducer;
+  ```
+* src/modules/saga/user.js에 내용 추가
+  ```
+  import { takeEvery, put, call } from 'redux-saga/effects';
+  import * as actions from '../actions';
+  import axios from '../../api/axios';
+
+  function* userSelectByUserIdSaga(action) {
+      try {
+          const res = yield call([axios, 'get'], '/user/selectByUserId', {
+              params: {
+                  userId: action.payload.userId,
+                  userPw: action.payload.userPw,
+              },
+          });
+
+          if (res.data.data === 0) {
+              alert('로그인 실패');
+          } else {
+              yield put(actions.setUserAction(res.data.data));
+              localStorage.userToken = res.headers['jwt-user-token']; // jwt-user-token으로 response온 값을 localStorage에 저장
+              alert('로그인 성공');
+          }
+      } catch (e) {
+          alert(e);
+      }
+  }
+  const saga = [
+      takeEvery(actions.userSelectByUserId, userSelectByUserIdSaga),
+  ];
+
+  export default saga;
+  ```
+* 로그인 페이지에서 로그인 버튼을 누를 때 함수
+  ```
+  const onSignIn = () => {
+      dispatch(userSelectByUserIdAction({ userId, userPw }));
+  };
   ```
