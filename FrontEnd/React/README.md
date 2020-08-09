@@ -10,10 +10,13 @@
 * Bracket Pair Colorizer : 여는 대괄호와 닫는 대괄호를 같은 색으로 표시
 * Auto Rename Tag : 마크업 앞 혹은 뒤를 수정하면 그에 대응하는 마크업으로 자동 수정
 * Prettier - Code formatter : 선호하는 포맷에 따라 커스터마이징하여 사용
+* Live Server : 로컬 개발 서버를 생성
 ## 기본 설정
 * root 폴더 생성 후 terminal에 해당 폴더까지 들어가기
 * package.json 생성 : 노드 프로젝트에 대한 정보를 담음
-  ```npm init```
+  ```
+  npm init
+  ```
 * 내용 입력
   ```
   package name: {패키지 명} ex) video_chat
@@ -27,7 +30,9 @@
   license: {라이센스} ex) (ISC)
   ```
 * react 사용을 위한 모듈 설치
-  ```npm install react react-dom```
+  ```
+  npm install react react-dom
+  ```
 * root폴더에 public 폴더 생성 후 index.html 생성
 * index.html에 내용 입력
   ```
@@ -135,10 +140,10 @@
   };
   ```
   * path : core nodejs 모듈 중 하나로 파일 경로 설정할 때 사용
+  * html-webpack-plugin : index.html 파일을 dist폴더에 bundle 파일과 함께 자동으로 생성
   * mode : production or development
   * entry : 파일들을 묶기 위해 웹팩이 바라보는 파일 시작점
   * resolve : 웹팩이 자동으로 경로나 확장자를 처리할 수 있게 도와주는 옵션
-  * html-webpack-plugin : index.html 파일을 dist폴더에 bundle 파일과 함께 자동으로 생성
   * output: bundle된 파일의 결과물을 위한 설정
 * 웹팩에 필요한 모듈 추가 설치
   ```
@@ -148,8 +153,9 @@
 * package.json에 설정 추가
   ```
   "scripts": {
-  "start": "webpack-dev-server --open"
-  }
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open" // 추가
+  },
   ```
 * webpack.config.js 설정 추가
   ```
@@ -579,6 +585,11 @@
   export default store;
   ```
 ## 예시 (로그인을 할 때 saga를 이용하여 비동기 처리하기)
+* 처리되는 로직
+  * saga가 반응하길 기다리고 있는(takeEvery) type을 dispatch(userSelectByUserIdAction)
+  * reducer에서 해당 type에 반응(actions.userSelectByUserId)
+  * saga가 해당 type을 가로채어 데이터 처리 후(userSelectByUserIdSaga) saga가 기다리지 않는 type에 put(actions.setUserAction(res.data.data))
+  * reducer가 해당 type에 반응하여 데이터를 저장(actions.userSetUser)
 * src/modules/action.js에 내용 추가
   ```
   // Saga
