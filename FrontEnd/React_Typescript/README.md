@@ -409,11 +409,6 @@
 
     export default withRouter(App);
     ```
-  
-
-
-
-
 # redux 사용 방법
 ## 기본 설정
 * redux devtools 크롬 확장자 설치
@@ -425,23 +420,27 @@
 * src/modules/reducer에 index.tsx 파일 생성
 * index.tsx에 내용 입력
   ```
-  import * as React from 'react';
   import { combineReducers } from 'redux';
+
+  export interface reducerState {
+    
+  }
 
   const rootReducer = combineReducers({
       
   });
 
   export default rootReducer;
-
-  export type reducerIndex = ReturnType<typeof rootReducer>;
   ```
 * src/api에 interface.tsx 파일 생성
 * interface.tsx에 내용 입력
   ```
-  export interface Iuser {
+  export interface IuserAuth {
       userId: string;
       userPw: string;
+  }
+
+  export interface Iuser extends IuserAuth {
       userNm: string;
       userGd: string;
       userAge: number;
@@ -458,14 +457,19 @@
 
   export const userSetUser: string = 'userSetUser';
 
-  export const userSetUserAction = (res: Iuser) => {
+  interface IuserSetUserAction {
+      type: typeof userSetUser;
+      payload: Iuser;
+  }
+
+  export const userSetUserAction = (res: Iuser): IuserSetUserAction => {
       return {
           type: userSetUser,
           payload: res,
       };
   };
 
-  export type reducerAction = ReturnType<typeof userSetUserAction>;
+  export type reducerAction = IuserSetUserAction;
   ```
 * src/modules/reducer에 user.tsx 파일 생성
 * user.tsx에 내용 입력
@@ -473,11 +477,11 @@
   import * as actions from '../actions';
   import { Iuser } from '../../api/interface';
 
-  interface IinitState {
+  export interface IinitUserState {
       user: Iuser;
   }
 
-  const initState: IinitState = {
+  const initUserState: IinitUserState = {
       user: {
           userId: '',
           userPw: '',
@@ -491,7 +495,7 @@
       },
   };
 
-  const reducer = (state: IinitState = initState, action: actions.reducerAction) => {
+  const reducer = (state: IinitUserState = initUserState, action: actions.reducerAction) => {
       switch (action.type) {
           case actions.userSetUser:
               return {
@@ -510,20 +514,22 @@
   ```
 * src/modules/reducer/index.tsx에 내용 추가
   ```
-  import * as React from 'react';
   import { combineReducers } from 'redux';
   import user from './user'; // 추가
+  import { IinitUserState } from './user'; // 추기
+
+  export interface reducerState {
+      user: IinitUserState; // 추가
+  }
 
   const rootReducer = combineReducers({
       user, // 추가
   });
 
   export default rootReducer;
-
-  export type reducerIndex = ReturnType<typeof rootReducer>;
   ```
 * src/modules에 store.tsx 파일 생성
-* store.tsx에 내용 추가
+* store.tsx에 내용 입력
   ```
   import { createStore } from 'redux';
   import { composeWithDevTools } from 'redux-devtools-extension';
@@ -558,11 +564,11 @@
   import { useDispatch, useSelector } from 'react-redux';
   import { Iuser } from '../api/interface';
   import { userSetUserAction } from '../modules/actions';
-  import { reducerIndex } from '../modules/reducer/index';
+  import { reducerState } from '../modules/reducer';
 
   const signIn = () => {
       const dispatch = useDispatch();
-      const user: Iuser = useSelector((state: reducerIndex) => state.user.user);
+      const user: Iuser = useSelector((state: reducerState) => state.user.user);
 
       const testClick = () => {
           const setUser: Iuser = {
@@ -579,6 +585,7 @@
 
           dispatch(userSetUserAction(setUser));
       };
+
       return (
           <div>
               <p>SignIn 페이지입니다.</p>
@@ -683,23 +690,6 @@
 
   export default signUp;
   ```
-
-
-
-
-
-
-
-
-
-# react 전용 UI-Framework 사용하기
-## Material-UI 사용하기 (진행하던 시즌 중 1위...)
-* https://material-ui.com/ 에 접속하면 관련 정보를 얻을 수 있음
-* material 패키지 설치하기
-  ```
-  yarn add @material-ui/core
-  ```
-
 # redux-saga 사용하기
 ## 기본 설정
 * 필수 패키지 설치
@@ -732,20 +722,19 @@
       };
   };
   ```
-* src/modules/saga index.js 파일 생성
-* index.js에 내용 입력
+* src/modules/saga index.tsx 파일 생성
+* index.tsx에 내용 입력
   ```
   import { all } from 'redux-saga/effects';
 
   function* rootSaga() {
-      yield all();
+      yield all([]);
   }
 
   export default rootSaga;
-
   ```
-* src/modules/saga user.js 파일 생성
-* user.js에 내용 입력
+* src/modules/saga user.tsx 파일 생성
+* user.tsx에 내용 입력
   ```
   import * as actions from '../actions';
   import axios from '../../api/axios';
@@ -754,7 +743,7 @@
 
   export default saga;
   ```
-* src/modules/store.js 내용 변경
+* src/modules/store.tsx 내용 변경
   ```
   import { createStore, applyMiddleware } from 'redux'; // applyMiddleware 추가
   import { composeWithDevTools } from 'redux-devtools-extension';
@@ -773,29 +762,72 @@
 * 처리되는 로직
   * saga가 반응하길 기다리고 있는(takeEvery) type을 dispatch(userSelectByUserIdAction)
   * reducer에서 해당 type에 반응(actions.userSelectByUserId)
-  * saga가 해당 type을 가로채어 데이터 처리 후(userSelectByUserIdSaga) saga가 기다리지 않는 type에 put(actions.setUserAction(res.data.data))
+  * saga가 해당 type을 가로채어 데이터 처리 후(userSelectByUserIdSaga) saga가 기다리지 않는 type에 put(actions.userSetUserAction(res.data.data))
   * reducer가 해당 type에 반응하여 데이터를 저장(actions.userSetUser)
-* src/modules/action.js에 내용 추가
+* src/modules/action.tsx에 내용 추가
   ```
-  // Saga
-  export const userSelectByUserId = 'userSelectByUserId';
+  import { Iuser, IuserAuth } from '../api/interface';
 
-  export const userSelectByUserIdAction = (res) => {
+  // Saga
+  export const userSelectByUserId: string = 'userSelectByUserId';
+
+  // Not Saga
+  export const userSetUser: string = 'userSetUser';
+
+  // Saga
+  interface IuserSelectByUserIdAction {
+      type: typeof userSelectByUserId;
+      payload: IuserAuth;
+  }
+
+  // Not Saga
+  interface IuserSetUserAction {
+      type: typeof userSetUser;
+      payload: Iuser;
+  }
+
+  // Saga
+  export const userSelectByUserIdAction = (res: IuserAuth): IuserSelectByUserIdAction => {
       return {
           type: userSelectByUserId,
           payload: res,
       };
   };
-  ```
-* src/modules/reducer/user.js에 내용 추가
-  ```
-  import * as actions from '../actions';
 
-  const initState = {
-      user: '',
+  // Not Saga
+  export const userSetUserAction = (res: Iuser): IuserSetUserAction => {
+      return {
+          type: userSetUser,
+          payload: res,
+      };
   };
 
-  const reducer = (state = initState, action) => {
+  export type reducerAction = IuserSelectByUserIdAction | IuserSetUserAction;
+  ```
+* src/modules/reducer/user.tsx에 내용 추가
+  ```
+  import * as actions from '../actions';
+  import { Iuser } from '../../api/interface';
+
+  export interface IinitUserState {
+      user: Iuser;
+  }
+
+  const initUserState: IinitUserState = {
+      user: {
+          userId: '',
+          userPw: '',
+          userNm: '',
+          userGd: '',
+          userAge: 0,
+          userPh: '',
+          userMa: '',
+          rgstTm: '',
+          updtTm: '',
+      },
+  };
+
+  const reducer = (state: IinitUserState = initUserState, action: actions.reducerAction) => {
       switch (action.type) {
           // Saga
           case actions.userSelectByUserId: {
@@ -806,30 +838,28 @@
           }
 
           // Not Saga
-          case actions.userSetUser: {
+          case actions.userSetUser:
               return {
                   ...state,
                   user: action.payload,
               };
-          }
 
-          default: {
+          default:
               return {
                   ...state,
               };
-          }
       }
   };
 
   export default reducer;
   ```
-* src/modules/saga/user.js에 내용 추가
+* src/modules/saga/user.tsx에 내용 추가
   ```
-  import { takeEvery, put, call } from 'redux-saga/effects';
+  import { put, call, takeEvery } from 'redux-saga/effects';
   import * as actions from '../actions';
   import axios from '../../api/axios';
 
-  function* userSelectByUserIdSaga(action) {
+  function* userSelectByUserIdSaga(action: actions.reducerAction) {
       try {
           const res = yield call([axios, 'get'], '/user/selectByUserId', {
               params: {
@@ -841,23 +871,79 @@
           if (res.data.data === 0) {
               alert('로그인 실패');
           } else {
-              yield put(actions.setUserAction(res.data.data));
-              localStorage.userToken = res.headers['jwt-user-token']; // jwt-user-token으로 response온 값을 localStorage에 저장
+              yield put(actions.userSetUserAction(res.data.data));
               alert('로그인 성공');
           }
       } catch (e) {
           alert(e);
       }
   }
-  const saga = [
-      takeEvery(actions.userSelectByUserId, userSelectByUserIdSaga),
-  ];
+
+  const saga = [takeEvery(actions.userSelectByUserId, userSelectByUserIdSaga)];
 
   export default saga;
   ```
-* 로그인 페이지에서 로그인 버튼을 누를 때 함수
+* src/pages폴더에 signIn.tsx파일 내용 추가 (사가테스트 클릭 시 axios를 통해 가져온 데이터를 화면에 표시)
   ```
-  const onSignIn = () => {
-      dispatch(userSelectByUserIdAction({ userId, userPw }));
+  import React from 'react';
+  import { useDispatch, useSelector } from 'react-redux';
+  import { Iuser, IuserAuth } from '../api/interface';
+  import { userSetUserAction, userSelectByUserIdAction } from '../modules/actions';
+  import { reducerState } from '../modules/reducer';
+
+  const signIn = () => {
+      const dispatch = useDispatch();
+      const user: Iuser = useSelector((state: reducerState) => state.user.user);
+
+      const testClick = () => {
+          const setUser: Iuser = {
+              userId: 'userId',
+              userPw: 'userPw',
+              userNm: 'userNm',
+              userGd: 'userGd',
+              userAge: 0,
+              userPh: 'userPh',
+              userMa: 'userMa',
+              rgstTm: 'rgstTm',
+              updtTm: 'updtTm',
+          };
+
+          dispatch(userSetUserAction(setUser));
+      };
+
+      const sagaTest = () => {
+          const testUser: IuserAuth = {
+              userId: 'asd',
+              userPw: 'asd',
+          };
+          dispatch(userSelectByUserIdAction(testUser));
+      };
+
+      return (
+          <div>
+              <p>SignIn 페이지입니다.</p>
+              <input type="button" value="로그인" onClick={testClick}></input>
+              <input type="button" value="사가테스트" onClick={sagaTest}></input>
+              {user.userNm}
+          </div>
+      );
   };
+
+  export default signIn;
+  ```
+
+
+
+
+
+
+
+
+
+# react 전용 UI-Framework 사용하기
+## Material-UI 사용하기 (진행하던 시즌 중 1위...)
+* https://material-ui.com/ 에 접속하면 관련 정보를 얻을 수 있음
+* material 패키지 설치하기
+  ```
+  yarn add @material-ui/core
   ```
