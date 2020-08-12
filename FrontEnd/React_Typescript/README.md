@@ -90,6 +90,7 @@
       /* Strict Type-Checking Options */
       "strict": true,                           /* Enable all strict type-checking options. */
       "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
+      "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
 
       /* Module Resolution Options */
       "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
@@ -457,7 +458,7 @@
 
   export const userSetUser: string = 'userSetUser';
 
-  interface IuserSetUserAction {
+  export interface IuserSetUserAction {
       type: typeof userSetUser;
       payload: Iuser;
   }
@@ -500,7 +501,7 @@
           case actions.userSetUser:
               return {
                   ...state,
-                  user: action.payload,
+                  user: (action as actions.IuserSetUserAction).payload,
               };
 
           default:
@@ -833,7 +834,7 @@
           case actions.userSelectByUserId: {
               return {
                   ...state,
-                  payload: action.payload,
+                  payload: (action as actions.IuserSelectByUserIdAction).payload,
               };
           }
 
@@ -841,7 +842,7 @@
           case actions.userSetUser:
               return {
                   ...state,
-                  user: action.payload,
+                  user: (action as actions.IuserSetUserAction).payload,
               };
 
           default:
@@ -859,7 +860,7 @@
   import * as actions from '../actions';
   import axios from '../../api/axios';
 
-  function* userSelectByUserIdSaga(action: actions.reducerAction) {
+  function* userSelectByUserIdSaga(action: actions.IuserSelectByUserIdAction) {
       try {
           const res = yield call([axios, 'get'], '/user/selectByUserId', {
               params: {
@@ -931,19 +932,45 @@
 
   export default signIn;
   ```
-
-
-
-
-
-
-
-
-
 # react 전용 UI-Framework 사용하기
 ## Material-UI 사용하기 (진행하던 시즌 중 1위...)
 * https://material-ui.com/ 에 접속하면 관련 정보를 얻을 수 있음
 * material 패키지 설치하기
   ```
   yarn add @material-ui/core
+  ```
+* TextField 사용법
+  ```
+  const setUserNmAction = (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatchSignUp({
+            type: setUserNm,
+            payload: e.target.value,
+        });
+    };
+
+  <TextField id="standard-basic" label="이름" onChange={setUserNmAction} />
+  ```
+* Select / MenuItem 사용법 (localReducer는 위의 useReducer 참고)
+  ```
+  const setUserGdAction = (
+      e: React.ChangeEvent<{
+          name?: string | undefined;
+          value: unknown;
+      }>,
+  ) => {
+      dispatchSignUp({
+          type: setUserGd,
+          payload: e.target.value as string,
+      });
+  };
+
+  <Select
+      labelId="demo-simple-select-label"
+      id="demo-simple-select"
+      value={localReducer.userGd}
+      onChange={setUserGdAction}
+  >
+      <MenuItem value="M">남자</MenuItem>
+      <MenuItem value="W">여자</MenuItem>
+  </Select>
   ```
