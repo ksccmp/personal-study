@@ -80,7 +80,7 @@
       /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
       /* Basic Options */
-      "target": "es6",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
+      "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
       "module": "commonjs",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
       "lib": ["ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "DOM"],                             /* Specify library files to be included in the compilation. */
       "allowJs": true,                       /* Allow javascript files to be compiled. */
@@ -367,8 +367,8 @@
   ```
   <Link to="/user/signUp">signUp</Link>
   ```
-* history / location / match 사용하기
-  * RouteComponentProps를 제네릭으로 등록하여 사용하고 싶은 것을 prop에 가져오기
+* history 사용하기
+  * RouteComponentProps를 제네릭으로 등록하여 사용하고 싶은 것을 prop에 history 가져오기
   * withRouter로 export default값 덮어주기 (외부에 BrowseRouter가 덮여 있어야 됨)
   * App.tsx에 적용할 거기 때문에 위의 조건 때문에 BrowseRouter를 index.tsx로 이동
   * index.tsx
@@ -409,6 +409,34 @@
     };
 
     export default withRouter(App);
+    ```
+* match 사용하기
+  * RouteComponentProps를 제네릭으로 등록하고 params로 가져와야 되는 interface를 생성하여 제네릭을 추가 등록한 뒤 prop에 match 가져오기
+  * Route를 다음과 같이 등록
+    ```
+    <Route path="/socket/chat/:roomId" component={Chat} />
+    ```
+  * 예시
+    ```
+    import * as React from 'react';
+
+    interface ImatchParams {
+        roomId: string;
+    }
+
+    const chat: React.FC<RouteComponentProps<ImatchParams>> = ({ match }) => {
+        React.useEffect(() => {
+            console.log(match.params.roomId);
+        }, []);
+
+        return (
+          <>
+            <div>
+              match Test
+            </div>
+          </>
+        )
+    }
     ```
 # redux 사용 방법
 ## 기본 설정
@@ -973,4 +1001,296 @@
       <MenuItem value="M">남자</MenuItem>
       <MenuItem value="W">여자</MenuItem>
   </Select>
+  ```
+# socket-io 사용하기
+## 채팅서버 생성 (새로운 폴더 생성하여 툴 새로 접속)
+* package.json 생성
+  ```
+  npm init
+  ```
+* 내용 입력
+  ```
+  package name: {패키지 명} ex) socket
+  version: {버전} ex) (1.0.0)
+  description: {세부 설명} ex) socket for video chat
+  entry point: {시작 지점} ex) (index.tsx)
+  test command: 
+  git repository:
+  keywords:
+  author: {제작자} ex) KSC
+  license: {라이센스} ex) MIT
+  ```
+* 필수 모듈 설치
+  ```
+  yarn add express socket
+  ```
+* root에 index.js 생성 및 입력
+  ```
+  const app = require('express')();
+  const server = require('http').createServer(app);
+  const port = 4000;
+  const socketIO = require('socket.io')(server);
+
+  server.listen(port, () => {
+      console.log('채팅 서버 실행!');
+  });
+
+  socketIO.on('connection', (socket) => {
+      console.log('user connected');
+
+      socket.on('send message', (msg) => {
+          console.log(msg);
+          socketIO.to(msg.roomId).emit('receive message', msg);
+      });
+
+      socket.on('join room', (msg) => {
+          console.log(msg);
+          socket.join(msg);
+      });
+
+      socket.on('disconnect', (msg) => {
+          console.log('user disconnect');
+          console.log(msg);
+          console.log(socket.id);
+      });
+  });
+  ```
+* 서버 실행
+  ```
+  node index.js
+  ```
+## 클라이언트와 서버 연결하기
+* 필수 모듈 설치
+  ```
+  yarn add socket.io-client @types/socket.io-client
+  ```
+* 채팅리스트를 위한 reducer 설정
+  * src/api/interface.tsx에 추가
+    ```
+    export interface Ichat {
+      roomId: string;
+      userId: string;
+      type: string;
+      contents: string;
+      rgstTm: string;
+    }
+    ```
+  * src/modules/actions.tsx에 추가
+    ```
+    export const socketSetChatList: string = 'socketSetChatList';
+    export const socketResetChatList: string = 'socketResetChatList';
+
+    export interface IsocketSetChatList {
+        type: typeof socketSetChatList;
+        payload: Ichat;
+    }
+
+    export interface IsocketResetChatList {
+        type: typeof socketResetChatList;
+    }
+
+    export const socketSetChatListAction = (res: Ichat): IsocketSetChatList => {
+        return {
+            type: socketSetChatList,
+            payload: res,
+        };
+    };
+
+    export const socketResetChatListAction = (): IsocketResetChatList => {
+        return {
+            type: socketResetChatList,
+        };
+    };
+
+    export type reducerAction =
+    ...
+    | IsocketSetChatList
+    | IsocketResetChatList;
+    ```
+  * src/modules/reducer/socket.tsx 생성 및 입력
+    ```
+    import * as actions from '../actions';
+    import { Ichat } from '../../api/interface';
+
+    export interface IinitSocketState {
+        chatList: Ichat[];
+    }
+
+    const initSocketState: IinitSocketState = {
+        chatList: [],
+    };
+
+    const reducer = (state = initSocketState, action: actions.reducerAction) => {
+        switch (action.type) {
+            case actions.socketSetChatList: {
+                let newChatList: Ichat[] = state.chatList.slice();
+                newChatList.push((action as actions.IsocketSetChatList).payload);
+                return {
+                    ...state,
+                    chatList: newChatList,
+                };
+            }
+
+            case actions.socketResetChatList: {
+                return {
+                    ...state,
+                    chatList: initSocketState.chatList,
+                };
+            }
+
+            default: {
+                return {
+                    ...state,
+                };
+            }
+        }
+    };
+
+    export default reducer;
+    ```
+  * src/modules/reducer/index.tsx 내용 수정
+    ```
+    import { combineReducers } from 'redux';
+    import user from './user';
+    import { IinitUserState } from './user';
+    import { IinitSocketState } from './socket'; -- 추가
+    import socket from './socket'; -- 추가
+
+    export interface reducerState {
+        user: IinitUserState;
+        socket: IinitSocketState; -- 추가
+    }
+
+    const rootReducer = combineReducers({
+        user,
+        socket, -- 추가
+    });
+
+    export default rootReducer;
+    ```
+* socket을 사용할 파일 생성 및 입력
+  ```
+  import * as React from 'react';
+  import { useDispatch, useSelector } from 'react-redux';
+  import { reducerState } from '../modules/reducer/index';
+  import { Iuser, Ichat } from '../api/interface';
+  import { userLogoutAction, socketSetChatListAction, socketResetChatListAction } from '../modules/actions';
+  import { Typography, Button, TextField } from '@material-ui/core';
+  import SocketIO from 'socket.io-client';
+
+  const main = () => {
+      const dispatch = useDispatch();
+
+      const [text, setText] = React.useState<string>('');
+      const [socket, setSocket] = React.useState<SocketIOClient.Socket>();
+      const [roomId, setRoomId] = React.useState<string>('');
+
+      const reduxUser: Iuser = useSelector((state: reducerState) => state.user.user);
+      const reduxChatList: Ichat[] = useSelector((state: reducerState) => state.socket.chatList);
+
+      React.useEffect(() => {
+          dispatch(socketResetChatListAction());
+      }, []);
+
+      const First = () => {
+          Close();
+          setRoomId('1');
+          Open('1');
+      };
+
+      const Second = () => {
+          Close();
+          setRoomId('2');
+          Open('2');
+      };
+
+      const Open = (openroom: string) => {
+          if (reduxUser.userId != '' && reduxUser.userId.length > 0) {
+              const connect: SocketIOClient.Socket = SocketIO.connect('http://localhost:4000');
+              setSocket(connect);
+              dispatch(socketResetChatListAction());
+
+              connect.emit('join room', openroom);
+
+              connect.emit('send message', {
+                  roomId: openroom,
+                  userId: reduxUser.userId,
+                  type: 'alert',
+                  contents: reduxUser.userId + '님이 입장하셨습니다',
+                  rgstTm: '2020/08/07',
+              });
+
+              connect.on('receive message', (msg: Ichat) => {
+                  console.log(msg);
+                  dispatch(socketSetChatListAction(msg));
+              });
+          }
+      };
+
+      const Close = () => {
+          const sc: SocketIOClient.Socket = socket as SocketIOClient.Socket;
+          if (sc) {
+              sc.disconnect();
+          }
+      };
+
+      const Send = () => {
+          if (text.length > 0) {
+              const sc: SocketIOClient.Socket = socket as SocketIOClient.Socket;
+              sc.emit('send message', {
+                  roomId: roomId,
+                  userId: reduxUser.userId,
+                  type: 'chat',
+                  contents: text,
+                  rgstTm: '2020/08/07',
+              });
+              setText('');
+          }
+      };
+
+      const EnterSend = (e: React.KeyboardEvent) => {
+          if (e.key === 'Enter') {
+              Send();
+          }
+      };
+
+      const onText = (e: React.ChangeEvent<HTMLInputElement>) => {
+          setText(e.target.value);
+      };
+
+      return (
+          <>
+              <div>
+                  <Typography variant="h5">{reduxUser.userNm}님 안녕하세요. Main Page 입니다~</Typography> <br />
+                  <Button variant="contained" color="secondary" onClick={First}>
+                      1번방 참여
+                  </Button>
+                  <Button variant="contained" color="secondary" onClick={Second}>
+                      2번방 참여
+                  </Button>
+                  <Button variant="contained" color="secondary" onClick={Send}>
+                      Send
+                  </Button>
+                  <Button variant="contained" color="secondary" onClick={Close}>
+                      Close
+                  </Button>
+                  <TextField
+                      id="standard-basic"
+                      label="대화"
+                      value={text}
+                      onChange={onText}
+                      onKeyPress={EnterSend}
+                      required
+                  />
+                  {reduxChatList.map((chat, index) => (
+                      <Typography variant="h5" key={index}>
+                          {chat.type === 'alert' ? chat.contents : chat.userId + ' : ' + chat.contents}
+                      </Typography>
+                  ))}
+              </div>
+          </>
+      );
+  };
+
+  export default main;
   ```

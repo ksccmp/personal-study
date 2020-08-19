@@ -127,7 +127,7 @@
 
     output: {
       path: path.resolve(__dirname, "dist"), // __dirname : 현재 디렉토리
-      filename: "bundle.js"
+      filename: "bundle.js",
       publicPath: '/', // 새로고침을 할 시 페이지 유지
     },
 
