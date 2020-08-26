@@ -1294,3 +1294,311 @@
 
   export default main;
   ```
+# RTCPeerConnection 사용하기
+## 기본개념
+* ICECandidate
+    ```
+    ICE는 Interactive Connectivity Establishment의 약어로 두 단말이 서로 통신할 수 있는 최적의 경로를 찾도록 도와줌
+    Candidate는 두 단말이 통신 가능한 모든 주소들로 Candidate를 서로 연결하여 통신을 수행함
+    ```
+* STUN Server
+    ```
+    클라이언트 자신이 사용하는 공인 IP주소를 제공해주는 역할로써 클라이언트는 자신의 공인 IP가 무엇인지 모르기 때문에
+    STUN Server에 요청하여 NAT뒤에 잇는 공인IP주소를 가져와 외부와 통신할 수 있도록 도와줌
+    (사설 주소와 공인주소를 바인딩)
+    ```
+* TURN Server
+    ```
+    NAT환경에 단말이 릴레이 서버를 이용하여 통신하게 해주는 것으로 STUN Server에 문제가 생겼을 때
+    통화를 하는 피어들과 직접 통신하지 않고 릴레이 서버 역할을 하는 TURN 서버를 경유하여 통신하게 도와줌
+    (릴레이 주소를 할당)
+    ```
+* 구현 동작방식 (이해한 선에서...)
+    ```
+    1. pc1 (local PC) / pc2 (Remote PC)를 stun / turn서버를 등록하여 생성
+    2. pc1에서 getUserMedia를 통해 stream을 생성한 뒤 각각의 track들(video, audio ...)을 pc1에 추가
+    3. track들을 받은 pc1은 통신할 준비가 되었다고 판단하여 onnegotiationneeded 동작
+    4. pc1이 offer를 생성하여 LocalDescription에 저장한 뒤 소켓서버에 LocalDescription 전달
+    5. offer를 저장한 pc1은 onicecandidate가 동작하여 모든 candidate를 생성하여 pc1에 등록
+    6. pc1의 description을 받은 pc2는 RemoteDescription에 pc2의 description을 저장
+    7. pc1의 description을 저장하여 track들을 확인한 pc2는 ontrack이 동작하여 videoList에 저장
+    8. RemoteDescription에 pc1의 description을 저장 후 answer를 생성한 뒤 LocalDescription에 저장, 이후 소켓서버에 LocalDescription에 전달
+    9. answer를 저장한 pc2은 onicecandidate가 동작하여 모든 candidate를 생성하여 pc2에 등록
+    10. pc2의 description을 받은 pc1은 RemoteDescription에 pc1의 description을 저장
+    11. 통신 완료
+    ```
+## 구현
+### reducer 등록
+* src/modules/actions.tsx에 내용 추가
+    ```
+    export const socketSetVideoList: string = 'socketSetVideoList';
+    export const socketResetVideoList: string = 'socketResetVideoList';
+
+    export interface IsocketSetVideoListAction {
+        type: typeof socketSetVideoList;
+        payload: MediaStream;
+    }
+
+    export interface IsocketResetVideoListAction {
+        type: typeof socketResetVideoList;
+    }
+
+    export const socketSetVideoListAction = (res: MediaStream): IsocketSetVideoListAction => {
+        return {
+            type: socketSetVideoList,
+            payload: res,
+        };
+    };
+
+    export const socketResetVideoListAction = (): IsocketResetVideoListAction => {
+        return {
+            type: socketResetVideoList,
+        };
+    };
+
+    export type reducerAction =
+        ...
+        | IsocketSetVideoListAction
+        | IsocketResetVideoListAction;
+    ```
+* src/modules/reducer/socket.tsx에 내용 추가
+    ```
+    import * as actions from '../actions';
+    import { Ichat } from '../../api/interface';
+
+    export interface IinitSocketState {
+        ...
+        videoList: MediaStream[];
+    }
+
+    const initSocketState: IinitSocketState = {
+        ...
+        videoList: [],
+    };
+
+    const reducer = (state = initSocketState, action: actions.reducerAction) => {
+        switch (action.type) {
+            ...
+
+            case actions.socketSetVideoList: {
+                let newVideoList: MediaStream[] = state.videoList.slice();
+                newVideoList.push((action as actions.IsocketSetVideoListAction).payload);
+                return {
+                    ...state,
+                    videoList: newVideoList,
+                };
+            }
+
+            case actions.socketResetVideoList: {
+                return {
+                    ...state,
+                    videoList: initSocketState.videoList,
+                };
+            }
+
+            ...
+        }
+    };
+
+    export default reducer;
+    ```
+## interface 작성
+* src/api/interface.tsx에 내용 추가
+    ```
+    ...
+
+    export interface Ivideochat {
+        type: string;
+        sdp?: RTCSessionDescription;
+        candidate?: RTCIceCandidate;
+        roomId: string;
+    }
+    ```
+## component 작성
+* src/components/socket/video.tsx 파일 생성 및 작성
+    ```
+    import * as React from 'react';
+
+    interface Ivideo {
+        stream: MediaStream;
+    }
+
+    const video = ({ stream }: Ivideo) => {
+        const [videoData, setVideoData] = React.useState<HTMLMediaElement | undefined>(undefined);
+
+        React.useEffect(() => {
+            if (videoData) {
+                (videoData as HTMLMediaElement).srcObject = stream;
+            }
+        }, [videoData]);
+
+        return (
+            <>
+                <div>
+                    <video ref={(node: HTMLVideoElement) => setVideoData(node)} width="480px" autoPlay={true}></video>
+                </div>
+            </>
+        );
+    };
+
+    export default video;
+    ```
+## Page 작성
+* src/pages/socket/socketMain.tsx 파일 생성 및 작성
+    ```
+    import * as React from 'react';
+    import { useDispatch, useSelector } from 'react-redux';
+    import SocketIO from 'socket.io-client';
+    import { RouteComponentProps } from 'react-router';
+    import Video from '../../components/socket/video';
+    import { Ivideochat } from '../../api/interface';
+    import { reducerState } from '../../modules/reducer';
+    import { socketResetVideoListAction, socketSetVideoListAction } from '../../modules/actions';
+
+    interface ImatchParams {
+        roomId: string;
+        userId: string;
+    }
+
+    const socketMain: React.FC<RouteComponentProps<ImatchParams>> = ({ match }) => {
+        const dispatch = useDispatch();
+
+        const [socket, setSocket] = React.useState<SocketIOClient.Socket | undefined>(undefined);
+
+        const videoList: MediaStream[] = useSelector((state: reducerState) => state.socket.videoList);
+
+        const pcConfig = {
+            iceServers: [
+                {
+                    urls: 'stun:stun.l.google.com:19302',
+                },
+                { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' },
+            ],
+        };
+
+        React.useEffect(() => {
+            Close();
+            dispatch(socketResetVideoListAction());
+            const connect: SocketIOClient.Socket = SocketIO.connect('http://localhost:4000');
+            connect.id = match.params.userId;
+            setSocket(connect);
+
+            const handleVideoOfferMsg = (msg: Ivideochat) => {
+                const desc = new RTCSessionDescription(msg.sdp);
+                pc2.setRemoteDescription(desc)
+                    .then(() => {
+                        return pc2.createAnswer();
+                    })
+                    .then((answer) => {
+                        return pc2.setLocalDescription(answer);
+                    })
+                    .then(() => {
+                        connect.emit('videoTest', {
+                            type: 'video-answer',
+                            sdp: pc2.localDescription,
+                            roomId: match.params.roomId,
+                        });
+                    });
+            };
+
+            const handleVideoAnswerMsg = (msg: Ivideochat) => {
+                const desc = new RTCSessionDescription(msg.sdp);
+                pc1.setRemoteDescription(desc);
+            };
+
+            connect.on('receiveTest', (msg: Ivideochat) => {
+                if (msg.type === 'video-offer') {
+                    handleVideoOfferMsg(msg);
+                } else if (msg.type === 'video-answer') {
+                    handleVideoAnswerMsg(msg);
+                }
+            });
+
+            const pc1negotiationneeded = () => {
+                console.log('pc1negotiationneeded');
+                pc1.createOffer()
+                    .then((offer) => {
+                        return pc1.setLocalDescription(offer);
+                    })
+                    .then(() => {
+                        connect.emit('videoTest', {
+                            type: 'video-offer',
+                            sdp: pc1.localDescription,
+                            roomId: match.params.roomId,
+                        });
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    });
+            };
+
+            const pc1icecandidate = (event: RTCPeerConnectionIceEvent) => {
+                if (event.candidate) {
+                    const candidate = new RTCIceCandidate(event.candidate);
+                    pc1.addIceCandidate(candidate).catch((e) => {
+                        console.log(e);
+                    });
+                }
+            };
+
+            const pc2icecandidate = (event: RTCPeerConnectionIceEvent) => {
+                if (event.candidate) {
+                    const candidate = new RTCIceCandidate(event.candidate);
+                    pc2.addIceCandidate(candidate).catch((e) => {
+                        console.log(e);
+                    });
+                }
+            };
+
+            const pc2track = (event: RTCTrackEvent) => {
+                if (event.track.kind == 'video') {
+                    dispatch(socketSetVideoListAction(event.streams[0]));
+                }
+            };
+
+            const pc1: RTCPeerConnection = new RTCPeerConnection(pcConfig);
+            const pc2: RTCPeerConnection = new RTCPeerConnection(pcConfig);
+
+            pc1.onicecandidate = pc1icecandidate;
+            pc1.onnegotiationneeded = pc1negotiationneeded;
+            pc2.onicecandidate = pc2icecandidate;
+            pc2.ontrack = pc2track;
+
+            navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((pc1stream) => {
+                dispatch(socketSetVideoListAction(pc1stream));
+                pc1stream.getTracks().forEach((track) => {
+                    pc1.addTrack(track, pc1stream);
+                });
+            });
+        }, []);
+
+        const Close = () => {
+            const sc: SocketIOClient.Socket = socket as SocketIOClient.Socket;
+            if (sc) {
+                sc.disconnect();
+            }
+        };
+
+        return (
+            <>
+                <div>{videoList ? videoList.map((video, index) => <Video stream={video} key={index} />) : ''}</div>
+            </>
+        );
+    };
+
+    export default socketMain;
+    ```
+
+
+
+
+
+
+# 같은 네트워크 상에서 다른 PC로 접근하기
+* package.json 수정
+    ```
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "webpack-dev-server --open --host 0.0.0.0" // 추가
+    },
+    ```
