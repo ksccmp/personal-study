@@ -1328,6 +1328,20 @@
     11. 통신 완료
     ```
 ## 구현
+### socket서버
+* 위에 생성한 socket 서버의 index.js에 내용 추가
+    ```
+    ...
+
+    socketIO.on('connection', (socket) => {
+        
+        ...
+
+        socket.on('videoTest', (msg) => {
+            socketIO.to(msg.roomId).emit('receiveTest', msg);
+        });
+    }
+    ```
 ### reducer 등록
 * src/modules/actions.tsx에 내용 추가
     ```
@@ -1402,7 +1416,7 @@
 
     export default reducer;
     ```
-## interface 작성
+### interface 작성
 * src/api/interface.tsx에 내용 추가
     ```
     ...
@@ -1414,7 +1428,7 @@
         roomId: string;
     }
     ```
-## component 작성
+### component 작성
 * src/components/socket/video.tsx 파일 생성 및 작성
     ```
     import * as React from 'react';
@@ -1443,7 +1457,7 @@
 
     export default video;
     ```
-## Page 작성
+### Page 작성
 * src/pages/socket/socketMain.tsx 파일 생성 및 작성
     ```
     import * as React from 'react';
@@ -1588,12 +1602,6 @@
 
     export default socketMain;
     ```
-
-
-
-
-
-
 # 같은 네트워크 상에서 다른 PC로 접근하기
 * package.json 수정
     ```
