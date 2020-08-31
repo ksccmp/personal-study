@@ -85,6 +85,7 @@
       "lib": ["ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020", "DOM"],                             /* Specify library files to be included in the compilation. */
       "allowJs": true,                       /* Allow javascript files to be compiled. */
       "jsx": "react",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+      "declaration": true,                   /* Generates corresponding '.d.ts' file. */
       "outDir": "./dist",                        /* Redirect output structure to the directory. */
 
       /* Strict Type-Checking Options */
@@ -203,7 +204,8 @@
   ```
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open" // 추가
+    "start": "webpack-dev-server --open", // 추가
+    "build": "webpack --config webpack.config.js" // 추가
   },
   ```
 # ESLint, Prettier 적용하기
@@ -1607,6 +1609,7 @@
     ```
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "webpack-dev-server --open --host 0.0.0.0" // 추가
+        "start": "webpack-dev-server --open --host 0.0.0.0", // 추가
+        "build": "webpack --config webpack.config.js"
     },
     ```
