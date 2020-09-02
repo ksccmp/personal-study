@@ -101,6 +101,35 @@
   nginx.conf 내용.....
   ```
 ## SSL 적용
+### Letsenrpyt 적용
+* Fedora Project에서 제공되는 community 기반의 저장소 설치
+  ```
+  sudo yum install epel-release
+  ```
+* certbot 설치
+  ```
+  sudo yum install certbot
+  ```
+* nginx 전용 certbot 설치 (apache 전용도 있음)
+  ```
+  sudo yum install python3-certbot-nginx
+  ```
+* certbot을 이용하여 인증서 설치 (certonly가 있을 경우: 키만 가져옴, 없을 경우: 키를 가져오면서 설정까지 추가함 / 이메일 등 정보를 넣어야 됨)
+  ```
+  sudo certbot certonly --nginx -d {domain 명} ex) ksccmp.iptime.org => iptime의 ddns같은 경우는 사용자가 매우 많아서.. 몇번 계속 시도했더니 됨..
+  ```
+* 설치위치
+  ```
+  /etc/letsencrypt/live/{domain 명} ex) /etc/letsencrypt/live/ksccmp.iptime.org
+  ```
+* /etc/nginx/nginx.conf 수정
+  ```
+  vi /etc/nginx/nginx.conf
+  ```
+  ```
+  nginx.conf 내용.....
+  ```
+### 사설 인증키 적용
 * 저장위치 이동
   ```
   cd /etc/nginx/
