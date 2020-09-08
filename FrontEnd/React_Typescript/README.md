@@ -1604,6 +1604,14 @@
 
     export default socketMain;
     ```
+# StyledComponent 사용방법
+## 기본설정
+* 필수패키지 설치
+    ```
+    yarn add styled-components @types/styled-components
+    ```
+* StyledComponent 생성은 컴포넌트 밖에 생성해주기
+
 # 같은 네트워크 상에서 다른 PC로 접근하기
 * package.json 수정
     ```

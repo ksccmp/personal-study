@@ -375,3 +375,57 @@
   // const connect: SocketIOClient.Socket = SocketIO.connect('http://localhost:4000'); // 로컬
   const connect: SocketIOClient.Socket = SocketIO.connect('https://ksccmp.iptime.org/', { secure: true }); // 배포
   ```
+
+
+
+cd /usr/local
+yum -y install libevent libevent-devel make
+yum -y install gcc gcc-c++ openssl-devel
+wget http://turnserver.open-sys.org/downloads/v4.5.1.0/turnserver-4.5.1.0.tar.gz
+tar -zxvf turnserver-4.5.1.0.tar.gz
+cd turnserver-4.5.1.0
+./configure
+make & make install
+
+turnserver.conf 다운 후 /etc/로 옮기기
+cd /etc
+vi turnserver.conf
+내용수정...
+
+/etc/systemd/system
+vi turnserver.service
+```
+Description=turnserver Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/turnserver-4.5.1.0/bin/turnserver -c /etc/turnserver.conf
+Restart=on-abort
+
+
+[Install]
+WantedBy=multi-user.target
+```
+
+
+
+firewall-cmd --zone=public --add-port=3478/tcp --permanent
+firewall-cmd --zone=public --add-port=5349/tcp --permanent
+firewall-cmd --reload
+
+systemctl start turnserver
+
+
+
+
+
+cd /etc/nginx/ssl
+sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
+
+linux에서 cipher list 확인법
+/usr/bin/openssl ciphers -v
+
+firewall-cmd --zone=public --add-port=65010-65530/tcp --permanent
+firewall-cmd --reload
