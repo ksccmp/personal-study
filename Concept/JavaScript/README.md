@@ -224,10 +224,54 @@
 * 에러발생 이유 : const와 let은 호이스팅이 되기는 하지만 실제 변수가 선언되어 있는 위치에 오기전까지 변수 호출할 수 없음 (Temporal Dead Zone의 영향)
 
 # 클로저
+## 실행 문맥(Execution Context) 이란?
+* 실행 가능한 코드가 실행되기 위한 환경이라는 추상적인 용어로 전역 코드 단위와 함수(블럭) 코드 단위로 나타냄
+* 예시
+    ```
+    // global context
+    let a = "Hello";
+    
+    function func1() { // local execution context
+        let a = 1;
+        let b = 2;
+
+        function func2() { // local execution context
+            return;
+        }
+    }
+    ```
+### 동작방법
+* 전역 실행 컨텍스트에서 프로그램이 시작되고 함수를 호출할 때마다 새로운 지역 실행 컨텍스트가 실행되며 자신들의 고유한 변수를 가지고 콜 스택으로 들어감
+* 콜 스택에 들어간 지역 실행 컨텍스트는 return 또는 } 로 함수 호출이 끝마치면 콜스택에서 빠져나오고 반환된 값들은 해당 함수를 호출했던 실행 컨텍스트에게 반환되고 소멸됨
+## lexical scope 란?
+* 자바스크립트에서 변수를 찾는 범위로 지역 실행 컨텍스트에서 먼저 변수를 찾고 이후로 호출 컨텍스트에서 변수를 찾음
+* 호출 컨텍스트에서도 찾지 못하면 전역 실행 컨텍스트까지 올라가고 전역에도 없다면 undefined를 반환 ()
 ## 클로저란 ?
-* 내부함수가 정의될 때 외부 함수의 환경을 기억하고 있는 내부함수
+* 내부함수가 정의될 때 외부 함수의 환경을 기억하는 원리를 지칭하는 용어
 ## 예시
 * 클로저 예시
+    ```
+    let out = 'out value';
+
+    function outFunc() {
+        const inner = 'in value';
+
+        function inFunc(isParam) {
+            console.log(`out: ${out}`);
+            console.log(`inner: ${inner}`);
+            console.log(`inParam: ${inParam}`);
+        }
+
+        return inFunc;
+    }
+
+    const param = 'this is param';
+    const outResult = outfunc();
+    outResult(param); // out: out value \n inner: in value \n inParam: this is param;
+    out = 'out change';
+    outResult(param); // out: out change \n inner: in value \n inParam: this is param;
+    ```
+* 클로저-호이스팅 문제 예시
     ```
     for (var i=0; i<100; i++){
         setTimeout(function(){
@@ -237,7 +281,7 @@
     // 결과 : 100 100 100 100 100 100 ...
     // 이유 : setTimeout이라는 비동기 함수가 100개가 실행이 순서되로 되지만 실제로 Timeout이 되어 console을 찍을 때는 i값이 이미 100까지 도달하여 100을 출력
     ```
-* 클로저 예방 예시
+* 클로저-호이스팅 예방 예시 (var을 let으로 변경해도 가능)
     ```
     for (var i=0; i<100; i++){
         function call(j) {
@@ -267,10 +311,10 @@
 * 위의 예시와 같이 Person.prototype이라는 Object가 어딘가에 존재하고 Person함수로부터 생성된 객체(kim, park)들은 어딘가에 존재하는 Object에 들어있는 값을 사용할 수 있음
 * Prototype Object : 함수를 정의할 때 생성 / 일반적인 객체와 같으며 기본적은 속성으로 constructor와 __proto__를 가지고 있음
 * 아래 그림과 같이 생성된 함수는 prototype이라는 속성을 통해 Prototype Object에 접근 가능
-    <image src="../image/prototype1.PNG" alt="prototype1" width="600px" height="400px">
+    <image src="image/prototype1.PNG" alt="prototype1" width="600px" height="400px">
 * Prototype Link : __proto__속성을 통해 조상이었던 함수의 Prototype Object를 가리킴 / 만들어진 Prototype Object도 __proto__속성을 가지고 있고 해당 속성을 통해 Object의 Prototype Object에 접근 가능
 * 위의 예처럼 kim.eyes라는 어떤 속성값을 찾으려고 할 때 Object의 Prototype Object까지 도달해도 값을 찾지 못하면 undefined를 표출함
-    <image src="../image/prototype2.PNG" alt="prototype2" width="600px" height="400px">
+    <image src="image/prototype2.PNG" alt="prototype2" width="600px" height="400px">
 
 # 이벤트루프 / 동시성모델
 ## 동시성
@@ -280,7 +324,7 @@
 * 호출스택(Call Stack) : JavaScript에서 실행되는 함수의 현재 위치 및 상태를 기록하는 자료 구조 / 현재 어떤 함수가 동작되고 다음에 어떤 함수가 호출되는지를 제어
 * 이벤트큐(Event Queue) : 런타임 시점에 처리해야 할 Task를 담아놓은 큐로 비동기 이벤트(DOM Event, Ajax, SetTimeout 등)들의 작업이 완료된 뒤 실행 될 Task들이 이벤트 큐에 쌓임
 * 이벤트루프 : Call Stack 내에서 실행중인 Task들이 있는지를 확인하고 Call Stack이 비워지게 될 경우 Event Queue 내의 Task가 Call Stack으로 이동되어 실행 되는것을 반복시켜줌
-    <image src="../image/eventloop.PNG" alt="eventloop" width="600px" height="400px">
+    <image src="image/eventloop.PNG" alt="eventloop" width="600px" height="400px">
 
 # This
 ## 기본개념
@@ -382,8 +426,105 @@
 ### dependencies vs devdependencies
 * 둘다 패키지에 관련된 dependency들을 담아두고 있음
 * 가장 큰 차이점은 dependencies는 운영(프로덕션)환경에서 응용 프로그램에 필요한 패키지이고 devdependencies는 로컬 개발 및 테스트에서만 필요한 패키지
-    
 
+# null vs undefined
+## 공통점
+* 두 값 모두 변수에 값이 없다는 것을 의미
+## 차이점
+* null같은 경우는 의도를 가지고 변수에 null값을 할당하여 변수에 값이 없다는 것을 나타냄 (null의 type은 object)
+* undefined같은 경우는 변수를 선언하고 값을 할당하기 전의 형태 (undefined의 type은 undefined)
+
+# 이벤트 전달 방식
+## 이벤트 버블링
+### 이벤트 버블링 이란?
+* 특정 화면 요소에서 이벤트가 발생했을 때 해당 이벤트가 더 상위의 화면 요소들로 전달되어 가는 특성 (트리 구조상에서 상위 단계로 올라가는 것, div -> div -> div -> body)
+## 이벤트 캡쳐
+### 이벤트 캡쳐 란?
+* 이벤트 버블링과 반대방향으로 이벤트를 전파하는 방식, 하위 단계로 해당 이벤트를 전달 (하위 단계를 클릭했을 때 상위 단계에서 부터 실행되어 옴)
+### 구현 방법
+* capture 속성값에 true를 지정
+    ```
+    var divs = document.querySelectorAll('div');
+    divs.forEach(function(div) {
+        div.addEventListener('click', logEvent, {
+            capture: true // default 값은 false입니다.
+        });
+    });
+    ```
+## 이벤트 전달 방식 중지
+* 이벤트 버블링이나 이벤트 캡쳐와 같이 복잡한 이벤트 전달 방식을 수행하고 싶지 않고 해당 화면 요소의 이벤트만 신경쓰고 싶을 때 이벤트 전달을 중지함
+* event.stopPropagation을 사용하여 이벤트 전달 중지
+    ```
+    divs.forEach(function(div) {
+        div.addEventListener('click', logEvent);
+    });
+
+    function logEvent(event) {
+        event.stopPropagation();
+        console.log(event.currentTarget.className); // three
+    }
+    ```
+## event.stopPropagation vs event.preventDefault
+* stopPropagation은 이벤트 버블링이나 이벤트 캡쳐와 같이 이벤트를 상위 또는 하위단계에 전달하는 것을 방지
+* preventDefault는 a태그 클릭했을 때 클릭이벤트만 실행되고 브라우저의 행동을 막을 때 사용
+## 이벤트 위임
+### 이벤트 위임 이란?
+* 이벤트를 등록할 때 사용해야 되는 각각의 요소들에 이벤트를 추가하는 것이 아니라 상위 요소에서 하위 요소들의 이벤트를 제어하는 방식
+### 장점
+* 동적인 요소들에 대한 이벤트 처리가 수월함
+* 상위 요소에서 이벤트를 관리하기 때문에 하위 요소들을 자유롭게 추가 및 삭제 가능
+* 이벤트핸들러 관리가 용이
+* 등록 핸들러 자체가 줄어들기 때문에 메모리 누수 가능성을 줄임
+
+# inline vs inline-block vs block
+## inline vs block
+* inline은 대표적으로 ```<span>```태그의 성질로 text 크기만큼 점유하고 동일 라인에 붙는 성질을 소유
+* inline의 가장 큰 특징은 width/height와 margin/padding의 top/bottom 속성을 사용할 수 없음
+* block은 ```<p>``` ```<div>```태그 등의 성질이며 무조건 한줄을 점유하고 다음 태그는 다음 줄로 보내버림
+## inline vs inline-block
+* inline-block은 기본적으로 inline의 성질을 가지고 있지만 inline의 단점을 보완하기 위해 등장
+* inline-block은 inline에서 사용할 수 없었던 width/height와 margin/padding의 top/bottom 속성을 사용할 수 있음
+
+# margin vs padding
+## 공통점
+* 두 속성 모두 여백을 만들때 사용하는 속성
+## 차이점
+* margin은 바깥쪽 여백을 만들 때 사용
+* padding은 안쪽 여백을 만들때 사용
+
+# position
+## position 속성 종류
+* static : position 속성의 default 값으로 요소를 나열한 순서대로 배치 (top, right, bottom, left 등의 속성 사용 불가)
+* relative : static이었을 때 배치되는 위치를 기준으로 상대적 위치를 지정하여 배치
+* absolute : 이전에 작성된 문서의 흐름과 상관없이 여러 속성값(top, right, bottom, left)들을 이용하여 배치 (기준이 되는 위치는 가장 가까운 부모 및 조상의 position속성이 relative인 요소)
+* fixed : absolute와 마찬가지로 문서의 흐름에 상관없이 위치를 결정하고 브라우저 창이 기준이 되어 스크롤을 하더라도 계속 고정되어 배치
+* sticky : 기준점(ex) top:50px)을 넘지 않을 때는 relative처럼 동작하다가 넘게될 시 fixed와 같이 동작 (스크롤을 내릴 때 상단에 고정배치 시킬 때 사용)
+
+# GET vs POST
+## GET
+* 주로 데이터를 읽거나 검색할 때 자주 사용되는 메소드
+* GET 요청이 성공적으로 이루어지면 XML이나 JSON과 함께 200 (OK) HTTP 응답 코드를 리턴 / 에러 발생시에는 404(Not Found)나 400(Bad Request)가 주로 발생
+* HTTP명세에 의하면 GET 요청은 idempotent하고 같은 요청을 여러번 하더라도 변함없이 항상 같은 응답을 받아 안전하기 때문에 데이터 변경 등의 안전하지 않은 연산에 사용하면 안됨
+* GET은 서버에 데이터를 전송할 때 URL뒤 파라미터에 값을 붙여서 전송 (보안에 취약)
+## POST
+* 주로 새로운 리소스를 생성할 때 사용되는 메소드
+* POST 요청이 성공적으로 이루어지면 201 (Created) HTTP응답 코드를 리턴
+* HTTP명세에 의하면 POST 요청은 idempotent하지 않고 안전하지도 않기 때문에 같은 요청을 보낼 시 같은 정보를 담은 다른 resource를 반활항 가능성이 큼
+* POST는 서버에 데이터를 전송할 때 request body에 데이터를 담아 전송 (보안에 안전)
+
+# 브라우저 저장소
+## 브라우저 저장소란 ?
+* LocalStorage, SessionStorage, Cookie가 존재하며 클라이언트에 데이터를 저장하기 위한 데이터 저장소 역할을 수행
+* 모두 key-value 형태로 값을 저장하여 데이터를 관리
+## LocalStorage
+* LocalStorage는 window.localStorage에 위치하며 데이터를 직접 지우기 전까지 계속 저장되어 있기 때문에 자동로그인 등에 사용
+* localStorage.setItem('key', 'value') / localStroage.getItem('key') / localStroage.'key' = 'value' / localStorage.removeItem('key') 등과 같은 방법으로 사용
+## SessionSotrage
+* SessionStorage도 LocalStorage와 마찬가지로 window.SessionStorage에 위치하며 LocalStorage와 달리 윈도우나 브라우저를 닫을 경우 제거가 됨
+* 사용법은 LocalStorage와 동일
+## Cookie
+* Cookie는 Storage들과 달리 만료기한이 있는 저장소
+* 서버와 통신할 때 자동으로 Cookie값들을 서버에 같이 보냄
 
 가비지컬렉터
 웹프로토콜이란?
@@ -391,16 +532,6 @@
     HTTPS통신
     HTTP1.1 2.0차이
 자바스크립트의 배열이 실제 자료구조 배열이 아닌 이유
-null vs undefined
-inline vs inline block
-margin vs padding
-position 사용방법
-GET vs POST
-브라우저 저장소 차이(localstorage, sessionstorage, cookie)
-비동기적으로 실행이 되는것을 동기적으로 코딩하는 방법
-Event Loop 란
-이벤트 버블링이란
-실행문맥이란
 HTML이 렌더링중에 Javascript가 실행되면 렌더링이 멈추는 이유
 require vs import
 sass vs scss vs css
