@@ -488,9 +488,69 @@
 * null같은 경우는 의도를 가지고 변수에 null값을 할당하여 변수에 값이 없다는 것을 나타냄 (null의 type은 object)
 * undefined같은 경우는 변수를 선언하고 값을 할당하기 전의 형태 (undefined의 type은 undefined)
 
-# map vs reduce vs for
+# map vs reduce
+## 공통점
+* 배열에서 사용하는 메서드로 반복문을 처리할 때 사용
+## 차이점
+* map은 forEach와 같이 전체적으로 탐색을 할 때 사용
+* 예시
+    ```
+    const array = [1, 5, 3, 4, 2];
+    const check = array.map((data) => {
+        return data;
+    });
+    console.log(check); // [1, 5, 3, 4, 2]
+    ```
+* reduce는 map과 같이 배열에서 사용하는 반복문 메서드(map, filter, find 등)의 조상과 같음
+* reduce로 map 만들기
+    ```
+    const array = [1, 5, 3, 4, 2];
+    const check = array.reduce((before, cur) => {
+        before.push(cur);
+        return before;
+    }, []);
+    console.log(check); // [1, 5, 3, 4, 2]
+    ```
+* reduce로 filter 만들기
+    ```
+    const array = [1, 5, 3, 4, 2];
+    const check = array.reduce((before, cur) => {
+        if (cur % 2 === 0) {
+            before.push(cur);
+        }
+        return before;
+    }, []);
+    console.log(check); // [4, 2]
+    ```
 
 # === vs ==
+## 공통점
+* 두 값의 동등성을 비교하는 연산자
+## 차이점
+* ===는 엄격하게 동등성을 비교하는 것으로 타입과 값이 모두 같은 지를 비교 (공식문서에서 === 사용을 권장)
+* 예시
+    ```
+    const left = '3';
+    const right = 3;
+    console.log(left === right); // false
+    ```
+    ```
+    const left = undefined;
+    const right = null;
+    console.log(left == right); // false
+    ```
+* ==는 타입을 강제형변환 한 뒤 값이 같안 지를 비교
+* 예시
+    ```
+    const left = '3';
+    const right = 3;
+    console.log(left == right); // true
+    ```
+    ```
+    const left = undefined;
+    const right = null;
+    console.log(left == right); // true
+    ```
 
 # inline vs inline-block vs block
 ## inline vs block
@@ -625,6 +685,153 @@
 * 실제 DOM은 브라우저에서 관리하지만 Virtual DOM은 실제 DOM을 카피하여 메모리상에서 관리함
 * 메모리상에서 관리되고 있기 때문에 훨씬 빠르고 변경 부분을 파악후 리플로우를 한 번 일어나게 만들어 줌
 
+# 라이브러리 vs 프레임워크 vs API
+## 라이브러리
+### 라이브러리 란?
+* 응용프로그램 개발을 위해 필요한 기능을 모아 놓은 소프트웨어
+* 보통 도구라고 표현되며 어떠한 프로그램을 만들기 위해 라이브러리라는 도구들을 사용한다는 개념
+## 프레임워크
+### 프레임워크 란?
+* 응용프로그램이나 소프트웨어 솔루션 개발을 수월하게 하기 위해 제공되는 소프트웨어 환경
+* 보통 뼈대를 가지고 있는 반제품이라고 표현되며 뼈대를 유지하며 다양한 형태의 완제품을 만들어 내는 개념
+## API
+### API 란?
+* 데이터와 기능의 집합을 제공하여 프로그램간의 서로 정보를 교환 가능하도록 하는 것
+### REST 란?
+* HTTP 통신에서 Resource(자원)를 명시하고 어떤 자원에 대한 CRUD 요청을 Method(GET, POST, DELETE, PUT)로 표현하여 요청하는 것
+### REST API 란?
+* REST기반으로 API를 제공해 주는 것 (HTTP 통신에서 자원을 명시하고 Method 요청을 통해 프로그램간의 정보 교환이 이루어지도록 하는 것)
+### REST 특징
+* 클라이언트 - 서버 구조 : 자원을 가지고 있는 쪽이 서버, 자원을 요청하는 쪽이 클라이언트로 각각의 역할이 확실하게 구분되어 의존성을 줄임
+* 무상태성(Stateless) : 서버는 각각의 요청이 별개인 것으로 인식하여 이전의 요청에 대한 정보를 기억하지 않고 단순히 들어온 요청에 대해서만 처리를 함
+* 캐시처리 가능 : HTTP라는 기존의 웹 표준을 사용하기 때문에 웹의 기존 인프라를 그대로 활용하여 캐시 기능 적용 가능
+* 자체표현 : JSON형태의 메세지를 전달하기 때문에 메세지 자체만으로 어떤 내용을 전달하는지 쉽게 파악 가능
+* 계층구조 : 서버와 클라이언트가 분리되어 사용되기 때문에 중간에 보안 / 로드밸런싱 / 암호화 등의 계층을 추가하여 다중 계층구조 설계 가능
+* 일관된 인터페이스 : 어떤 플랫폼을 사용하는지에 무관하며 종속받지 않는 상태, HTTP표준에만 따르면 어떤 플랫폼에서도 요청이 가능
+### CORS 란?
+* 도메인 및 포트가 서로 다른 서버로 클라이언트가 요청했을 때 브라우저가 보안상의 이유로 API 차단하는 문제
+* 서버단에서 Origin에서의 요청을 모두 허용하거나 특정 Origin만 허용함으로 써 문제 해결 가능
+
+# React 클래스형 vs 함수형
+## 클래스형
+* contructor, this 등의 사용으로 인해 코드가 길고 복잡함
+* 메모리 자원을 함수형보다 더 사용 (많이 차이나지는 않음)
+* state관리 및 라이프사이클 메서드 사용 가능
+## 함수형
+* 구현하기 위한 코드 작성이 간편함
+* 메모리 자원을 클래스형보다 덜 사용
+* state관리 및 라이프사이클 메서드 사용 불가
+* state관리 및 라이프사이클 관련 없는 코드에는 보통 함수형을 작성 / 관련 있는 코드에는 클래스형을 작성했었음 (Hooks의 등장으로 클래스형 사용 불핋요)
+## React 라이프사이클 메서드
+* 라이프사이클 다이어그램
+    <image src=image/reactlifecycle.PNG alt="reactlifecycle" width="800px" height="650px">
+* getDerivedStateFromProps : props 로 받아온 것을 state 에 넣어주고 싶을 때 사용하는 메서드
+    ```
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log("getDerivedStateFromProps");
+        if (nextProps.color !== prevState.color) {
+            return { color: nextProps.color };
+        }
+        return null;
+    }
+    ```
+* componentDidMount : 컴포넌트가 처음 렌더링을 마치고 실행되는 메서드
+* shouldComponentUpdate : 컴포넌트가 리렌더링 할지 말지를 결정하는 메서드
+    ```
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log("shouldComponentUpdate", nextProps, nextState);
+        // 숫자의 마지막 자리가 4면 리렌더링하지 않습니다
+        return nextState.number % 10 !== 4;
+    }
+    ```
+* getSnapshotBeforeUpdate : 컴포넌트에 변화가 일어나기 직전의 DOM 상태를 가져와서 특정 값을 반환하면 그 다음 발생하게 되는 componentDidUpdate 함수에서 받아와서 사용 가능
+    ```
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log("getSnapshotBeforeUpdate");
+        if (prevProps.color !== this.props.color) {
+            return this.myRef.style.color;
+        }
+        return null;
+    }
+    ```
+* componentDidUpdate : 리렌더링이 마치고, 화면에 우리가 원하는 변화가 모두 반영되고 난 뒤 호출되는 메서드
+    ```
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log("componentDidUpdate", prevProps, prevState);
+        if (snapshot) {
+            console.log("업데이트 되기 직전 색상: ", snapshot);
+        }
+    }
+    ```
+
+# React 상태관리
+## 상태관리란 ?
+* 여러 컴포넌트들 간의 데이터 전달 및 이벤트 통신을 한 곳에서 관리하여 일관된 데이터를 유지하게 하는 것
+## 사용이유
+* 작은 규모의 프로젝트에서는 크게 문제가 없지만 큰 규모의 프로젝트에서는 부모-자식 간의 state값을 지속적으로 전달하는데 비 효율을 가져오기 때문에 전역으로 관리하여 데이터 관리를 효율적으로 하기 위해서 사용
+## React 상태관리 종류
+* Redux, MobX와 같은 상태관리 라이브러리 사용
+## Redux 동작원리
+* action에 type과 전달할 데이터를 지정하여 정의
+* reducer에 초기값과 함께 타입에 맞는 코드 실행 정의
+* Prodiver store에 정의한 reducer 저장
+* dispatch를 통해 action 실행
+* useSelector를 통해 redux의 state값 불러와서 사용
+
+# Vue 라이프사이클
+* 라이프사이클 다이어그램
+    <image src=image/vuelifecycle.PNG alt="vuelifecycle" width="800px" height="650px">
+* beforeCreate : data속성과 methods속성이 아직 인스턴스에 정의되어 있지 않고 DOM과 같은 화면 요소에도 접근 불가능
+* created : data속성과 methods속성이 정의되어 methods 속성값에 접근하여 로직 수행 가능, 하지만 인스턴스가 화면에 부착되기 전이라 template속성에 정의된 DOM 요소에는 접근 불가능
+* beforeMount : template속성에 지정한 마크업 속성은 render() 함수로 변환 후 el속성에 지정한 화면요소에 인스턴스를 부착하기 전 호출되는 단계
+* mounted : el 속성에서 지정한 요소에 인스턴스가 부착된 후 호출되는 단계
+* beforeUpdate : watch로 관찰하고 있는 데이터가 변경되어 Virtual DOM으로 화면을 다시 그리기 전 단계
+* updated : 데이터가 변경되어 다시 화면을 그리고 난 후의 단계
+
+# Vue 상태관리
+## Vue 상태관리 종류
+* VueX 같은 상태관리 라이브러리사용
+## VueX 동작원리
+* 흐름도
+    <image src=image/vuelifecycle.PNG alt="vuelifecycle" width="800px" height="650px">
+* Vuex store를 정의하여 초기 state값 저장
+* actions에 type과 commit내용 작성
+* mutations에서 type과 전달받은 데이터를 state값에 저장
+* 컴포넌트에서 dispatch를 통해 actions 실행
+* store에서 원하는 state를 가져와 사용
+
+# Vue 양방향바인딩
+## 양방향바인딩 이란?
+* view에서 변경된 내역을 model에 단방향으로 데이터를 보내주기만 하던 방식과 달리 model에서 view의 변화를 감지하여 html 코드가 변경될 때 model도 동시에 변경되게 해줌
+
+# Vue vs React
+## Vue
+* 컴포넌트 정의를 하나의 바구니에 담으려고 하는 구조를 가지고 있음
+* HTML 기반으로 가독성이 좋으며 러닝커브가 낮은편
+* 호환성에 중점을 두었기 때문에 vue 자체만으로 실행 가능
+## React
+* 역할군을 분리하기에 용이하여 대규모 프로젝트에 유용
+* JSX 기반으로 기존 HTML과 다르기 때문에 문법적인 오류가 발생하여 Babel과 같은 트랜스파일러가 필요
+* 자유성과 유연한 개발에 중점을 둠
+* 사용자가 많기 때문에 개발 레펀러스가 방대
+* 기업단위에서 관리하고 있기 때문에 버전관리가 빠름
+* web과 native가 병행이 가능
+
+# 타입스크립트
+## 타입스크립트 란?
+* 자바스크립트의 기능에 타입체크 기능이 추가된 것으로 자바스크립트에서 발생할 수 있는 타입과 관련된 에러를 미리 방지해주는 역할 수행
+## 타입스크립트 등장배경
+* 대규모 프로젝트에서 동적타입언어인 자바스크립트를 사용할 때 발생하는 문제점들에 대응하기 위해 등장, 대표적으로 코드를 작성할 때는 문제가 되지 않지만 코드를 실행시킬 때 발생하는 문제들을 대규모 프로젝트에서는 발견하기가 쉽지 않음
+## 장점
+* 정적타입을 지원 : 컴파일 단계에서 오류를 파악할 수 있음
+* IDE의 지원 : IDE에서 타입 정보를 제공함으로 써 높은 수준의 타입체크, 리팩토링 등을 지원받을 수 있음
+    * 리팩토링 : 외부동작은 바뀌지 않으면서 내부코드를 변경하는 것, 코드의 간결화 / 가독성을 높이기 위해 수행
+* ES7 이하의 표준을 포함하고 있어 바벨과 같은 트랜스파일러를 사용할 필요가 없음
+* class, interface, extends등을 사용하는 객체지향 프로그래밍을 지원 : 객체지향 언어에 익숙한 개발자들의 진입 장벽을 낮춤
+* 엄격한 null check
+## 단점
+* 타입을 일일이 체크를 해야되는 번거로움이 있음
+* interface 등의 추가적인 코드 작성으로 인해 코드가 길어지며 가독성이 떨어짐
 
 가비지컬렉터
 웹프로토콜이란?
@@ -634,38 +841,16 @@
 자바스크립트의 배열이 실제 자료구조 배열이 아닌 이유
 HTML이 렌더링중에 Javascript가 실행되면 렌더링이 멈추는 이유
 Javascript 성능 최적화 방법
-SEO
-=== vs ==
 
-
-리액트의 상태관리 (Redux, MobX, Context API 등)
-    뭐인지
-    왜 사용하는지
-    만드는 순서 및 동작원리
 리덕스 사가의 옵저버블
-클래스형과 함수형의 차이
-클래스형의 라이프사이클 메소드
 스켈레톤 UI란
 
-뷰 vs 리액트
 
-뷰 상태관리
-뷰 라이프사이클
-뷰에서 양방향 데이터가 일어난 ㅡ원리
-
-타입스크리트
-    등장배경
-    장점
-    리액트의 경우 tsx파일을 js로 변환하는 트랜스파일링을 거치는데 이런 과정때문에 바벨이 필요없음
-
-라이브러리 프레임워크 차이
 깃 관리 방식
 메소드체이닝
     개념
     장단점
 메모리제이션이란
-RestFul API란
-CORS란
 ESLINt, Prettier, Webpack이란
 
 배포경험
