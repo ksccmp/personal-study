@@ -163,6 +163,42 @@
         * 요소의 위치, 크기 변경
         * 폰트 변경, 이미지 크기 변경
 
+# 웹 프로토콜
+## HTTP
+### HTTP 란?
+* 웹에서 클라이언트와 서버 간 서로 통신하기 위한 규약
+### HTTP 통신 과정
+* 클라이언트에서 Request 전송
+* 서버에서 Response 전송
+* 클라이언트에서 Response를 받은 후 종료
+### HTTP 특징
+* 비연결(Connectless) : 서버와 클라이언트 간에 한 번의 통신과정을 거치면 연결을 즉시 끊음
+* 무상태(Stateless) : 이전에 서버와 클라이언트끼리 통신을 했던 정보들을 기억하지 않음
+### HTTP 장점
+* 많은 사람들이 사용하더라도 통신 유지는 최소한으로 하기 때문에 불특정 다수를 대상으로 하는 서비스에 적합
+### HTTP 단점
+* 비연결성을 가지고 있기 때문에 이전의 통신 상황에 대해 알 수 없음 (stateless)
+* stateless 단점을 없애며 정보 유지를 위해 Cookie와 같은 브라우저 저장소들이 등장
+## HTTP vs HTTPS
+* HTTPS는 HTTP에서 보안를 위한 SSL이 추가되어 HTTP보다 보안성이 높음
+## HTTP1.1 vs HTTP2.0
+### HTTP1.1의 문제점
+* HTTP1.1의 통신 방법은 한 번의 연결에 하나의 요청과 응답을 처리
+* 처음 등장시에는 문제가 없었지만 데이터 처리량이 점점 많아지기 시작했고 다수의 리소스를 처리할 때 속도와 성능 이슈를 발생
+* 특정 응답에 지연되는 HOL(Head of Line) Blocking 발생 (1.1은 사양상의 제한으로 Request의 순서와 Response의 순서가 같아야 됨)
+* 양방향이 지연되어 RTT(Round Trip time) 증가
+* 무거은 헤더구조를 가지고 있음
+### HTTP2.0의 특징
+* HTTP2.0은 한 번의 연결에 여러 요청을 처리하는 Multiplexed Streams
+* 커넥션 상에서의 요청 다중화로 HOL(Head of Line) Blocking이 발생하지 않음
+* 요청 리소스간 의존관계를 설정하는 Stream Prioritization
+* Header 정보를 압축전송하는 Header Compression
+## HTTP vs Socket
+* HTTP는 Connectless라는 특징을 가지고 있지만 Socket같은 경우는 강제로 연결을 끊기 전까지 연결이 유지
+* HTTP는 동시접속 가능한 클라이언트의 수보다 많이 접속이 가능하지만 Socket은 동시접속 클라이언트 수에 제한이 있음
+* HTTP는 클라이언트의 요청없이 서버에서 응답하지 않으지만 Socket은 클라이언트의 요청이 없어도 서버에서 응답이 가능
+* 실시간으로 정보교환이 필요한 경우에는 Socket통신이 좋지만 그렇지 않은 경우에는 HTTP 통신이 더욱 효과적임
+
 # 비동기
 ## 비동기 방식이란 ?
 * 웹페이지를 리로드 하지 않고 데이터를 불러오는 방식이며 서버에 요청을 한 후 서버가 멈추어 있지 않고 데이터 처리를 함
@@ -822,6 +858,8 @@
 * 메모리 자원을 클래스형보다 덜 사용
 * state관리 및 라이프사이클 메서드 사용 불가
 * state관리 및 라이프사이클 관련 없는 코드에는 보통 함수형을 작성 / 관련 있는 코드에는 클래스형을 작성했었음 (Hooks의 등장으로 클래스형 사용 불핋요)
+## 라이프사이클 이란?
+* 컴포넌트가 생성되어 사용되고 소멸할 때 까지의 일련의 과정
 ## React 라이프사이클 메서드
 * 라이프사이클 다이어그램
     <image src=image/reactlifecycle.PNG alt="reactlifecycle" width="800px" height="650px">
@@ -889,6 +927,9 @@
 * 이런 이유들로 Saga가 Thunk에 비해 액션 처리의 통일성을 가져와주고 또한 비동기 처리 하는 공간을 구분시키기 때문에 공간 구분이 명확함
 * Thunk는 Reducer를 거치지 않고 비동기 처리를 하기 때문에 Store에 데이터를 저장하기 위해서는 Thunk 내부에서 다시 dispatch를 수행해야 함
 * Saga는 Reducer를 거치고 비동기 처리를 하기 때문에 Store저장을 다시 수행하지 않아도 되고 이와 더불어 Store저장과 비동기 처리를 같은 타입으로 동시에 수행할 수 있음
+## Generator 란?
+* 함수실행을 중간에 멈췄다가 사용자가 원할 때 재개 할 수 있는 함수로 함수 이름 앞에 *룰 붙여서 코드를 작성함
+* Redux-Saga에서 비동기처리를 하는 함수를 작성할 때 사용
 
 # Vue 라이프사이클
 * 라이프사이클 다이어그램
@@ -905,7 +946,7 @@
 * VueX 같은 상태관리 라이브러리사용
 ## VueX 동작원리
 * 흐름도
-    <image src=image/vuelifecycle.PNG alt="vuelifecycle" width="800px" height="650px">
+    <image src=image/vuexflow.PNG alt="vuexflow" width="800px" height="650px">
 * Vuex store를 정의하여 초기 state값 저장
 * actions에 type과 commit내용 작성
 * mutations에서 type과 전달받은 데이터를 state값에 저장
@@ -914,7 +955,7 @@
 
 # Vue 양방향바인딩
 ## 양방향바인딩 이란?
-* view에서 변경된 내역을 model에 단방향으로 데이터를 보내주기만 하던 방식과 달리 model에서 view의 변화를 감지하여 html 코드가 변경될 때 model도 동시에 변경되게 해줌
+* 렌더링할 때 데이터를 view에게 보내주기만 하던 단반향바인딩과는 달리 view에서도 데이터의 변화를 감지하여 데이터가 변화됨과 동시에 view에 변경된 데이터가 표현되는 것
 
 # Vue vs React
 ## Vue
@@ -946,21 +987,17 @@
 * interface 등의 추가적인 코드 작성으로 인해 코드가 길어지며 가독성이 떨어짐
 
 가비지컬렉터
-웹프로토콜이란?
-    HTTP통신
-    HTTPS통신
-    HTTP1.1 2.0차이
+
 자바스크립트의 배열이 실제 자료구조 배열이 아닌 이유
 HTML이 렌더링중에 Javascript가 실행되면 렌더링이 멈추는 이유 
 Javascript 성능 최적화 방법
 
-리덕스 사가의 옵저버블
 깃 관리 방식
 배포경험
 
 
+redux vs mobx 관련 url
 https://blog.rhostem.com/posts/2019-07-22-mobx-v6-and-react-v16-8
 https://byseop.netlify.app/mobx-tutorial01/
 https://velopert.com/3707
 https://velog.io/@velopert/MobX-2-%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90%EC%84%9C-MobX-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-oejltas52z
-react generator란?
