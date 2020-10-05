@@ -1621,3 +1621,45 @@
         "build": "webpack --config webpack.config.js"
     },
     ```
+
+# Local 이미지 사용방법
+## 기본설정
+* 패키지 설치
+    ```
+    yarn add file-loader url-loader
+    ```
+* webpack.config.js 수정
+    ```
+    module: {
+        rules: [
+            {
+                ...
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+            },
+        ],
+    },
+    ```
+* /src/@types/import-png.d.ts 파일 생성 및 내용 작성
+    ```
+    declare module '*.png' {
+        const content: string;
+        export default content;
+    }
+    ```
+* tsconfig.js 수정
+    ```
+    "compilerOptions": {
+
+        ...
+
+        "typeRoots": [
+        "./src/@types"
+        ],      
+
+        ...
+        
+    ```
+* vscode 재접속
