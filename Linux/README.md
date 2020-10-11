@@ -98,7 +98,51 @@
   vi /etc/nginx/nginx.conf
   ```
   ```
-  nginx.conf 내용.....
+  events {
+      worker_connections 1024;
+  }
+
+  http {
+      include             /etc/nginx/mime.types;
+      charset		utf-8;
+      access_log /var/log/nginx/access.log;
+      error_log /var/log/nginx/error.log;
+
+      server {
+          listen       80;
+          charset utf-8;
+
+          server_name  (내부 아이피);
+
+          root (Front 배포 파일 root 폴더 위치) ex) /home/mynode/video_chat/frontend/typescript;
+          index index.html;
+
+          location /greet { // 테스트용
+            return 200 'Hello NGINX'; 
+          }
+
+          location /videochat { // Back 배포 파일 reverse proxy 적용
+              proxy_pass http://localhost:8080/videochat;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header Host $http_host;
+          }
+
+          location /socket.io { // Socket 배포 reverse proxy 적용
+              proxy_pass https://localhost:4000;
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection 'upgrade';
+              proxy_set_header Host $host;
+              proxy_cache_bypass $http_upgrade;
+              add_header Front-End-Https on;
+	        }
+
+	        location / {
+              try_files $uri $uri/ /index.html;
+	        }
+      }
+  }
   ```
 ## SSL 적용
 ### Letsenrpyt 적용
@@ -127,7 +171,55 @@
   vi /etc/nginx/nginx.conf
   ```
   ```
-  nginx.conf 내용.....
+  events {
+      worker_connections 1024;
+  }
+
+  http {
+      include             /etc/nginx/mime.types;
+      charset		utf-8;
+      access_log /var/log/nginx/access.log;
+      error_log /var/log/nginx/error.log;
+
+      server {
+          #listen       80; -- 수정
+          listen 443 ssl;
+          charset utf-8;
+
+          server_name  (내부 아이피);
+
+          root (Front 배포 파일 root 폴더 위치) ex) /home/mynode/video_chat/frontend/typescript;
+          index index.html;
+
+          ssl_certificate /etc/letsencrypt/live/ksccmp.iptime.org/fullchain.pem; -- 추가
+	        ssl_certificate_key /etc/letsencrypt/live/ksccmp.iptime.org/privkey.pem; -- 추가
+
+          location /greet { // 테스트용
+            return 200 'Hello NGINX'; 
+          }
+
+          location /videochat { // Back 배포 파일 reverse proxy 적용
+              proxy_pass http://localhost:8080/videochat;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header Host $http_host;
+          }
+
+          location /socket.io { // Socket 배포 reverse proxy 적용
+              proxy_pass https://localhost:4000;
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection 'upgrade';
+              proxy_set_header Host $host;
+              proxy_cache_bypass $http_upgrade;
+              add_header Front-End-Https on;
+	        }
+
+	        location / {
+              try_files $uri $uri/ /index.html;
+	        }
+      }
+  }
   ```
 ### 사설 인증키 적용
 * 저장위치 이동
@@ -170,7 +262,55 @@
   vi /etc/nginx/nginx.conf
   ```
   ```
-  nginx.conf 내용.....
+  events {
+      worker_connections 1024;
+  }
+
+  http {
+      include             /etc/nginx/mime.types;
+      charset		utf-8;
+      access_log /var/log/nginx/access.log;
+      error_log /var/log/nginx/error.log;
+
+      server {
+          #listen       80; -- 수정
+          listen 443 ssl;
+          charset utf-8;
+
+          server_name  (내부 아이피);
+
+          root (Front 배포 파일 root 폴더 위치) ex) /home/mynode/video_chat/frontend/typescript;
+          index index.html;
+
+          ssl_certificate /etc/nginx/ssl/server.crt; -- 추가
+	        ssl_certificate_key /etc/nginx/ssl/server.key; -- 추가
+
+          location /greet { // 테스트용
+            return 200 'Hello NGINX'; 
+          }
+
+          location /videochat { // Back 배포 파일 reverse proxy 적용
+              proxy_pass http://localhost:8080/videochat;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header Host $http_host;
+          }
+
+          location /socket.io { // Socket 배포 reverse proxy 적용
+              proxy_pass https://localhost:4000;
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection 'upgrade';
+              proxy_set_header Host $host;
+              proxy_cache_bypass $http_upgrade;
+              add_header Front-End-Https on;
+	        }
+
+	        location / {
+              try_files $uri $uri/ /index.html;
+	        }
+      }
+  }
   ```
 ## Front 파일 배포
   * 폴더 생성
@@ -298,13 +438,6 @@
   cd /usr/local/tomcat/webapps
   ```
 * 해당위치에 war파일을 FTP로 옮겨서 톰캣 재시작하면 war파일이 자동으로 풀림 (ex) videochat.war를 옮기면 재시작 시 videochat 폴더가 생김)
-* nginx.conf 수정
-  ```
-  vi /etc/nginx/nginx.conf
-  ```
-  ```
-  nginx.conf 내용.....
-  ```
 * Front에서 Back 접근방법
   ```
   const axiosAPI: AxiosInstance = axios.create({
@@ -334,13 +467,6 @@
   cd /usr/local/
   chmod -R 755 socket
   chcon -R -t httpd_sys_content_t socket
-  ```
-* nginx.conf 수정
-  ```
-  vi /etc/nginx/nginx.conf
-  ```
-  ```
-  nginx.conf 내용.....
   ```
 * node서버 시작
   ```
@@ -376,56 +502,93 @@
   const connect: SocketIOClient.Socket = SocketIO.connect('https://ksccmp.iptime.org/', { secure: true }); // 배포
   ```
 
+# Turn Server 설치
+* 설치 위치 이동
+  ```
+  cd /usr/local
+  ```
+* 필요 파일들 설치 및 압축 해제
+  ```
+  yum -y install libevent libevent-devel make
+  yum -y install gcc gcc-c++ openssl-devel
+  wget http://turnserver.open-sys.org/downloads/v4.5.1.0/turnserver-4.5.1.0.tar.gz
+  tar -zxvf turnserver-4.5.1.0.tar.gz
+  ```
+* 뭔지 기억이 안남...
+  ```
+  cd turnserver-4.5.1.0
+  ./configure
+  make & make install
+  ```
+* 생성된 turnserver.conf파일 /etc 위치로 이동
+  ```
+  mv 이용
+  ```
+* turnserver.conf 파일 수정
+  ```
+  cd /etc
+  vi turnserver.conf
+  ```
+  ```
+  listening-port=3478
+  tls-listening-port=5349
+  external-ip= (외부아이피) => 네이버에 내 IP검색했을 때 나오는 IP
+  listening-ip= (내부아이피)
+  relay-ip=(내부아이피)
+  min-port=49152
+  max-port=65535
+  verbose
+  fingerprint
+  lt-cred-mech
+  user=sctest:sctest
+  realm=(내부아이피)
+  cert=/etc/letsencrypt/live/ksccmp.iptime.org/fullchain.pem
+  pkey=/etc/letsencrypt/live/ksccmp.iptime.org/privkey.pem
+  cipher-list="ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-CCM:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-CCM:DHE-RSA-AES256-SHA:DHE-PSK-AES256-CCM:DHE-PSK-AES256-CBC-SHA:ECDHE-PSK-AES256-CBC-SHA"
+  CA-file=/etc/letsencrypt/live/ksccmp.iptime.org/cert.pem
+  dh-file=/etc/nginx/ssl/dhparam.pem
+  log-file=/var/tmp/turn.log
+  no-tlsv1
+  no-tlsv1_1
+  ```
+* linux에서 cipher-list 확인법
+  ```
+  /usr/bin/openssl ciphers -v
+  ```
+* dhparam.pem 파일 생성법
+  ```
+  cd /etc/nginx/ssl
+  sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
+  ```
+* turnserver.service 파일 수정
+  ```
+  cd /etc/systemd/system
+  vi turnserver.service
+  ```
+  ```
+  Description=turnserver Service
+  After=network.target
 
+  [Service]
+  Type=simple
+  User=root
+  ExecStart=/usr/local/turnserver-4.5.1.0/bin/turnserver -c /etc/turnserver.conf
+  Restart=on-abort
 
-cd /usr/local
-yum -y install libevent libevent-devel make
-yum -y install gcc gcc-c++ openssl-devel
-wget http://turnserver.open-sys.org/downloads/v4.5.1.0/turnserver-4.5.1.0.tar.gz
-tar -zxvf turnserver-4.5.1.0.tar.gz
-cd turnserver-4.5.1.0
-./configure
-make & make install
-
-turnserver.conf 다운 후 /etc/로 옮기기
-cd /etc
-vi turnserver.conf
-내용수정...
-
-/etc/systemd/system
-vi turnserver.service
-```
-Description=turnserver Service
-After=network.target
-
-[Service]
-Type=simple
-User=root
-ExecStart=/usr/local/turnserver-4.5.1.0/bin/turnserver -c /etc/turnserver.conf
-Restart=on-abort
-
-
-[Install]
-WantedBy=multi-user.target
-```
-
-
-
-firewall-cmd --zone=public --add-port=3478/tcp --permanent
-firewall-cmd --zone=public --add-port=5349/tcp --permanent
-firewall-cmd --reload
-
-systemctl start turnserver
-
-
-
-
-
-cd /etc/nginx/ssl
-sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
-
-linux에서 cipher list 확인법
-/usr/bin/openssl ciphers -v
-
-firewall-cmd --zone=public --add-port=65010-65530/tcp --permanent
-firewall-cmd --reload
+  [Install]
+  WantedBy=multi-user.target
+  ```
+* 방화벽 오픈
+  ```
+  firewall-cmd --zone=public --add-port=3478/tcp --permanent
+  firewall-cmd --zone=public --add-port=5349/tcp --permanent
+  firewall-cmd --zone=public --add-port=3478/udp --permanent
+  firewall-cmd --zone=public --add-port=5349/udp --permanent
+  firewall-cmd --zone=public --add-port=49152-65535/tcp --permanent
+  firewall-cmd --zone=public --add-port=49152-65535/udp --permanent
+  ```
+* turnserver 실행
+  ```
+  systemctl start turnserver
+  ```
+* 결과적으로... 외부에서는 turnserver 접근이 불가능했지만 내부적으로는 turnserver가 정상동작하여 reverse proxy방법으로 turnserver 적용
